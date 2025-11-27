@@ -1,0 +1,1605 @@
+EventTemplate
+--android-dump
+-c
+-f
+-p
+-s
+-y
+... <*> more
+...preloaded <*> <*> in <*>
+<*> - size of audio buffer <*> byte(s)
+<*> <*> <*> <*> <*> <*> <*> is <*>
+<*> <*> <*> false
+<*> <*> <*> for <*>
+<*> <*> <*> for <*> <*> <*> <*>
+<*> <*> to <*> <*>
+<*> GUARD: CameraActivity.onCreateTasks - <*> <*>
+<*> GUARD: CameraActivity.onCreateTasks - [ <*> <*>
+<*> Successfully processed VINTF information
+<*> changed; collecting certs
+<*> chars transferred from <*> over <*> <*> byte sized transfers
+<*> executing Lazily initialize IMMS#mImeDrawsImeNavBarRes
+<*> is <*> <*> <*>
+<*> is allowlisted but not present.
+<*> listening on <*>
+<*> mDNS service _adb._tcp registered: <*>
+<*> not defined by OEM
+<*> notification assistant service connected: ComponentInfo{<*><*>.<*>}
+<*> restarting as root
+<*> set to ''
+<*> started
+<*> starting up
+<*> to <*> <*> <*>
+<*> took to complete: <*>
+<*>$ExternalStorageServiceException: Failed to notify volume state changed for vol : StorageVolume: Virtual SD card
+<*>$LifeCycle
+<*>$Lifecycle
+<*>$Lifecycle took to complete: <*>
+<*>$NameNotFoundException: No module info for package: <*>
+<*>.xml doesn't exist
+<*>: <*>
+<*>: <*> open failed: ENOENT (No such file or directory)
+"<*>: ID: <*>, Strength: <*>, Type: <*>"
+"<*>: ID: <*>, Strength: <*>, Type: <*>, SupportsFaceDetection: false"
+<*>: Missing NTP fix
+<*>: Need REGISTER_STATS_PULL_ATOM permission.: Neither user <*> nor current process has <*>.
+"<*>: Specified package ""android"" under uid <*> but it is not"
+<*>: User <*> must be unlocked for widgets to be available
+<*>:<*> <*>:<*> <*>:<*> <*>:<*> <*>:<*>
+"<*>:<*>,<*>"
+"<*>:<*>,<*>: UUID=""<*><*>"" TYPE=""vfat"""
+<*>@<*>.<*>::ISchedulingPolicyService is deprecated. Skipping registration.
+>>>>>> START <*> uid <*> <<<<<<
+"A callback has been registered to ThermalHAL, isFilter: <*> Type: CPU"
+A resource failed to call AbstractCursor.close.
+"ACTION_CARRIER_CONFIG_CHANGED, active subId: <*>"
+AGnss::setCallback
+"AGnss::setServer: type: SUPL, hostname: <*>, port: <*>"
+AGnssRil::setCallback
+"AGnssRil::updateNetworkState: networkHandle:<*>, isConnected: <*>, capabilities: <*>, apn: akcell.mobi"
+Aborting fuse connection entry <*>
+Accepting command socket connections
+"AccountEntry: Registered phoneAccount: [[ ] PhoneAccount: ComponentInfo{<*><*>.<*>}, <*>, UserHandle{<*>} Capabilities: CallProvider MultiUser PlaceEmerg SimSub Audio Routes: BESW Schemes: tel voicemail Extras: Bundle[{<*>=true}] GroupId: ***] with handle: ComponentInfo{<*><*>.<*>}, <*>, UserHandle{<*>}"
+Active display is <*>
+Activity top resumed state loss timeout for ActivityRecord{<*> u0 <*>/.uioverrides.QuickstepLauncher} t6}
+ActivityManagerStartApps
+AdServicesManagerService started!
+Adaptive connectivity status initialized to: true
+AddGraphicsStatsService
+AddTidToCgroup failed to write '<*>'; fd=<*>: Invalid argument
+Adding <*> callback for <*>
+Adding command class <*> for <*>
+Adding command class splitscreen for SplitScreenController
+Adding external interface from <*> with key <*>
+"Adding new display: <*>: DisplayInfo{""Built-in Screen"", displayId <*>"", displayGroupId -<*>, FLAG_SECURE, FLAG_SUPPORTS_PROTECTED_BUFFERS, FLAG_TRUSTED, real <*> x <*>, largest app <*> x <*>, smallest app <*> x <*>, appVsyncOff <*>, presDeadline <*>, mode <*>, defaultMode <*>, modes [{id=<*>, width=<*>, height=<*>, fps=<*>.<*>, alternativeRefreshRates=[]}], hdrCapabilities HdrCapabilities{mSupportedHdrTypes=[], mMaxLuminance=<*>.<*>, mMaxAverageLuminance=<*>.<*>, mMinLuminance=<*>.<*>}, userDisabledHdrTypes [], minimalPostProcessingSupported false, rotation <*>, state UNKNOWN, type INTERNAL, uniqueId ""local:<*>"", app <*> x <*>, density <*> (<*>.<*> x <*>.<*>) dpi, layerStack <*>, colorMode <*>, supportedColorModes [<*>], address {port=<*>, model=<*>}, deviceProductInfo DeviceProductInfo{name=EMU_display_0, manufacturerPnpId=GGL, productId=<*>, modelYear=null, manufactureDate=ManufactureDate{week=<*>, year=<*>}, connectionToSinkType=<*>}, removeMode <*>, refreshRateOverride <*>.<*>, brightnessMinimum <*>.<*>, brightnessMaximum <*>.<*>, brightnessDefault <*>.<*>, installOrientation ROTATION_0}"
+Adding: <*>@<*>
+"After updating volumes, found <*> active roots"
+AidlDeviceInfo3: Failed appending dynamic depth tags: Invalid argument (-<*>)
+AlarmInitReceiver <*>
+Allowing condition provider <*><*>.<*> (userSet: true)
+Allowing only non-surface-encoder OMX codecs
+AppCompatOverridesService
+AppIntegrityService
+AppOpsService published
+AppPredictionService not defined by OEM
+AppSearchModule
+AppServiceManager
+"Applying layout: [{addr: {port=<*>, model=<*>}, dispId: <*>(ON)}], Previous layout: [{addr: {port=<*>, model=<*>}, dispId: <*>(ON)}]"
+"Applying layout: [{addr: {port=<*>, model=<*>}, dispId: <*>(ON)}], Previous layout: null"
+Approving default notification assistant for user <*>
+ArtManagerLocal
+"Asked about unknown display, returning empty display mode specs!(id=<*>)"
+Attached BPF_CGROUP_INET4_BIND and BPF_CGROUP_INET6_BIND programs
+Attempted to unlock gone<*> user <*>
+AttentionService is not configured on this device
+Attested: <*>
+Audio policy service died
+AudioFlinger server died!
+AudioFlinger's thread <*> tid=<*> ready to run
+AudioPolicyService server died!
+Audioserver <*>
+Auto-enabling Bluetooth.
+BOOT_COMPLETED_BROADCAST_COMPLETION_LATENCY_REPORTED action:<*> dispatchLatency:<*> completeLatency:<*> dispatchRealLatency:<*> completeRealLatency:<*> receiversSize:<*> userId:<*> userType:<*>
+BPF programs are loaded
+Back animation enabled=false
+BackAnimationController init took 1ms
+Background Blurs Enabled
+"Background started FGS: Allowed [callingPackage: <*>; callingUid: <*>; uidState: RCVR; intent: Intent { act=<*> cmp=<*>/.GceService }; code:BOOT_COMPLETED; tempAllowListReason:<broadcast:<*>:<*>,reason:,reasonCode:BOOT_COMPLETED,duration:<*>,callingUid:<*>>; targetSdkVersion:<*>; callerTargetSdkVersion:<*>; startForegroundCount:<*>; bindFromPackage:null]"
+"Background young concurrent copying GC freed <*> AllocSpace objects, <*> LOS objects, <*>% free, <*> paused <*> total <*>"
+"Background young concurrent copying GC freed <*>(4793KB) AllocSpace objects, <*>(1968KB) LOS objects, <*>% free, 9121KB<*>, paused <*>.036ms,57us total <*>.413ms"
+"Background young concurrent copying GC freed <*>(6351KB) AllocSpace objects, <*>(552KB) LOS objects, <*>% free, 10MB<*>, paused 307us,35us total <*>.141ms"
+"Bad call made by uid <*>. Package ""android"" does not belong to uid <*>."
+Begin Intent { act=<*> (has extras) }
+Begin Intent { act=<*> dat=file:///... flg=<*> cmp=<*><*>.<*> (has extras) }
+BeginPreload took to complete: <*>
+Bind <*> <*> <*> <*>
+Binding to ComponentInfo{<*><*>.<*>}
+Binding to the ExternalStorageService for user <*>
+Bluetooth <*> <*> <*>
+Bluetooth boot completed
+BluetoothDeathRecipient::serviceDied - Bluetooth service died
+BluetoothHci::close()
+Boot has been completed
+BootAnimationPreloadStopTiming start time: 198223ms
+BootAnimationPreloadStopTiming start time: 7100127ms
+BootAnimationPreloadStopTiming start time: 818247ms
+BootAnimationPreloadStopTiming start time: 899747ms
+BootAnimationPreloadTiming start time: 198223ms
+BootAnimationPreloadTiming start time: 7100127ms
+BootAnimationPreloadTiming start time: 818247ms
+BootAnimationPreloadTiming start time: 899747ms
+BootAnimationShownTiming start time: 198325ms
+BootAnimationShownTiming start time: 7100207ms
+BootAnimationShownTiming start time: 818388ms
+BootAnimationShownTiming start time: 900001ms
+BootAnimationStartTiming start time: 198223ms
+BootAnimationStartTiming start time: 7100127ms
+BootAnimationStartTiming start time: 818246ms
+BootAnimationStartTiming start time: 899747ms
+Bound to the ExternalStorageService for user <*>
+"Brightness [<*>.<*>] reason changing to: 'manual', previous reason: 'manual [ dim ]'."
+"Brightness [<*>.<*>] reason changing to: 'override', previous reason: '<*>'."
+"BrightnessEvent: disp=<*>, physDisp=local:<*>, brt=<*>.<*>, <*> rcmdBrt=NaN, preBrt=NaN, lux=<*>.<*>, preLux=<*>.<*>, hbmMax=<*>.<*>, hbmMode=off, rbcStrength=<*>, powerFactor=<*>.<*>, thrmMax=<*>.<*>, wasShortTermModelActive=false, flags=, <*> autoBrightness=false"
+"BrightnessEvent: disp=<*>, physDisp=local:<*>, brt=<*>.<*>, <*> rcmdBrt=NaN, preBrt=NaN, lux=<*>.<*>, preLux=<*>.<*>, hbmMax=<*>.<*>, hbmMode=off, rbcStrength=<*>, powerFactor=<*>.<*>, thrmMax=<*>.<*>, wasShortTermModelActive=false, flags=, reason=override, autoBrightness=false"
+"BrightnessEvent: disp=<*>, physDisp=local:<*>, brt=<*>.<*>, initBrt=<*>.<*>, rcmdBrt=NaN, preBrt=NaN, lux=<*>.<*>, preLux=<*>.<*>, hbmMax=<*>.<*>, hbmMode=off, rbcStrength=<*>, powerFactor=<*>.<*>, thrmMax=<*>.<*>, wasShortTermModelActive=false, flags=, reason=manual, autoBrightness=false"
+Broadcast CARRIER_CONFIG_CHANGED for phone <*> simApplicationState <*>
+"Broadcast CARRIER_CONFIG_CHANGED for phone <*>, subId=<*>"
+BubbleController init took 52ms
+BubbleController init took 6ms
+BubbleController init took 9ms
+CE storage for users [<*>] is already unlocked
+CacheNonBootClasspathClassLoaders took to complete: <*>
+Called ZygoteHooks.endPreload()
+Calling <*> <*>
+Calling ZygoteHooks.beginPreload()
+Calling a method in the system process without a qualified user: <*>:<*> <*>:<*> <*>:<*> <*>:<*> <*>
+Calling onStartUser <*>
+"CallsManager: handlePhoneAccountChanged: phoneAccount=[[X] PhoneAccount: ComponentInfo{<*><*>.<*>}, <*>, UserHandle{<*>} Capabilities: CallProvider MultiUser PlaceEmerg SimSub Audio Routes: BESW Schemes: tel voicemail Extras: Bundle[{<*>=true}] GroupId: ***]: <*>"
+Camera <*>: <*> <*>
+Camera <*>: Closed
+Camera <*>: start to disconnect
+Camera provider internal<*> ready with <*> camera devices
+CameraService <*> <*>
+CameraService pinged cameraservice proxy
+Can't <*> <*> <*> <*> <*>
+"Can't call setDebugParams, ISupplicant is null"
+Can't get GMS uid
+"Cancelling state sync, nothing to sync"
+Cannot register HIDL <*>@<*>.<*>::IStats: -<*>
+Carrier Config changed: <*>
+Carrier config changed. Reloading MMS config.
+Carrier not enabled or invalid values. mKeyAvailability=<*> mURL=null
+"Carrier-config changed, checking for phone account updates."
+Caught a RuntimeException from the binder stub implementation.
+"Caught boot intent, waking up."
+Caused by: <*>
+Caused by: <*>: <*>
+Caused by: <*>: <*>: <*>
+Caused by: <*>: open failed: ENOENT (No such file or directory)
+CertBlacklister
+Checking for fsck errors
+Checking that all system packages are whitelisted.
+Class not found for preloading: <*>$$ExternalSyntheticLambda6
+ClassLoader referenced unknown path:
+Cleaning temp file: <*>.tmp
+Cleaning up existing renewal alarms
+"Clearkey Drm HAL: failed to create drm plugin, invalid crypto scheme"
+Client API: OpenGL_ES
+Command failed for <*> -<*>
+Compat change id reported: <*>; UID <*> state: <*>
+Compat listener set.
+CompatUIController init took 0ms
+"Compiler allocated 4674KB to compile void <*>(int, int, long)"
+Completing Test Harness Mode setup.
+ComposerService aidl remote (surfaceflinger) died [<*>]
+ComposerService remote (surfaceflinger) died [<*>]
+Computing center via view bounds.
+Config being fetched
+"Config changes=<*> {<*>.<*> ?mcc?mnc [en_US] ldltr sw360dp w360dp h640dp 320dpi nrml long port ?uimode ?night <*> qwerty<*> -nav<*> winConfig={ mBounds=Rect(<*>, <*> - <*>, <*>) mAppBounds=Rect(<*>, <*> - <*>, <*>) mMaxBounds=Rect(<*>, <*> - <*>, <*>) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.<*> ?fontWeightAdjustment}"
+"Config changes=<*> {<*>.<*> ?mcc?mnc [en_US] ldltr sw360dp w360dp h640dp 320dpi nrml long port finger qwerty<*> -nav<*> winConfig={ mBounds=Rect(<*>, <*> - <*>, <*>) mAppBounds=Rect(<*>, <*> - <*>, <*>) mMaxBounds=Rect(<*>, <*> - <*>, <*>) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.<*> <*>"
+"Config changes=<*> {<*>.<*> ?mcc?mnc [en_US] ldltr sw360dp w360dp h640dp 320dpi nrml long port finger qwerty<*> -nav<*> winConfig={ mBounds=Rect(<*>, <*> - <*>, <*>) mAppBounds=Rect(<*>, <*> - <*>, <*>) mMaxBounds=Rect(<*>, <*> - <*>, <*>) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.<*> ?fontWeightAdjustment}"
+"Configuration not dispatch to IME because configuration is up to date. Current config={<*>.<*> 311mcc740mnc [en_US] ldltr sw360dp w360dp h568dp 320dpi nrml port finger qwerty<*> -nav<*> winConfig={ mBounds=Rect(<*>, <*> - <*>, <*>) mAppBounds=Rect(<*>, <*> - <*>, <*>) mMaxBounds=Rect(<*>, <*> - <*>, <*>) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.<*> fontWeightAdjustment=<*>}, reported config={<*>.<*> 311mcc740mnc [en_US] ldltr sw360dp w360dp h568dp 320dpi nrml port finger qwerty<*> -nav<*> winConfig={ mBounds=Rect(<*>, <*> - <*>, <*>) mAppBounds=Rect(<*>, <*> - <*>, <*>) mMaxBounds=Rect(<*>, <*> - <*>, <*>) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.<*> fontWeightAdjustment=<*>}, updated config={<*>.<*> 311mcc740mnc [en_US] ldltr sw360dp w360dp h568dp 320dpi nrml port finger qwerty<*> -nav<*> winConfig={ mBounds=Rect(<*>, <*> - <*>, <*>) mAppBounds=Rect(<*>, <*> - <*>, <*>) mMaxBounds=Rect(<*>, <*> - <*>, <*>) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.<*> fontWeightAdjustment=<*>}"
+Configuring <*> of <*> fuse filesystem to <*>
+Configuring system server dex reporter
+Connect camera (legacy API) - overrideToPortrait <*>
+Connecting <*> <*> <*>
+Connecting to default <*>
+"Connecting to new camera provider: internal<*>, isRemote? <*>"
+Connection with lmkd established
+ConnectivityService starting up
+ContentCaptureService disabled because resource is not overlaid
+ContentSuggestionsService not defined by OEM
+Copying <*> to DropBox <*>
+Copying audit failures to DropBox
+"Core platform API reporting enabled, enforcing=false"
+Could not <*> <*> <*> <*>
+Could not <*> <*> <*> <*> <*>
+Could not <*> <*> <*> <*> <*> <*>
+Could not find <*><*> in the VINTF manifest.
+Could not find layer handle <*>
+Could not register Soundtrigger API
+Create: Created EmulatedCameraDeviceHwlImpl for camera <*>
+Create: Created a camera device for public(<*>)
+Create: Created a device session for camera <*> with <*> physical cameras: <*> <*>
+Created <*>@<*>(<*>@<*>)
+Created zygote-cached class loader: <*>.<*>
+Creating <*> <*> <*> <*>
+Creating and starting session with id: <*>
+Creating child chains: 123131us
+Creating child chains: 18443us
+Creating child chains: 29947us
+Creating child chains: 9479us
+Creating instance with <*> threads
+Creating wifiscanner
+Current user:<*>
+"Current version <*>, latest version <*>, not upgrading."
+"Current: {{defaultModeId=<*>, allowGroupSwitching=false, primaryRange=[<*>.<*> Hz, <*>.<*> Hz], appRequestRange=[<*>.<*> Hz, inf Hz]}}"
+DISK mbr
+"Davey! <*> Flags=<*>, FrameTimelineVsyncId=<*>, IntendedVsync=<*>, Vsync=<*>, InputEventId=<*>, HandleInputStart=<*>, AnimationStart=<*>, PerformTraversalsStart=<*>, DrawStart=<*>, FrameDeadline=<*>, FrameInterval=<*>, FrameStartTime=<*>, SyncQueued=<*>, SyncStart=<*>, IssueDrawCommandsStart=<*>, SwapBuffers=<*>, FrameCompleted=<*>, DequeueBufferDuration=<*>, QueueBufferDuration=<*>, GpuCompleted=<*>, SwapBuffersCompleted=<*>, DisplayPresentTime=<*>, CommandSubmissionCompleted=<*>,"
+"Davey! duration=40027ms; Flags=<*>, FrameTimelineVsyncId=<*>, IntendedVsync=<*>, Vsync=<*>, InputEventId=<*>, HandleInputStart=<*>, AnimationStart=<*>, PerformTraversalsStart=<*>, DrawStart=<*>, FrameDeadline=<*>, FrameInterval=<*>, FrameStartTime=<*>, SyncQueued=<*>, SyncStart=<*>, IssueDrawCommandsStart=<*>, SwapBuffers=<*>, FrameCompleted=<*>, DequeueBufferDuration=<*>, QueueBufferDuration=<*>, GpuCompleted=<*>, SwapBuffersCompleted=<*>, DisplayPresentTime=<*>, CommandSubmissionCompleted=<*>,"
+Default coex algorithm is disabled.
+DefaultDialerCache: Refreshing default dialer for user <*>: now <*>: <*>
+DefaultTransitionHandler init took 12ms
+DefaultTransitionHandler init took 13ms
+DefaultTransitionHandler init took 86ms
+Deferred reconcileAppsData finished <*> packages
+Deferring FGS notification in legacy app <*><*> : Notification(channel=cuttlefish-service shortcut=null contentView=null vibrate=null sound=null defaults=<*> flags=<*> color=<*> vis=PRIVATE)
+Deleting from <*>.android.shell<*>
+Deleting the number of entries = <*> for carrierId = <*>
+Detected SystemUiUid: <*>
+"Device <*>: id=-<*>, eventHubId=-<*>, name='Virtual', descriptor='<*>',sources=KEYBOARD | DPAD"
+"Device <*>: id=<*>, eventHubId=<*>, name='Crosvm Virtio <*> <*>', <*>"
+"Device <*>: id=<*>, eventHubId=<*>, name='Crosvm Virtio Multitouch Touchscreen <*>', descriptor='<*>',sources=TOUCHSCREEN"
+"Device <*>: id=<*>, eventHubId=<*>, name='Power Button', descriptor='<*>',sources=KEYBOARD"
+Device does not support weaver
+DeviceConfig BrightnessThrottlingData is null
+DeviceIdentifiersPolicyService
+DeviceIdentifiersPolicyService took to complete: 0ms
+DeviceIdentifiersPolicyService took to complete: 1ms
+DeviceStateManagerService
+Dictionary info: dictionary = <*> ; version = <*> ; date = <*>
+Did not find <*> in search path
+Did not register (deprecated) IDisplayService service.
+Didn't find WorkSpec for id <*><*>-<*>-<*>-<*>
+Didn't find launch param folder for user <*>
+"Directories scanned as system partitions: [<*>:<*>, <*>:<*>, <*>:<*>, <*>:<*>, <*>:<*>, <*>:<*>, <*>.<*>:<*>, <*>.<*>:<*>, <*>.android.ipsec:<*>, <*>.<*>:<*>, <*>.<*>:<*>, <*>.<*>:<*>, <*>.<*>:<*>, <*>.android.<*>:<*>, <*>.android.appsearch:<*>, <*>.android.wifi:<*>, <*>.android.permission:<*>, <*>.android.art:<*>, <*>.android.scheduling:<*>, <*>.<*>:<*>, <*>.<*>:<*>, <*>.<*>:<*>, <*>.<*>:<*>, <*>.android.tethering:<*>, <*>.<*>:<*>, <*>.android.sdkext:<*>, <*>.<*>:<*>, <*>.android.mediaprovider:<*>, <*>.android.uwb:<*>, <*>.android.adservices:<*>, <*>.android.neuralnetworks:<*>, <*>.<*>:<*>, <*>.<*>:<*>, <*>.android.ondevicepersonalization:<*>, <*>.android.resolv:<*>, <*>.android.virt:<*>, <*>.android.i18n:<*>, <*>.android.conscrypt:<*>, <*>.<*>:<*>, <*>.android.media:<*>, <*>.android.extservices:<*>, <*>.<*>:<*>, <*>.android.runtime:<*>, <*>.android.btservices:<*>, <*>.android.cellbroadcast:<*>, <*>.<*>:<*>, <*>.<*>:<*>, <*>.android.tzdata:<*>, <*>.android.compos:<*>]"
+"Directories scanned as system partitions: [<*>:<*>, <*>:<*>, <*>:<*>, <*>:<*>, <*>:<*>, <*>:<*>, <*>.<*>:<*>, <*>.android.permission:<*>, <*>.<*>:<*>, <*>.android.neuralnetworks:<*>, <*>.android.extservices:<*>, <*>.<*>:<*>, <*>.<*>:<*>, <*>.<*>:<*>, <*>.android.scheduling:<*>, <*>.<*>:<*>, <*>.android.wifi:<*>, <*>.android.tzdata:<*>, <*>.android.virt:<*>, <*>.<*>:<*>, <*>.android.mediaprovider:<*>, <*>.android.ipsec:<*>, <*>.android.ondevicepersonalization:<*>, <*>.<*>:<*>, <*>.android.uwb:<*>, <*>.android.conscrypt:<*>, <*>.android.runtime:<*>, <*>.android.media:<*>, <*>.<*>:<*>, <*>.android.i18n:<*>, <*>.<*>:<*>, <*>.android.appsearch:<*>, <*>.<*>:<*>, <*>.android.resolv:<*>, <*>.android.tethering:<*>, <*>.<*>:<*>, <*>.<*>:<*>, <*>.android.sdkext:<*>, <*>.<*>:<*>, <*>.android.btservices:<*>, <*>.android.adservices:<*>, <*>.android.art:<*>, <*>.android.<*>:<*>, <*>.<*>:<*>, <*>.<*>:<*>, <*>.<*>:<*>, <*>.<*>:<*>, <*>.android.compos:<*>, <*>.android.cellbroadcast:<*>]"
+"Directories scanned as system partitions: [<*>:<*>, <*>:<*>, <*>:<*>, <*>:<*>, <*>:<*>, <*>:<*>, <*>.<*>:<*>, <*>.android.sdkext:<*>, <*>.android.tethering:<*>, <*>.<*>:<*>, <*>.android.btservices:<*>, <*>.android.appsearch:<*>, <*>.android.resolv:<*>, <*>.android.art:<*>, <*>.<*>:<*>, <*>.<*>:<*>, <*>.<*>:<*>, <*>.android.extservices:<*>, <*>.android.<*>:<*>, <*>.<*>:<*>, <*>.android.uwb:<*>, <*>.android.runtime:<*>, <*>.<*>:<*>, <*>.android.i18n:<*>, <*>.android.compos:<*>, <*>.<*>:<*>, <*>.<*>:<*>, <*>.android.ipsec:<*>, <*>.<*>:<*>, <*>.android.neuralnetworks:<*>, <*>.android.ondevicepersonalization:<*>, <*>.<*>:<*>, <*>.android.conscrypt:<*>, <*>.<*>:<*>, <*>.android.tzdata:<*>, <*>.android.permission:<*>, <*>.android.mediaprovider:<*>, <*>.android.virt:<*>, <*>.android.cellbroadcast:<*>, <*>.<*>:<*>, <*>.<*>:<*>, <*>.android.scheduling:<*>, <*>.android.adservices:<*>, <*>.<*>:<*>, <*>.<*>:<*>, <*>.<*>:<*>, <*>.android.wifi:<*>, <*>.<*>:<*>, <*>.android.media:<*>]"
+"Directories scanned as system partitions: [<*>:<*>, <*>:<*>, <*>:<*>, <*>:<*>, <*>:<*>, <*>:<*>, <*>.android.tethering:<*>, <*>.android.resolv:<*>, <*>.android.compos:<*>, <*>.<*>:<*>, <*>.<*>:<*>, <*>.<*>:<*>, <*>.android.ondevicepersonalization:<*>, <*>.android.uwb:<*>, <*>.<*>:<*>, <*>.<*>:<*>, <*>.<*>:<*>, <*>.android.scheduling:<*>, <*>.<*>:<*>, <*>.android.media:<*>, <*>.android.<*>:<*>, <*>.android.cellbroadcast:<*>, <*>.android.permission:<*>, <*>.<*>:<*>, <*>.android.appsearch:<*>, <*>.android.i18n:<*>, <*>.<*>:<*>, <*>.<*>:<*>, <*>.<*>:<*>, <*>.android.sdkext:<*>, <*>.<*>:<*>, <*>.android.ipsec:<*>, <*>.android.btservices:<*>, <*>.android.virt:<*>, <*>.android.tzdata:<*>, <*>.<*>:<*>, <*>.<*>:<*>, <*>.android.mediaprovider:<*>, <*>.android.extservices:<*>, <*>.<*>:<*>, <*>.android.wifi:<*>, <*>.android.art:<*>, <*>.android.neuralnetworks:<*>, <*>.android.adservices:<*>, <*>.<*>:<*>, <*>.<*>:<*>, <*>.android.runtime:<*>, <*>.android.conscrypt:<*>, <*>.<*>:<*>]"
+DisabledState.enter()
+DispSyncSource: app(enabled)
+"Dispatching display hotplug event displayId=<*>, connected=<*>"
+"Display device <*>: DisplayDeviceInfo{""Built-in Screen"": uniqueId=""local:<*>"", <*> x <*>, modeId <*>, defaultModeId <*>, supportedModes [{id=<*>, width=<*>, height=<*>, fps=<*>.<*>, alternativeRefreshRates=[]}], colorMode <*>, supportedColorModes [<*>], hdrCapabilities HdrCapabilities{mSupportedHdrTypes=[], mMaxLuminance=<*>.<*>, mMaxAverageLuminance=<*>.<*>, mMinLuminance=<*>.<*>}, allmSupported false, gameContentTypeSupported false, density <*>, <*>.<*> x <*>.<*> dpi, appVsyncOff <*>, presDeadline <*>, touch INTERNAL, rotation <*>, type INTERNAL, address {port=<*>, model=<*>}, deviceProductInfo DeviceProductInfo{name=EMU_display_0, manufacturerPnpId=GGL, productId=<*>, modelYear=null, manufactureDate=ManufactureDate{week=<*>, year=<*>}, connectionToSinkType=<*>}, state UNKNOWN, frameRateOverride , brightnessMinimum <*>.<*>, brightnessMaximum <*>.<*>, brightnessDefault <*>.<*>, FLAG_ALLOWED_TO_BE_DEFAULT_DISPLAY, FLAG_ROTATES_WITH_CONTENT, FLAG_SECURE, FLAG_SUPPORTS_PROTECTED_BUFFERS, installOrientation <*>}"
+"Display device changed state: ""Built-in Screen"", ON"
+DisplayChangeController init took 0ms
+DisplayChangeController init took 1ms
+DisplayChangeController init took 3ms
+DisplayController init took 0ms
+DisplayController init took 1ms
+DisplayController init took 3ms
+DisplayImeController init took 0ms
+DisplayInsetsController init took 0ms
+DisplayInsetsController init took 2ms
+DisplayInsetsController init took 4ms
+DisplayManagerWindowManagerAndInputReady
+"DisplayModeSpecs base mode no longer available, using currently active mode."
+"Do not init aaudio service, status <*>, policy info size <*>"
+Domain verification agent not found
+DragAndDropController init took 0ms
+DragAndDropController init took 7ms
+Drained
+"Dropping event because there is no touchable window at (<*>, <*>) on display <*>."
+EGL information:
+"EGLSurface: <*><*><*><*>, config=<*>"
+ERR_AUTO_PROVISIONING_DISABLED
+Enable CellBroadcast on sub <*>
+Enabling bandwidth control: 1993us
+Enabling bandwidth control: 2160us
+Enabling bandwidth control: 4090us
+Enabling bandwidth control: 5120us
+Enabling motion classifier
+"Enabling motion classifier because <*> <*> feature enabled, long press timeout = <*>"
+"Enabling motion classifier because just booted: feature enabled, long press timeout = <*>"
+End Intent { act=<*> (has extras) }
+End Intent { act=<*> dat=file:///... flg=<*> cmp=<*><*>.<*> (has extras) }
+Enter boot animation
+Entered the Android system server!
+Enumerating new camera device: device@<*>.<*><*>
+Ephemeral resolver NOT found; no matching intent filters
+Error adding route <*><*> -> (null) dummy0 to table <*>: File exists
+Error creating staging and rules directory
+Error finding static metadata entry '<*>' (<*>)
+Error initializing UsbHandler
+Error reading from LetterboxConfigurationPersister. Using default values!
+Examining volume <*> with name <*> and state <*>
+Exit zygote because system server (pid <*>) has terminated
+Expiring: <*>
+Explicit health checks enabled.
+Failed to <*> <*> <*> <*>
+Failed to <*> <*> <*> <*> <*> <*> <*> <*> <*> <*>
+Failed to <*> tracing on: <*>
+Failed to add event callback
+Failed to attach bpf program to power<*> tracepoint [<*>(No such file or directory)]
+Failed to notify volume state changed to the Storage Service
+Failed to parse <*>: Missing base APK in <*>
+Failed to read public libraries file <*>.libraries.txt
+Failed to scan <*>: Application package <*> already installed. Skipping duplicate.
+Failed to set thread name on dispatch thread
+Failed to start Test Harness Mode; no implementation of PersistentDataBlockManagerInternal was bound!
+Failed to upload odrefresh metrics: metrics file '<*>.txt' could not be opened: No such file or directory
+Faking VSYNC due to driver stall for thread app
+"Fetch config for default app: <*> carrierid: CarrierIdentifier{mcc=<*>,mnc=<*>,spn=TelAlaska Cellular,imsi=[H8GJpiHUmHFGvPZ-UdvckXkdN-Y],gid1=null,gid2=null,carrierid=<*>,specificCarrierId=<*>}"
+Filesystem check completed OK
+FindLibraryPaths: Unable to open directory <*>/ (No such file or directory)
+Finished <*> <*> <*> <*>
+Finished executing <*>
+Finished executing Lazily initialize IMMS#mImeDrawsImeNavBarRes
+Finished executing Update app-ops uidState in case package <*> changed
+Finished processing BOOT_COMPLETED for u0
+Finished restorecon of <*>
+"Finished scanning <*> apps. Time: <*> ms, packageCount: <*> , timePerPackage: <*> , cached: <*>"
+Fix for b<*> is applied
+Fixing alarm instances
+Foreground service started from background can not have location<*> access: service <*>/.GceService
+Found <*> <*> <*> <*>
+Found <*> <*> <*> <*> <*>
+Found <*> fallback categories
+Found Safety Center resources APK at: <*>
+Found a config file: <*>
+Freezer enabled
+FullscreenTaskListener init took 2ms
+FullscreenTaskListener init took 3ms
+Fully drawn <*>/.Settings: +473ms
+GC
+GL_MAX_TEXTURE_SIZE = <*>
+GL_MAX_VIEWPORT_DIMS = <*>
+GameManagerService
+Generated <*> keys. <*> keys were also available for signing previous to generation.
+Getting PersistentDataBlockManagerInternal from LocalServices
+Gnss::getExtensionAGnss
+Gnss::getExtensionAGnssRil
+Gnss::getExtensionGnssAntennaInfo
+Gnss::getExtensionGnssDebug
+Gnss::getExtensionGnssVisibilityControl
+Gnss::getExtensionMeasurementCorrections
+GnssCallbackAidl::gnssSetCapabilitiesCb: 14913u
+GnssConfiguration::setBlocklist
+GnssPowerIndicationCallback::setCapabilitiesCb: 63u
+GnssVisibilityControl::enableNfwLocationAccess proxyApps:
+GnssVisibilityControl::setCallback
+Got NetworkProvider Messenger for <*>
+Got NetworkProvider Messenger for EthernetNetworkFactory
+Got resolveInfos for <*>: [ResolveInfo{<*> <*><*>.app.Activity m=<*>}]
+GpuService
+Granting permissions to enabled data services for user:<*>
+"HAL output buffer size <*> frames, normal sink buffer size <*> frames"
+Hardware accelerated drawing: true
+HwBinder: Starting thread pool for getting: <*>
+I18n APEX ICU file found: <*>.android.i18n<*>.dat
+"IWifi registration notification: fqName=<*>@<*>.<*>::IWifi, name=default, preexisting=true"
+Ignoring <*> <*> <*> <*> <*> <*>
+Ignoring VSYNC request while display is disconnected
+In provisionCerts: Requested <*> keys. <*> were provisioned.
+IncFs_Features: v2
+IncidentDaemonReady
+InitAttributerCache
+InitBeforeStartServices
+InitBeforeStartServices took to complete: 182ms
+InitBeforeStartServices took to complete: 190ms
+InitBeforeStartServices took to complete: 191ms
+InitConnectivityModuleConnector
+InitNetworkStackClient
+InitPowerManagement
+InitPowerManagement took to complete: 1ms
+InitPowerManagement took to complete: 2ms
+InitThreadPoolExec:DevicePolicyManager
+InitThreadPoolExec:Lazily initialize IMMS#mImeDrawsImeNavBarRes
+InitThreadPoolExec:Lazily initialize IMMS#mImeDrawsImeNavBarRes took to complete: 13ms
+InitThreadPoolExec:Lazily initialize IMMS#mImeDrawsImeNavBarRes took to complete: 27ms
+InitThreadPoolExec:Lazily initialize IMMS#mImeDrawsImeNavBarRes took to complete: 9ms
+InitThreadPoolExec:ReadingSystemConfig
+InitThreadPoolExec:ReadingSystemConfig took to complete: 149ms
+InitThreadPoolExec:ReadingSystemConfig took to complete: 51ms
+InitThreadPoolExec:ReadingSystemConfig took to complete: 75ms
+InitThreadPoolExec:SchedulingPolicyService.<init>
+InitThreadPoolExec:SecondaryZygotePreload
+InitThreadPoolExec:StartHidlServices
+InitThreadPoolExec:StartNativeSensorService
+InitThreadPoolExec:UiModeManager.onStart
+InitThreadPoolExec:Update app-ops uidState in case package <*> changed
+InitThreadPoolExec:Update app-ops uidState in case package <*> changed took to complete: <*>
+InitThreadPoolExec:UsbService$Lifecycle#onBootPhase
+InitThreadPoolExec:UsbService$Lifecycle#onStart
+InitThreadPoolExec:WebViewFactoryPreparation
+InitThreadPoolExec:prepareAppData
+InitWatchdog
+Initial API level of the device: <*>
+"Initial brightness readings: <*>(int), <*>.<*>(float)"
+Initialialising...
+Initializing <*> <*>
+Initializing <*> <*> <*>
+Initializing <*> <*> <*> <*>
+Initializing <*> using AIDL implementation.
+"Initializing input manager, mUseDevInputEventForAudioJack=false"
+Initializing list of current media players
+Input channel object '<*> <*><*>.<*> (client)' was disposed without first being removed with the input manager!
+Input channel object '<*> Splash Screen <*> (client)' was disposed without first being removed with the input manager!
+Input channel object 'recents_animation_input_consumer (client)' was disposed without first being removed with the input manager!
+InstallSystemProviders
+Installed AndroidKeyStoreProvider in 0ms.
+Installed AndroidKeyStoreProvider in 1ms.
+Installed AndroidKeyStoreProvider in <*>
+Installed ce key for user <*>
+Installed fscrypt key with ref <*> to <*>
+Interaction before persistence initialized
+Interesting Java process <*> started. Pid <*>
+Interface match regexp set to 'eth\d'
+Interface set with vintf stability downgraded to system stability stability
+Internet connection available
+"Invalid certificate, ignored: <*>: <*>$ParsingException: <*>$ParsingException: <*>: error:<*>:ASN.<*> encoding routines:OPENSSL_internal:WRONG_TAG"
+Invalid channel requested: miscellaneous
+Invalid wallpaper data
+IpConnectivityMetrics
+IsolatedCompilationService
+Job already scheduled.
+Job didn't exist in JobStore: <*> #u0a74<*> <*><*>.<*>
+Keeping known cache <*>
+Kernel timezone updated to -<*> minutes west of GMT
+KidsModeTaskOrganizer init took 18ms
+KidsModeTaskOrganizer init took 84ms
+Killing <*>:<*><*> (adj <*>): remove task
+LABEL
+Lazily preloading resources.
+Leaving lock profiling enabled
+LegacyVoicemailNotificationReceiver.onReceive - <*> <*>
+LegacyVoicemailNotificationReceiver.onReceive - received legacy voicemail notification
+LegacyVoicemailNotifier.cancelNotification - enter
+Lights reporting supported lights
+Link to death notification successful
+Listener binder died
+Loaded <*>
+Loaded <*> <*> <*>
+Loaded AIDL composer3 HAL service
+Loaded headless system app cache in <*> ms: appIdleEnabled=false
+"Loaded persisted syncs: <*> periodic syncs, <*> oneshot syncs, <*> total system server jobs, JobStats: FirstLoad: <*><*> LastSave: <*><*>"
+Loaded persisted task ids for user <*>
+"Loading a package that does not exist for the calling user. package=null, user=<*>"
+Loading recents for user <*> into memory.
+Loading stored name and address
+Local callback removed: <*>
+LocalTransportService#<*>: Notifying [TransportManager.registerTransport()] transport = BackupTransportClient
+MakeConnectivityServiceReady
+MakeCountryDetectionServiceReady
+MakeDisplayManagerServiceReady
+MakeDisplayReady
+MakeIncrementalServiceReady
+MakeInputManagerServiceReady
+MakeLockSettingsServiceReady
+MakeMediaRouterServiceReady
+MakeMmsServiceReady
+MakeNetworkManagementServiceReady
+MakeNetworkPolicyServiceReady
+MakeNetworkTimeUpdateReady
+MakePackageManagerServiceReady
+MakeTelephonyRegistryReady
+MakeVcnManagementServiceReady
+MakeVpnManagerServiceReady
+MakeWindowManagerServiceReady
+Making services ready
+Manager wrapper not available: contexthub
+MeasurementCorrections::setCallback
+Memory class: <*>
+MemtrackProxyService
+MemtrackProxyService took to complete: 1ms
+MemtrackProxyService took to complete: 2ms
+Milliseconds spent on tryAggregateRecords(): <*>
+"Missed SF <*> <*>, <*>, <*>"
+MissedCallNotifierImpl: reloadAfterBootComplete: user=<*>: TSBCR.oR@AEY
+Missing ActivityManager; assuming <*> holds <*>
+Missing permission state for package <*> on user <*>
+Missing permission state for shared user: <*>
+Missing required system package: .
+ModifyCharacteristicsKeys: failed to get ANDROID_REQUEST_AVAILABLE_SESSION_KEYS
+Monitoring
+Mounted volume <*>
+Mounting <*> fuse volume
+Mounting volume <*>
+Moving <*> back to group default
+Multi-element reporting criteria are not supported with HIDL HAL
+MusicRecognitionManagerService not defined by OEM or disabled by flag
+NLMSG_ERROR message return error: -<*>
+NO dashboard tiles for TopLevelSettings
+Need to generate <*> keys.
+"NetReassign [<*> : null → <*>, <*> : null → <*>, <*> : null → <*>, <*> : null → <*>, <*> : null → <*>, <*> : null → <*>, <*> : null → <*>, <*> : null → <*>, <*> : null → <*>, <*> : null → <*>]"
+NetlinkEvent::FindParam(): Parameter <*> not found
+NetlinkManager instanced
+Network stack init
+NetworkWatchlistService
+Networking module service start requested
+New <*> <*> <*> <*>
+New default network <*>; checking time.
+"New device: id=<*>, fd=<*>, path='<*>', name='Crosvm Virtio Keyboard <*>', classes=KEYBOARD | ALPHAKEY, configuration='', keyLayout='<*>.kl', keyCharacterMap='<*>.kcm', builtinKeyboard=false,"
+"New device: id=<*>, fd=<*>, path='<*>', name='Crosvm Virtio Multitouch Touchscreen <*>', classes=TOUCH | TOUCH_MT, configuration='<*>.<*><*>.idc', keyLayout='', keyCharacterMap='', builtinKeyboard=false,"
+"New device: id=<*>, fd=<*>, path='<*>', name='Crosvm Virtio Switches <*>', classes=SWITCH, configuration='', keyLayout='', keyCharacterMap='', builtinKeyboard=false,"
+"New device: id=<*>, fd=<*>, path='<*>', name='Power Button', classes=KEYBOARD, configuration='', keyLayout='<*>.kl', keyCharacterMap='<*>.kcm', builtinKeyboard=false,"
+New wificond event callback registered
+NightDisplayTintController Animation cancelled: false to matrix:
+No <*> <*>
+No <*> <*> <*>
+No <*> <*> <*> <*>
+No <*> <*> <*> <*> <*>
+No <*> <*> <*> <*> <*> <*>
+No <*> <*> <*> <*> <*> <*> <*> <*>
+No Long-Term PSDS servers were specified in the GnssConfiguration
+No editor info for this field. Bug?
+No existing info file <*>.xml
+No input device configuration file found for device 'Crosvm Virtio <*> <*>'.
+No input device configuration file found for device 'Power Button'.
+"No new touched window at (<*>, <*>) in display <*>"
+No primary storage defined yet; hacking together a stub
+"No reboot escrow data found for users, skipping loading escrow data"
+Nofity service of inheritance info
+"Not pruning observers, elapsed time: 0ms"
+Not starting an already started service <*>$Lifecycle
+"Notifying about public volume: VolumeInfo{public:<*>,<*>}:"
+Notifying apexservice they have clients: <*>
+Notifying volume state changed for session with id: <*>
+OdsignStatsLogger
+OemLock HAL not present on device
+On <*> <*> <*>
+OnBootPhase_100
+OnBootPhase_200
+OnBootPhase_480
+OnBootPhase_500
+OnBootPhase_520
+OnBootPhase_550
+OnBootPhase_600
+OneHandedController init took 11ms
+OneHandedController init took 48ms
+OneHandedController init took 70ms
+OneTimeInitializerReceiver.onReceive
+Only apply configuration update to Resources because shouldReportConfigChange is false.
+OpenGL ES informations:
+"Override config changes=<*> {<*>.<*> ?mcc?mnc [en_US] ldltr sw360dp w360dp h640dp 320dpi nrml long port ?uimode ?night <*> qwerty<*> -nav<*> winConfig={ mBounds=Rect(<*>, <*> - <*>, <*>) mAppBounds=Rect(<*>, <*> - <*>, <*>) mMaxBounds=Rect(<*>, <*> - <*>, <*>) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.<*> ?fontWeightAdjustment} for displayId=<*>"
+"Override config changes=<*> {<*>.<*> ?mcc?mnc [en_US] ldltr sw360dp w360dp h640dp 320dpi nrml long port finger qwerty<*> -nav<*> winConfig={ mBounds=Rect(<*>, <*> - <*>, <*>) mAppBounds=Rect(<*>, <*> - <*>, <*>) mMaxBounds=Rect(<*>, <*> - <*>, <*>) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.<*> <*> for displayId=<*>"
+"Override config changes=<*> {<*>.<*> ?mcc?mnc [en_US] ldltr sw360dp w360dp h640dp 320dpi nrml long port finger qwerty<*> -nav<*> winConfig={ mBounds=Rect(<*>, <*> - <*>, <*>) mAppBounds=Rect(<*>, <*> - <*>, <*>) mMaxBounds=Rect(<*>, <*> - <*>, <*>) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.<*> ?fontWeightAdjustment} for displayId=<*>"
+"OverviewProxyService connected, initializing overview proxy"
+PART <*> c
+PROBE_DNS <*> <*> OK <*>
+"PROBE_HTTP http:/<*>.gstatic.com<*> time=146ms ret=<*> request={Connection=[close], User-Agent=[Mozilla<*>.<*> (X11; Linux x86_64) AppleWebKit<*>.<*> (KHTML, like Gecko) Chrome<*>.<*> Safari<*>.<*>]} headers={null=[HTTP<*>.<*> <*> No Content], Connection=[close], Content-Length=[<*>], Cross-Origin-Resource-Policy=[cross-origin], Date=[Mon, <*> Jun <*> <*>:<*>:<*> GMT], X-Android-Received-Millis=[<*>], X-Android-Response-Source=[NETWORK <*>], X-Android-Selected-Protocol=[http<*>.<*>], X-Android-Sent-Millis=[<*>]}"
+"PROBE_HTTPS https:/<*>.google.com<*> time=227ms ret=<*> request={Connection=[close], User-Agent=[Mozilla<*>.<*> (X11; Linux x86_64) AppleWebKit<*>.<*> (KHTML, like Gecko) Chrome<*>.<*> Safari<*>.<*>]} headers={null=[HTTP<*>.<*> <*> No Content], Alt-Svc=[h3="":<*>""; ma=<*>,h3<*>="":<*>""; ma=<*>], Connection=[close], Content-Length=[<*>], Cross-Origin-Resource-Policy=[cross-origin], Date=[Mon, <*> Jun <*> <*>:<*>:<*> GMT], X-Android-Received-Millis=[<*>], X-Android-Response-Source=[NETWORK <*>], X-Android-Selected-Protocol=[http<*>.<*>], X-Android-Sent-Millis=[<*>]}"
+Package <*> does not have legacy storage
+Package <*> has legacy storage
+"Package <*> is an APK in APEX, but has permission allowlist on the system image. Please bundle the allowlist in the <*> APEX instead."
+Package <*> was user id <*> but is now user SharedUserSetting{<*> <*> with id <*>; I am not changing its files so it will probably fail!
+Package not found: <*>
+Packaging <*> keys into a CSR. Test: false
+Pausing HandlerChecker: main thread for reason: <*> Pause count: <*>
+PerformFstrimIfNeeded
+Permission <*> <*> <*> <*> <*>
+Permission ownership changed. Updating all permissions.
+Permission_grant_default_permissions<*>
+Permission_onInitialized<*>
+Permission_syncPackages<*>
+Permission_synchronize_addPackages<*>
+Permission_synchronize_permissions<*>
+Persisting Bluetooth Setting: <*>
+PhaseActivityManagerReady
+PhaseThirdPartyAppsCanStart
+"PhoneAccountRegistrar: Modify account: [ComponentInfo{<*><*>.<*>}, <*>, UserHandle{<*>}]: <*>"
+"PhoneAccountRegistrar: Notifying telephony of voice service override change for <*> SIMs, hasService = false: <*>"
+"PhoneAccountRegistrar: setUserSelectedOutgoingPhoneAccount: ComponentInfo{<*><*>.<*>}, <*>, UserHandle{<*>}: TSI.sUSOPA@AD0"
+PhoneAccountRegistrar: setUserSelectedOutgoingPhoneAccount: no change in default phoneAccountHandle. current is same as new.: TSI.sUSOPA@AD0
+Pid file removed
+PinnerService
+PipController init took 15ms
+PipController init took 2ms
+PipTouchHandler init took 50ms
+PipTouchHandler init took 5ms
+PipTouchHandler init took 8ms
+PlatformCompat
+PlatformCompat took to complete: 107ms
+PlatformCompat took to complete: 148ms
+PlatformCompat took to complete: 93ms
+"Pool status <*>, <*>, <*>, <*>"
+Pool status.
+PostZygoteInitGC took to complete: <*>
+Posting BOOT_COMPLETED user #<*>
+Power <*> <*>
+PreloadClasses took to complete: <*>
+PreloadResources took to complete: <*>
+Preloaded drawable resource #<*> (android:drawable<*>) that varies with configuration!!
+Preloading <*>
+Preloading shared libraries...
+Preparing: <*>
+"Previous: {{defaultModeId=<*>, allowGroupSwitching=false, primaryRange=[<*>.<*> Hz, <*>.<*> Hz], appRequestRange=[<*>.<*> Hz, <*>.<*> Hz]}}"
+"Previous: {{defaultModeId=<*>, allowGroupSwitching=false, primaryRange=[<*>.<*> Hz, <*>.<*> Hz], appRequestRange=[<*>.<*> Hz, inf Hz]}}"
+Process <*> exited due to signal <*> (Segmentation fault)
+Processing of handleUserUnlocked u0 took <*> ms
+ProtoLogController init took 10ms
+ProtoLogController init took 1ms
+PstnIncomingCallNotifier: <*> [<*>]
+Publishing wifiscanner
+Querying USB HAL version
+Read <*> <*> <*> <*> <*>
+Read <*> jobs
+Read failed with count -<*>
+Reading associations for user <*> from disk
+Reading configuration...
+Reading daily items from <*>.xml
+Reading from all stores completed in <*> ms.
+Reading permissions from <*>
+ReadingSystemConfig
+ReadingSystemConfig took to complete: 0ms
+Received <*> <*>
+Received <*> certificate chains from the server.
+"Received Carrier Config Changed for SlotId: <*>, SubId: <*>, sim state: <*>"
+Received a message: msg.what=<*>
+Received new disable state: Old: enaiHbcRso.qingr | New: enaihbcrso.qingr (changed: hr.)
+Received new disable state: enaihbcrso.qingr (unchanged)
+RecentTasksController init took 0ms
+RecentTasksController init took 5ms
+RecentTasksController init took 7ms
+Recognized experimental block major ID <*> as virtio-blk (emulator's virtual SD card device)
+"Reconfiguring input devices, changes=DISPLAY_INFO |"
+RegisterAppOpsPolicy
+Registered <*>
+Registering <*>
+Registering <*> as apk-in-apex of <*>
+Registering HIDL ID: <*> Modality: <*> Strength: <*>
+Registering ID: <*> Modality: <*> Strength: <*>
+Registering NetworkStats pullers with statsd
+Registering a listener
+"Registering observer for RequestInfo from pid<*>:<*><*>(android) for DataUsageRequest [ requestId=<*>, networkTemplate=NetworkTemplate: <*> matchSubscriberIds=[], matchWifiNetworkKeys=[], subscriberIdMatchRule=ALL, thresholdInBytes=<*> ] accessLevel:<*>"
+"Registering observer for RequestInfo from pid<*>:<*><*>(android) for DataUsageRequest [ requestId=<*>, networkTemplate=NetworkTemplate: matchRule=MOBILE, subscriberId=<*>..., matchSubscriberIds=[<*>...], matchWifiNetworkKeys=[], metered=YES, defaultNetwork=NO, subscriberIdMatchRule=EXACT_MATCH, thresholdInBytes=<*> ] accessLevel:<*>"
+Registering pullers with statsd
+Registering: Handler (<*>) {<*>}
+Registration complete for <*>
+Relay threads initialized
+Reload watchlist settings done
+RelroFileCreator (64bit = <*> package: <*> library: libwebviewchromium.so
+"RelroFileCreator (64bit = false), package: <*> library: libwebviewchromium.so"
+Removed unavailable feature <*>
+Removing active service ComponentInfo{<*><*>.<*>}
+Removing namespace from process name <*> to audio.service.
+Reporting <*> unmounted due to system locked
+Request for <*> keys to be provisioned.
+Requesting <*> keys to be provisioned.
+"Requesting Transition to state: <*>, from state=-<*>, interactive=true, mBootCompleted=false"
+Reset statsd upon system server restarts.
+Reset vold
+Resetting <*>
+Resetting featureEnabled=false
+Resuming HandlerChecker: main thread for reason: <*> Pause count: <*>
+Revoking permissions from disabled data services for user:<*>
+RotationResolverService is not configured on this device
+RuntimeService
+SAFE MODE not enabled
+SELinux: Loaded file_contexts
+SIGPIPE is blocked
+START u0 {act=<*> cat=[<*>] flg=<*> cmp=<*>/.FallbackHome (has extras)} from uid <*>
+"START u0 {act=<*> cat=[<*>] flg=<*> cmp=<*>/.Settings bnds=[<*>,<*>][<*>,<*>]} from uid <*>"
+START u0 {act=<*> cat=[<*>] flg=<*> cmp=<*>/.uioverrides.QuickstepLauncher (has extras)} from uid <*>
+"START u0 {act=<*> cat=[<*>] flg=<*> pkg=<*> cmp=<*><*>.<*> bnds=[<*>,<*>][<*>,<*>]} from uid <*>"
+SafetyCenterConfig read successfully
+Saving observer state to file
+"Scanned <*> due to REASON_MOUNTED, found <*> items in <*> <*> inserts <*> updates <*> deletes"
+Schedule REGISTER_FCM_JOB_ID once has network connection.
+Scheduling k<*> pass in <*> minutes
+Scheduling the Association Removal job
+Screen brightness nits configuration is unavailable; falling back
+SecondaryZygotePreload
+Sending CONNECTED broadcast for type <*> [<*> CELLULAR] isDefaultNetwork=true
+Sending Netlink XFRM Message: <*>
+Sending signal. PID: <*> SIG: <*>
+"Sensor ID(<*>), oemStrength: <*>, updatedStrength: <*>, modality <*>, state: <*>, cookie: <*>, sensorId <*>, hasEnrollments: false cannot participate in Keystore operations"
+Service <*> must be in VINTF manifest in order to register<*>.
+Service <*> took <*> ms in onBootPhase
+Service <*>$Lifecycle took <*> ms in onStartUser<*>
+Service Started:Intent { act=<*> cmp=<*>/.OpportunisticNetworkService (has extras) }
+"Service connected on ComponentInfo{<*><*>.<*>}, <*>, UserHandle{<*>}"
+Service: [ComponentInfo{<*><*>.<*>}] connected. User [<*>]
+ServiceManager: <*>
+ServiceManager: <*> done instantiate
+SetSystemProcess
+SetVolume <*>
+SetWindowManagerService
+Setting <*> <*> <*> <*>
+Setting <*> <*> <*> <*> <*> <*>
+Setting IP forward enable = <*>
+"Setting heavy hitter watcher config: false, <*>, <*>.<*>"
+"Setting new display group <*> for display <*>, from previous group: null"
+Setting property: <*>=true
+Settings <*> <*>
+"Settings file doesn't exists, skip reading"
+Setup mdns on port= <*>
+Shader cache generated <*> shaders in <*>.<*> ms
+ShellController init took 0ms
+ShellController init took 1ms
+ShellController init took 2ms
+ShellTaskOrganizer init took 12ms
+ShellTaskOrganizer init took 1ms
+ShellTaskOrganizer init took 7ms
+Shutdown <*>
+Shutting down VM
+SignedConfigService
+"Since 'apexservice' could not be found, trying to start it as a lazy AIDL service"
+"Since <*>@<*>.<*>::IDevicesFactory<*> is not registered, trying to start it as a lazy HAL."
+Skip <*> <*> <*> <*> <*>
+Skip fsync <*> on a file system does not support synchronization: Invalid argument
+Skipped <*> frames! The application may be doing too much work on its main thread.
+Skipping <*> <*> <*> <*>
+Skipping libnetd_client init since *we* are netd
+Skipping next row id backup for internal database.
+Skipping preparing app data for <*>
+Skipping row id recovery as backup is not enabled.
+"Skipping unlink call, service died."
+Slow <*> took <*> <*> <*> <*> m=<*>
+Slow delivery took 3179ms main h=<*>$AutoCorker$<*> c=null m=<*>
+Slow delivery took 3356ms main h=<*>$AutoCorker$<*> c=null m=<*>
+Slow delivery took 522ms main h=<*>$QcHandler c=null m=<*>
+"Slow operation: 54ms so far, now at startProcess: <*> <*> <*>"
+"Slow operation: 54ms so far, now at startProcess: starting to update pids map"
+"Slow operation: <*> so far, now at startProcess: <*> <*> <*> <*> <*>"
+"Something is wrong, no client mode toggles enabled"
+SplitScreenController init took 114ms
+SplitScreenController init took 21ms
+SplitScreenController init took 9ms
+StarSdkSandboxManagerService
+Start proc <*> [<*>$RelroFileCreator] for
+Start proc <*>:<*><*> for <*> application <*>
+Start proc <*>:<*><*> for content provider {<*><*>.<*>}
+Start proc <*>:<*><*> for service {<*><*>.<*>}
+Start tag: job-info
+Start to process ACTION_CARRIER_CONFIG_CHANGED.
+StartAccessibilityManagerService
+StartAccountManagerService
+StartActivityManager
+StartActivityManager took to complete: 110ms
+StartActivityManager took to complete: 93ms
+StartActivityManager took to complete: 99ms
+StartActivityManagerReadyPhase
+StartAdServicesManagerService
+StartAdbService
+StartAlarmManagerService
+StartAmbientContextService
+StartAppHibernationService
+StartAppWidgetService
+StartAttestationVerificationService
+StartAudioService
+StartAuthService
+StartAutoFillService
+StartBackupManager
+StartBatteryService
+StartBinaryTransparencyService
+StartBinderCallsStatsService
+StartBiometricService
+StartBluetoothService
+StartBootPhaseDeviceSpecificServicesReady
+StartBootPhaseLockSettingsReady
+StartBootPhaseSystemServicesReady
+StartBugreportManagerService
+StartCachedDeviceStateService
+StartCameraServiceProxy
+StartClipboardService
+StartColorDisplay
+StartCompanionDeviceManager
+StartConnectivityService
+StartConsumerIrService
+StartContentService
+StartCountryDetectorService
+StartCrossProfileAppsService
+StartDataLoaderManagerService
+StartDataLoaderManagerService took to complete: 2ms
+StartDataLoaderManagerService took to complete: 3ms
+StartDataLoaderManagerService took to complete: 6ms
+StartDeviceIdleController
+StartDeviceMonitor
+StartDevicePolicyManager
+StartDeviceSpecificServices
+StartDiskStatsService
+StartDisplayManager
+StartDisplayManager took to complete: 4ms
+StartDisplayManager took to complete: 8ms
+StartDisplayManager took to complete: 9ms
+StartDisplayOffloadService
+StartDisplayOffloadService took to complete: 0ms
+StartDockObserver
+StartDomainVerificationService
+StartDreamManager
+StartDropBoxManager
+StartDynamicCodeLoggingService
+StartDynamicSystemService
+StartEmergencyAffordanceService
+StartEntropyMixer
+StartFaceSensor
+StartFileIntegrityService
+StartFileIntegrityService took to complete: 2ms
+StartFileIntegrityService took to complete: 3ms
+StartFingerprintSensor
+StartFontManagerService
+StartGestureLauncher
+StartHardwarePropertiesManagerService
+StartHidlServices
+StartHintManager
+StartHintManager took to complete: 1ms
+StartIStatsService
+StartIStatsService took to complete: 0ms
+StartIStatsService took to complete: 1ms
+StartIStatsService took to complete: 3ms
+StartIncidentCompanionService
+StartIncrementalService
+StartIncrementalService took to complete: 3ms
+StartIncrementalService took to complete: 6ms
+StartInputManager
+StartInputManagerService
+StartInputMethodManagerLifecycle
+StartInstaller
+StartInstaller took to complete: 3ms
+StartInstaller took to complete: 4ms
+StartJobScheduler
+StartKeyAttestationApplicationIdProviderService
+StartKeyChainSystemService
+StartLauncherAppsService
+StartLightsService
+StartLightsService took to complete: 2ms
+StartLocaleManagerService
+StartLocationManagerService
+StartLocationTimeZoneManagerService
+StartLockSettingsService
+StartLogcatManager
+StartLooperStatsService
+StartMediaCommunicationService
+StartMediaMetricsManager
+StartMediaProjectionManager
+StartMediaResourceMonitor
+StartMediaRouterService
+StartMediaSessionService
+StartMmsService
+StartNativeSensorService
+StartNativeTombstoneManagerService
+StartNetworkManagementService
+StartNetworkPolicyManagerService
+StartNetworkScoreService
+StartNetworkStack
+StartNetworkStatsService
+StartNetworkTimeUpdateService
+StartNotificationManager
+StartObservingNativeCrashes
+StartOtaDexOptService
+StartOverlayManagerService
+StartPacProxyService
+StartPackageManagerService
+StartPeopleService
+StartPermissionPolicyService
+StartPowerManager
+StartPowerManager took to complete: 6ms
+StartPowerManager took to complete: 8ms
+StartPowerManager took to complete: 9ms
+StartPowerStatsService
+StartPowerStatsService took to complete: 1ms
+StartPowerStatsService took to complete: 2ms
+StartPowerStatsService took to complete: 3ms
+StartPruneInstantAppsJobService
+StartRebootReadinessManagerService
+StartRecoverySystemService
+StartRecoverySystemService took to complete: 1ms
+StartResourceEconomy
+StartResourcesManagerService
+StartRestrictionManager
+StartRoleManagerService
+StartRollbackManagerService
+StartSafetyCenterService
+StartSchedulingPolicyService
+StartSearchManagerService
+StartSearchUiService
+StartSensorNotification
+StartSensorPrivacyService
+StartSensorService
+StartSerialService
+StartServices
+StartShortcutServiceLifecycle
+StartSidekickService
+StartSidekickService took to complete: 0ms
+StartSliceManagerService
+StartSmartspaceService
+StartSoundTrigger
+StartSoundTriggerMiddlewareService
+StartSpeechRecognitionManagerService
+StartStatsCompanion
+StartStatsPullAtomService
+StartStatusBarManagerService
+StartStorageManagerService
+StartStorageStatsService
+StartSystemConfigService
+StartSystemUI
+StartSystemUpdateManagerService
+StartTelecomLoaderService
+StartTelephonyRegistry
+StartTestHarnessMode
+StartTethering
+StartTextClassificationManagerService
+StartTextServicesManager
+StartTextToSpeechManagerService
+StartThermalManager
+StartThermalManager took to complete: 0ms
+StartThermalManager took to complete: 1ms
+StartTimeDetectorService
+StartTimeZoneDetectorService
+StartTrustManager
+StartTwilightService
+StartUiModeManager
+StartUpdateLockService
+StartUsageService
+StartUsbService
+StartUserManagerService
+StartVcnManagementService
+StartVibratorManagerService
+StartVirtualDeviceManager
+StartVoiceRecognitionManager
+StartVpnManagerService
+StartWallpaperEffectsGenerationService
+StartWallpaperManagerService
+StartWatchdog
+StartWatchdog took to complete: 5ms
+StartWatchdog took to complete: 6ms
+StartWatchdog took to complete: 7ms
+StartWebViewUpdateService
+StartWifi
+StartWifiP2P
+StartWifiScanning
+StartWindowManagerService
+StartWiredAccessoryManager
+Started
+Started BinaryTransparencyService
+Started executing <*>
+Started executing Lazily initialize IMMS#mImeDrawsImeNavBarRes
+Started executing Update app-ops uidState in case package <*> changed
+Started resetting external storage service...
+Started unlocking user <*>
+Starting
+Starting <*>
+Starting <*> <*>
+Starting <*> for <*> <*>
+Starting networking module <*>
+Starting networking module in network_stack process
+Starting restorecon of <*>
+StartingWindowController init took 0ms
+StartingWindowController init took 4ms
+Startup: Bluetooth persisted state is ON.
+StatsBootstrapAtomService
+"Stored bluetooth Name=Cuttlefish x86_64 phone,Address=DA:4C:<*>:DE:<*>:<*>"
+Stream <*>: using <*> vol of <*>
+"StreamConfigurationMap: ANDROID_SCALER_AVAILABLE_MIN_FRAME_DURATIONS missing!, max resolution ? <*>"
+Successfully <*> <*> <*> <*> <*>
+Successfully got GNSS AIDL handle. Version=<*>.
+Successfully killed process cgroup uid <*> pid <*> in 0ms
+Successfully linked to GNSS AIDL HAl death notification
+Successfully retrieved key
+SupportsMandatoryConcurrentStreams: Depth only output supported by camera id <*>
+SurfaceFlinger is starting
+SurfaceFlinger's main thread ready to run. Initializing graphics H<*>...
+Suspending all threads took: <*>.431ms
+Suspending all threads took: <*>.620ms
+Switching to generalized multi-display mode
+"Switching to new default network for: uid<*>:<*><*> activeRequest: <*> callbackRequest: <*> [NetworkRequest [ REQUEST id=<*>, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&NOT_VCN_MANAGED RequestorUid: <*> RequestorPkg: android UnderlyingNetworks: Null] ]] callback flags: <*> order: <*> using NetworkAgentInfo{network{<*>} handle{<*>} ni{MOBILE[LTE] CONNECTED extra: akcell.mobi} Score(<*> ; KeepConnected : <*> ; Policies : ) created lp{{InterfaceName: buried_eth0 LinkAddresses: [ <*><*> ] DnsAddresses: [ <*>.<*> ] Domains: null MTU: <*> TcpBufferSizes: <*>,<*>,<*>,<*>,<*>,<*> Routes: [ <*><*> -> <*> buried_eth0 mtu <*>,<*><*> -> <*> buried_eth0 mtu <*> ]}} nc{[ Transports: CELLULAR Capabilities: IA&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&NOT_ROAMING&FOREGROUND&NOT_CONGESTED&NOT_SUSPENDED&NOT_VCN_MANAGED LinkUpBandwidth>=14Kbps LinkDnBandwidth>=14Kbps Specifier: <TelephonyNetworkSpecifier [mSubId = <*>]> SubscriptionIds: {<*>} UnderlyingNetworks: Null]} factorySerialNumber=<*>}"
+"Syncing state, reason: <*> new observer"
+"Syncing state, reason: health check state enabled"
+SysProp <*> not set
+System now ready
+System server process <*> has been created
+SystemCaptionsManagerService disabled because resource is not overlaid
+SystemUIApplication constructed.
+TM.isInCall took to complete: 0ms
+TYPE
+Tag SetActivitiesCameraReceiver is <*> chars longer than limit.
+"TelecomAccountRegistry: handleCarrierConfigChange: subId=<*>, accountSubId=<*>"
+TelecomAccountRegistry: onSubscriptionsChanged - update accounts
+TelecomAccountRegistry: setupAccounts: Found <*> phones. Attempting to register.
+TelecomAccountRegistry: setupAccounts: Phone with subscription id <*>
+Temporarily retain top process state for launching app
+The first listener is <*>
+"The specified device name is not recognized: ""a2dp"""
+"There should probably be a verifier, but, none were found"
+Thermal HAL <*>.<*> service connected.
+Thinking about <*> <*> mDaemonConnected=true
+"Thinking about <*> mBootCompleted=false, mDaemonConnected=true"
+This kernel does not have <*> <*> support
+"Thread[<*>,tid=<*>,Native,Thread*=<*>,peer=<*>,""main""] recursive attempt to load library ""librtp_jni.so"""
+Threaded RenderEngine with SkiaGL Backend
+Time to scan packages: <*>.<*> seconds
+Time zone APEX ICU file found: <*>.android.tzdata<*>.dat
+Timed out waiting for players
+Told statsd that StatsCompanionService is alive.
+Tombstone written to: tombstone_01
+"Tombstone's UID (<*>) not an app, ignoring"
+Too early to start<*> service in system_server: Phase=<*> ComponentInfo{<*><*>.<*>}
+Top Process State changed to PROCESS_STATE_TOP
+Total: <*>
+Touch device 'Crosvm Virtio Multitouch Touchscreen <*>' could not query the properties of its associated display. The device will be inoperable until the display size becomes available.
+Touch service <*> user=<*>
+Tracking interface in client mode: eth1
+Transitions init took 12ms
+Transitions init took 3ms
+Transitions init took 6ms
+TranslationService not defined by OEM
+Transport <*>/.LocalTransportService registered
+"Tried to start <*>@<*>.<*>::IDevicesFactory<*> as a lazy service, but was unable to. Usually this happens when a service is not installed, but if the service is intended to be used as a lazy service, then it may be configured incorrectly."
+"Tried to unregister apexservice, but there is about to be a client."
+"Trying to bind to profile: <*>, while Bluetooth was disabled"
+Trying to cancel the remote request. Reason: Service destroyed.
+Trying user CE key <*>
+Turning off night display
+UM.onBeforeUnlockUser<*>
+USB GADGET HAL not present in the device
+USB HAL AIDL present
+USB HAL AIDL version: USB_HAL_V2_0
+UUID
+Ugm.onSystemReady
+Unable to <*> <*> <*>
+Unable to <*> <*> <*> <*> <*>
+Unable to <*> <*> <*> <*> <*> <*> <*> <*> <*> <*>
+Unable to bind with intent: Intent { act=<*> cmp=<*>/.vc.VolumeControlService }
+Unable to decode stream: <*>: <*>: open failed: ENOENT (No such file or directory)
+Unable to disable kernel key repeat for <*>: Function not implemented
+Unable to find pattern file or unable to map it for am
+Unable to load <*>. Setting rail availability to false
+Unable to open <*>
+Unable to read backup pw version
+"Unable to set property ""ctl.interface_start"" to ""<*>@<*>.<*>::IDevicesFactory<*>"": error code: <*>"
+Unassigned: <*>
+Unbind failed: could not find connection for <*>@<*>
+Unlocking user <*> progress <*>
+Unrecognized <*> <*> <*>
+Unrecognized RenderEngineType ; ignoring!
+Unrecognized alarm listener <*>
+Unregistering: Handler (<*>) {<*>}
+Update GNSS satellite blocklist:
+UpdatePackagesIfNeeded
+UpdateWatchdogTimeout
+Updated seed file
+Updating constants with: null
+Updating non-framework location access proxy apps in the GNSS HAL to: []
+Updating user sensitive for user <*>
+UriGrantsManagerService
+UriGrantsManagerService took to complete: 0ms
+UriGrantsManagerService took to complete: 1ms
+User <*> state changed from <*> to <*>
+UserLifecycleEvent <*> received without an active userJourneySession.
+User[<*>] <*> <*> <*> <*> <*>
+User[<*>] Rolling over usage stats
+User[<*>] Rolling over usage stats complete. Took <*> milliseconds
+"Users: <*>, UidToNetworkPerm: <*>"
+Using <*> <*> <*>
+Using <*> <*> <*> <*>
+Using FUSE passthrough
+Using custom country detector class: <*>
+Using default <*> mSec as standby time.
+Using memfd for future sealing
+VIRTUAL_DEVICE_BOOT_COMPLETED
+VIRTUAL_DEVICE_NETWORK_MOBILE_CONNECTED
+Validating DnsTlsServer <*> with mark <*>
+Validation success
+Verification of <*> <*>$<*>.createFromParcel(<*>) took <*>.244ms (<*>.<*> bytecodes<*>) (<*> approximate peak alloc)
+"Verification of void <*>(<*>, <*>) took <*>.687ms (<*>.<*> bytecodes<*>) (<*> approximate peak alloc)"
+Verified <*> classes from mainline modules in <*>
+Verified that <*> has the encryption policy <*> v2 modes <*><*> flags <*>
+Vibrator <*> <*> <*>
+Vibrator manager getting vibrator <*>
+VibratorManager service initialized
+Volume <*> broadcasting <*> to UserHandle{<*>}
+Volume MediaVolume name: <*> id: <*> user: [UserHandle{<*>}] path: [<*>] externallyManaged: [false] mPublicVolume: <*> already attached
+VpnManagerService starting up
+Vsync thread for display:<*> <*>
+VsyncSource debug info:
+VvmOmtpService - <*>
+"VvmOmtpService - VVM not supported on ComponentInfo{<*><*>.<*>}, <*>, UserHandle{<*>}"
+VvmOmtpService - disabling SMS filter
+WPMS.bindWallpaperComponentLocked-ComponentInfo{<*><*>.<*>}
+WPMS.generateCrop
+WaitForDisplay
+WaitForGcToComplete blocked ClassLinker on Background for <*>.074ms
+WaitForGcToComplete blocked ClassLinker on Background for <*>.081ms
+WaitForGcToComplete blocked ClassLinker on Background for <*>.959ms
+WaitInitThreadPoolShutdown
+Waiting 1000ms for FUSE start. Count <*>
+Waiting for <*> <*> <*> <*>
+Waiting for <*>=<*>
+Waiting for activity service
+Waiting for sensor privacy service
+Waiting for service <*> on '<*>' successful after waiting <*>
+WakeLock acquired by handleDownloadPsdsData()
+Waking up; checking provisioning state.
+Wallpaper_selinux_restorecon<*>
+Wallpaper_switch-user<*>
+Warmed up JCA providers in 0ms.
+Warmed up JCA providers in 1ms.
+Warmed up JCA providers in <*>
+Watchdog timeout updated to <*> millis
+WebViewFactoryPreparation
+Widevine not supported. No need to provision widevine certificates.
+WifiService starting up with Wi-Fi disabled
+WifiWake enabled
+WindowManagerServiceOnInitReady
+"Window{<*> u0 <*> Setting back callback OnBackInvokedCallbackInfo{mCallback=<*>$Stub$Proxy@<*>, <*>"
+"Window{<*> u0 <*> Setting back callback OnBackInvokedCallbackInfo{mCallback=<*>$Stub$Proxy@<*>, mPriority=<*>}"
+Window{<*> u0 <*><*>.<*>}: Setting back callback null
+Window{<*> u0 Splash Screen <*> <*> <*> <*> <*> <*>
+Wiping cache directory because the system partition changed.
+"Worker result SUCCESS for Work [ id=<*>-<*>-<*>-<*>-<*>, tags={ <*> } ]"
+Writing <*> to <*>:<*><*>
+"XfrmController::ipSecAddXfrmInterface, line=<*>"
+"XfrmController::ipSecRemoveTunnelInterface, line=<*>"
+Zygote failed to write to system_server FD: Connection refused
+ZygoteInit took to complete: <*>
+ZygotePreload took to complete: 758ms
+ZygotePreload took to complete: 825ms
+ZygotePreload took to complete: 894ms
+[ <*> GUARD: <*> <*> - <*>
+[ <*> GUARD: <*> <*> - [ <*> <*>
+[ <*> GUARD: CaptureModule.closeCamera() - [ <*> mCameraOpenCloseLock.acquire()
+[ <*> GUARD: new CaptureModule - <*>
+[<*> CELLULAR] validation passed
+[<*>.899ms][ui] GUARD: CameraActivity.onCreateTasks - STOP
+[INFO:client_interface_aidl.cc(<*>)] FetchAudioProvider: BluetoothAudioHal SessionType=HEARING_AID_SOFTWARE_ENCODING_DATAPATH has <*> AudioCapabilities
+[INFO:client_interface_aidl.cc(<*>)] IBluetoothAudioProvidersFactory::openProvider() returned <*> (remote)
+[UserID:<*>] <*> <*> <*>
+[UserID:<*>] <*> <*> <*> <*>
+"[UserID:<*>] Found <*> stale backup journal(s), scheduling."
+[UserID:<*>] Stale backup journals: Scheduled <*> package(s) total
+[UserID:<*>] Transport <*>/.LocalTransport registered 3105ms after first request (delay = 3000ms)
+[WARNING:client_interface_aidl.cc(<*>)] FetchAudioProvider: refetch
+[WARNING:client_interface_aidl.cc(<*>)] binderDiedCallbackAidl: restarting connection with new Audio Hal
+"[Wificond] nlMsg: nlmsg{GENERIC hdr={type=ID_CTRL, flags=REQUEST, seq=<*>, pid=<*>, len=<*>, crc=<*>} GETFAMILY attributes: {FAMILY_NAME: ""nl80211""}}"
+"[Wificond] nlMsg: nlmsg{GENERIC hdr={type=ID_CTRL, seq=<*>, pid=<*>, len=<*>, crc=<*>} genlmsghdr{cmd=NEWFAMILY, version=<*>} attributes: {FAMILY_NAME: ""nl80211"", FAMILY_ID: <*>, VERSION: <*>, HDRSIZE: <*>, MAXATTR: <*>, OPS: {len=<*>, crc=<*>}, MCAST_GROUPS: {GRP1: {ID: <*>, NAME: ""config""}, GRP2: {ID: <*>, NAME: ""scan""}, GRP3: {ID: <*>, NAME: ""regulatory""}, GRP4: {ID: <*>, NAME: ""mlme""}, GRP5: {ID: <*>, NAME: ""vendor""}, GRP6: {ID: <*>, NAME: ""nan""}, GRP7: {ID: <*>, NAME: ""testmode""}}}}"
+"[Wificond] nlMsg: nlmsg{GENERIC hdr={type=nl80211, flags=REQUEST, seq=<*>, pid=<*>, len=<*>, crc=<*>} GET_PROTOCOL_FEATURES}"
+"[Wificond] nlMsg: nlmsg{GENERIC hdr={type=nl80211, seq=<*>, pid=<*>, len=<*>, crc=<*>} GET_PROTOCOL_FEATURES attributes: {PROTOCOL_FEATURES: <*>}}"
+[fused] chose new implementation <*><*>.<*>/.FusedLocationService@<*>
+"[incfs] Loaded incremental-fs mount info: <*> instances, <*> mount points"
+[updateDefaultValues] change: <*>
+activity_recognition HAL is deprecated. <*> is effectively a no-op
+activity_recognition HAL is deprecated. class_init is effectively a no-op
+adb watchdog timeout set to <*> seconds
+adbd_auth: <*> <*> <*> framework <*>
+adbd_auth: hit EOF on framework fd
+adbd_auth: received new framework fd -<*> (current = <*>)
+adbd_auth: received new framework fd <*> (current = <*>
+add tag=system_app_strictmode isTagEnabled=true flags=<*>
+add tag=system_server_strictmode isTagEnabled=true flags=<*>
+addAidlProviderLocked: Camera provider HAL with name '<*><*>' already registered
+addDynamicDepthTags: Advertised depth exclusive tag but value is not present!
+addHandler: <*>
+"addInterface, iface: eth1, capabilities: [ Transports: ETHERNET Capabilities: NOT_METERED&INTERNET&TRUSTED&NOT_ROAMING&NOT_CONGESTED&NOT_SUSPENDED LinkUpBandwidth>=100000Kbps LinkDnBandwidth>=100000Kbps Specifier: <EthernetNetworkSpecifier (eth1)> UnderlyingNetworks: Null]"
+addSharedUsers
+adding type <*>
+adev_close()
+adev_close_input_stream()
+adev_init_check()
+adev_open(name=audio_hw_if)
+"adev_open_input_stream(): about to create pipe at index <*>, rate <*>, pipe size <*>"
+adev_open_input_stream(addr=<*>)
+after audioserver restart: initStreamVolume succeeded
+all: opID:<*> successful
+alwaysAllowWhileRoaming: false
+at <*>(Native Method)
+attemptIncStrongHandle(<*>): Not supported
+awakeFromSleeping: previously pausing activity didn't pause
+batterystats service unavailable!
+begin preload
+bindAllApps
+bindDeepShortcuts
+bindWallpaperComponentLocked: componentName=ComponentInfo{<*><*>.<*>}
+bindWidgets
+bindWorkspace
+binding Bluetooth service
+binding: Intent { act=<*> cmp=<*>/.notification.Assistant (has extras) }
+checkOperation
+checkWhitelistedSystemPackages(mode=d) has <*> warnings:
+checking <*> for uid=<*> => granted (<*> us)
+classloader namespace configured for unbundled product apk. library_path=<*>:<*>.apk!<*>:<*>:<*>
+cleanup
+close
+closing lmkd data connection
+codec entry for '<*>' is disabled
+component state is <*>
+componentAlias
+controllersReady
+could not open <*>
+could not open HW module a2dp
+could not open control for <*> No such file or directory
+create package manager
+create package manager took to complete: 318ms
+create package manager took to complete: 321ms
+create package manager took to complete: 385ms
+create package manager took to complete: 433ms
+createIBluetoothAudioProviderFactory() from <*> success
+createSubComponents
+database changed: notifying observers...
+delete.count=<*>
+deleting carrier key from db for subId=<*>
+device<*>.cpp:getParameters:<*> failure: Result::NOT_SUPPORTED
+device<*>.cpp:getPresentationPosition:<*> failure: Result::INVALID_STATE
+deviceName=ipsec_test
+disabling <*>
+disabling notification assistant for user <*>: ComponentInfo{<*><*>.<*>}
+disposeEventHandlers: Reason: Initializing input monitor due to: <*>
+disposeEventHandlers: Reason: TouchInteractionService onDestroy()
+enableVerboseLogging false hal false
+enabling notification assistant for <*>: ComponentInfo{<*><*>.<*>}
+end preload
+enter <*> ctor
+error reading modem stats:ERROR_PHONE_NOT_AVAILABLE
+error reading spatial audio device settings
+extensions: EGL_ANDROID_front_buffer_auto_refresh EGL_ANDROID_get_frame_timestamps EGL_ANDROID_get_native_client_buffer EGL_ANDROID_presentation_time EGL_EXT_surface_CTA861_3_metadata EGL_EXT_surface_SMPTE2086_metadata EGL_KHR_get_all_proc_addresses EGL_KHR_swap_buffers_with_damage EGL_ANDROID_image_native_buffer EGL_ANDROID_native_fence_sync EGL_ANDROID_recordable EGL_KHR_create_context EGL_KHR_fence_sync EGL_KHR_gl_texture_2D_image EGL_KHR_image EGL_KHR_image_base EGL_KHR_wait_sync
+extensions: GL_EXT_debug_marker GL_EXT_robustness GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 ANDROID_EMU_vulkan ANDROID_EMU_deferred_vulkan_commands ANDROID_EMU_vulkan_null_optional_strings ANDROID_EMU_vulkan_create_resources_with_requirements ANDROID_EMU_vulkan_ignored_handles ANDROID_EMU_virtio_gpu_next ANDROID_EMU_vulkan_free_memory_sync ANDROID_EMU_vulkan_shader_float16_int8 ANDROID_EMU_vulkan_async_queue_submit ANDROID_EMU_vulkan_queue_su
+fail to initiate the fast pair proxy provider
+failed to set up display white-balance: <*>: cannot find sensor <*>
+failed to write to <*>
+finish icon update
+finishUserUnlocked<*>
+finishUserUnlocking<*>
+flush
+found IDrmFactory. Instance name:[<*><*>]
+"found effect ""Multichannel Downmix To Stereo"" from The Android Open Source Project"
+freezer override set to false
+fsType=null fsUuid=null fsLabel=null
+fsType=vfat fsUuid=<*><*> fsLabel=
+"fscrypt_prepare_user_storage for volume null, user <*>, serial <*>, flags <*>"
+fscrypt_unlock_user_key <*> serial=<*>
+ftrace_procfs.cc:<*> <*> ftrace in <*>/
+ftrace_procfs.cc:<*> enabled ftrace in <*>/
+get system config
+get system config took to complete: 0ms
+getActiveApexInfos_noCache
+getActiveApexInfos_noCache took to complete: 64ms
+getActiveApexInfos_noCache took to complete: 72ms
+getActiveApexInfos_noCache took to complete: 84ms
+"getAverageBatteryDrainMaH called with unexpected key: <*>, <*>"
+getBatchingSize
+getCurrentUser
+getDeviceCompatibilityMatrix: Reading VINTF information.
+getDeviceHalManifest: Reading VINTF information.
+getExtensionGnssBatching
+getExtensionGnssConfiguration
+getExtensionGnssGeofence
+getExtensionGnssMeasurement
+getExtensionGnssNavigationMessage
+getExtensionGnssPowerIndication
+getExtensionPsds
+getFrameworkCompatibilityMatrix: Reading VINTF information.
+getFrameworkHalManifest: Reading VINTF information.
+getInstance done
+getKeyValueBackupFuzzMilliseconds(...) returns <*>
+getKeyValueBackupIntervalMilliseconds(...) returns <*>
+getKeyValueBackupRequireCharging(...) returns true
+getKeyValueBackupRequiredNetworkType(...) returns <*>
+"getPerFrameMetadataKeys failed Status(-<*>, EX_SERVICE_SPECIFIC): '<*>: '"
+getProviderCapabilities - SessionType=HEARING_AID_SOFTWARE_ENCODING_DATAPATH supports <*> codecs
+"getResolvedImsServicePackageName: [<*>, <*> async query complete, took <*> ms with package name: null"
+getService: Trying again for <*>@<*>.<*>::IDevicesFactory<*>...
+getUserSwitchability<*> took to complete: 5ms
+getVolumePath for unknown volume: internal
+gnss capabilities changed to [SCHEDULING SATELLITE_BLOCKLIST SATELLITE_PVT ANTENNA_INFO MEASUREMENT_CORRELATION_VECTORS LOS_SATS EXCESS_PATH_LENGTH REFLECTING_PLANE TOTAL_POWER SINGLEBAND_TRACKING_POWER MULTIBAND_TRACKING_POWER SINGLEBAND_ACQUISITION_POWER MULTIBAND_ACQUISITION_POWER OTHER_MODES_POWER]
+gnss capabilities changed to [SCHEDULING SATELLITE_BLOCKLIST SATELLITE_PVT ANTENNA_INFO MEASUREMENT_CORRELATION_VECTORS LOS_SATS EXCESS_PATH_LENGTH REFLECTING_PLANE]
+gnss capabilities changed to [SCHEDULING SATELLITE_BLOCKLIST SATELLITE_PVT ANTENNA_INFO MEASUREMENT_CORRELATION_VECTORS]
+gnss hal <*>
+"gnssSetSystemInfoCb: yearOfHw=<*>, name=Google, Cuttlefish, AIDL v2"
+handleVideoCapabilitesChanged. Video capability - false
+handleVideoCapabilitiesChanged : isVideoCapable = false
+health: HealthServiceWrapper listening to AIDL HAL
+health: Waited 0ms and received the update.
+"hide encryption notification, user: <*>"
+hidl_ssvc_poll started.
+host<*>: <*> thread spawning
+in_standby()
+"ing_service_impl.cc:<*> Configured tracing session <*>, #sources:<*>, duration:<*> ms, #buffers:<*>, total buffer size:<*> KB, total sessions:<*>, uid:<*> session name: """""
+init <*>
+init display:<*> with config: id: <*> w:<*> h:<*> dpi-x:<*> dpi-y:<*> vsync:<*>.<*> config-group:<*>
+init effectExpected=false
+init(): No Spatializer found
+init(): setting state to STATE_NOT_SUPPORTED due to effect not expected
+init: Browsable Player list size is <*>
+initialize: Camera <*>: Unknown preview format: <*>
+initialize: allowZslMode: <*> slowJpegMode <*>
+"injectTime. timeMs:<*>, timeReferenceMs:<*>, uncertaintyMs:<*>"
+invalid volume index range
+"isAirplaneModeOn = false, isWifiEnabled = false, isScanningAvailable = false, isLocationModeActive = true"
+isBackupEnabled() => false due to absent settings file
+isCaptivePortal: isSuccessful()=true isPortal()=false RedirectUrl=null isPartialConnectivity()=false Time=332ms
+isEmergencyPreferredAccount: Device does not require preference.
+"isEmergencyPreferredAccount: subId=<*>, activeData=<*>"
+isFsAvailable: true
+isInstalled(): false
+isLeEnabled(): OFF
+isLowRamDevice:false totalMemory:<*> mClientSharedHeapSize:<*>
+isOnWfc: false
+"isReadyToReevaluate: subInfoInitialized=true, carrierConfigsLoaded=true"
+isRoaming: false
+"isRttCurrentlySupported -- regular acct, hasVoiceAvailability: false"
+isRttSupported: false
+"keystore2::authorization: on_lock_screen_event(LockScreenEvent(<*>), user_id=<*>, password.is_some()=false, unlocking_sids=Some([]))"
+killProcesses
+leave <*> ctor
+libnetd_updatable_init success
+libnetd_updatable_init: Initializing
+lmkd data connection <*>
+load widgets
+loadAllApps
+loadAudioInterface couldn't load audio hw module audio.a2dp (No such file or directory)
+"loadAudioPolicyEngineConfig: No configuration found, using default matching phone experience."
+"loadAudioPolicyEngineConfig: No configuration of AUDIO_STREAM_CALL_ASSISTANT found, using default volume configuration"
+loadDeepShortcuts
+loadFallbacks
+"loadHwModule() Loaded <*> audio interface, handle <*>"
+loadHwModule() error -<*> loading module a2dp
+loadPackages: empty list files from <*>
+loadWorkspace
+loaded <*>.so
+mAccelerationThreshold=<*>.<*>
+"mAlwaysOn is set to true, enable the range: <*>:<*>"
+mDialog.dismiss() reason: volume_controller from: <*>$<*>.onDismissRequested:<*>
+mHandler: <*> phoneId: <*>
+mIsEnabled=true
+mKeepScreenOnForMillis=<*>
+mKeepScreenOnNotificationEnabled=true
+mMaximumExtensionMillis=<*>
+mPerClusterTimesAvailable=false
+mPreDimCheckDurationMillis=<*>
+mRequestedPostDimTimeoutMillis=<*>
+mRollbackLifetimeDurationInMillis=<*>
+mTimeThreshold=PT1S
+mUndimsRequired=<*>
+mZAccelerationThreshold=-<*>.<*>
+"makeClient: Camera1 API (legacy), override to portrait <*>"
+"malloc_limit: Allocation limit enabled, max size <*> bytes"
+match <*> <*> <*> <*>
+match MNO APN: <*>
+maybeTrackInterface: eth1
+missing struct descriptor #Param::CoreIndex(--<*>) for field values of struct #Param::CoreIndex(F<*>)
+mountUserId=<*> <*>
+moveEffects() bad srcOutput <*>
+netd <*>.<*> starting
+new ScheduleConditionProvider()
+"new snapshot: TelephonySubscriptionSnapshot{ mActiveDataSubId=-<*>, mSubIdToInfoMap={}, mSubIdToCarrierConfigMap={}, mPrivilegedPackages={} }"
+new thread SensorEventAckReceiver
+"ng_service_impl.cc:<*> FlushAndDisableTracing(<*>) done, success=<*>"
+"ng_service_impl.cc:<*> Tracing session <*> ended, total sessions:<*>"
+no <*> <*> <*> <*>
+no <*> <*> <*> <*> <*> <*> <*> <*>
+no geocoder provider found
+no network location provider found
+no proxy fast pair data provider found
+"no wake lock to update, system not ready yet"
+notifySubscriptionInfoChanged
+now using address <*> for route <*>
+nuSensorService starting...
+nuSensorService thread starting...
+"obtaining output fd from tombstoned, type: kDebuggerdTombstoneProto"
+"onAudioServerStart: (key=audio.policy) AudioPolicy ctor after uncaught failure, mStartCount:<*> mStopCount:<*> uptimeMs:<*>.<*> loadTimeMs:<*>.<*>"
+onBootCompleted
+onBootPhase: <*> : false
+"onCallForwardingIndicatorChanged(): subId=<*>, visible=N"
+onCarrierConfigChanged phoneId <*> subId <*>
+onConfigure() for internal.db
+onConnected
+"onDeviceStatusChanged: Status changed for cameraId=<*>, newStatus=<*>"
+"onDeviceStatusChanged: Unknown camera ID <*>, a new camera is <*>"
+onNightDisplayAutoModeChanged: autoMode=<*>
+onOpen() finished for internal.db
+onOpen() for internal.db
+onReceive Intent { act=<*> flg=<*> cmp=<*><*>.<*> (has extras) }
+onReceive(): Intent { act=<*> flg=<*> cmp=<*>/.HeapDumpReceiver (has extras) }
+onScreenTurningOn(): no keyguard service!
+onServiceRemoved
+onStartCommand(): action=<*>
+onSubscriptionGroupChanged
+onSubscriptionsChanged
+onUnlockUser <*>
+onUserAdded: <*>
+onUserStarted: <*>
+"openOutput() this <*>, module <*> Device <*> @:, SamplingRate <*>, Format <*>, Channels <*>, flags <*>"
+openProvider - SessionType=HEARING_AID_SOFTWARE_ENCODING_DATAPATH
+"option[<*>]=--cpu-abilist=x86,armeabi-v7a,armeabi"
+"option[<*>]=--cpu-abilist=x86_64,arm64-v8a"
+option[<*>]=--dirty-image-objects=<*>
+option[<*>]=--generate-mini-debug-info
+option[<*>]=--instruction-set-features=default
+option[<*>]=--instruction-set-variant=silvermont
+option[<*>]=--runtime-arg
+option[<*>]=-Duser.locale=en-US
+option[<*>]=-XMadviseWillNeedArtFileSize:<*>
+option[<*>]=-XMadviseWillNeedOdexFileSize:<*>
+option[<*>]=-XMadviseWillNeedVdexFileSize:<*>
+option[<*>]=-XX:HeapGrowthLimit=192m
+option[<*>]=-XX:HeapMaxFree=8m
+option[<*>]=-XX:HeapMinFree=512k
+option[<*>]=-XX:HeapTargetUtilization=<*>.<*>
+option[<*>]=-XX:PerfettoHprof=true
+option[<*>]=-XX:PerfettoJavaHeapStackProf=true
+option[<*>]=-Xcompiler-option
+option[<*>]=-Xcore-platform-api-policy:just-warn
+option[<*>]=-Xfingerprint:generic<*>:<*><*>.<*><*>.<*>:userdebug<*>
+option[<*>]=-Ximage-compiler-option
+"option[<*>]=-XjdwpOptions:suspend=n,server=y"
+option[<*>]=-XjdwpProvider:default
+option[<*>]=-Xjitsaveprofilinginfo
+option[<*>]=-Xlockprofthreshold:<*>
+option[<*>]=-Xms64m
+option[<*>]=-Xms8m
+option[<*>]=-Xmx512m
+option[<*>]=-Xmx64m
+option[<*>]=-Xopaque-jni-ids:swapable
+option[<*>]=-Xprimaryzygote
+option[<*>]=-Xusejit:true
+option[<*>]=-Xzygote
+option[<*>]=-verbose:gc
+option[<*>]=exit
+option[<*>]=sensitiveThread
+option[<*>]=vfprintf
+otasp activation not needed: no supported carrier
+parsing <*>
+path=<*> internalPath=<*>
+path=null internalPath=null
+"perfetto_cmd.cc:<*> Connected to the Perfetto traced service, TTL: 55s"
+"perfetto_cmd.cc:<*> Connected to the Perfetto traced service, TTL: 65s"
+"perfetto_cmd.cc:<*> Could not open <*>.cfg (errno: <*>, No such file or directory)"
+perfetto_cmd.cc:<*> Wrote <*> bytes into <*>.pftrace
+performing dump of process <*> (target tid = <*>)
+physMem: <*>
+prepare
+prepareUserData<*>
+probes_producer.cc:<*> <*> <*> <*>
+probes_producer.cc:<*> Ftrace setup (target_buf=<*>)
+reRegisterPstnPhoneAccount: subId: <*> - no change
+read user settings
+read user settings took to complete: 100ms
+read user settings took to complete: 104ms
+read user settings took to complete: 105ms
+read user settings took to complete: 71ms
+readAllPermissions took to complete: 127ms
+readAllPermissions took to complete: 49ms
+readAllPermissions took to complete: 69ms
+readValuesFromDeviceConfig():
+received crash request for pid <*>
+reconcileAppsData finished <*> packages
+reconcileAppsData for null u0 <*> <*>
+reconcileAppsData for null u0 <*> migrateAppData=true
+reconcileAppsData<*>
+refreshCallPullState
+register offer from providerId <*> : NetworkOffer [ Provider Id (<*>) Score(-<*> ; KeepConnected : <*> ; Policies : EVER_VALIDATED_NOT_AVOIDED_WHEN_BAD&IS_UNMETERED&IS_VALIDATED) Caps [ Transports: ETHERNET Capabilities: NOT_METERED&INTERNET&TRUSTED&NOT_ROAMING&NOT_CONGESTED&NOT_SUSPENDED LinkUpBandwidth>=100000Kbps LinkDnBandwidth>=100000Kbps Specifier: <EthernetNetworkSpecifier (eth1)> UnderlyingNetworks: Null] Needed by []]
+register offer from providerId <*> : NetworkOffer [ Provider Id (<*>) Score(<*> ; KeepConnected : <*> ; Policies : TRANSPORT_PRIMARY&EVER_VALIDATED_NOT_AVOIDED_WHEN_BAD&IS_UNMETERED&IS_VALIDATED) Caps [ Transports: CELLULAR Capabilities: MMS&SUPL&DUN&FOTA&IMS&CBS&IA&RCS&XCAP&EIMS&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&MCX&NOT_VCN_MANAGED UnderlyingNetworks: Null] Needed by []]
+register thermal listener successfully
+registerActivityLaunchObserver
+registerBluetoothConnectionCallback()
+registerCountryCodeEventListener called
+"registerImsRegistrationCallback: registration failed, no ImsService available. Exception: code: <*>"
+"registerMmTelCapabilityCallback: registration failed, no ImsService available. Exception: code: <*>"
+registerTetheringEventCallback caller:android
+registerTetheringEventCallback:android
+register_android_mtp_MtpDevice
+"removePreferredDevicesForStrategySync, strategy: <*>"
+renderer : Android Emulator OpenGL ES Translator (NVIDIA GeForce RTX <*> Ti<*>)
+reportAntennaInfo: Unable to invoke callback
+"reportOnUserCompletedEvent(<*>): stored=<*>, eligible=<*>"
+"requestConnection duplicated request: connect=false, mConnectionState=DISCONNECTED"
+"requestNetwork for uid<*>:<*><*> activeRequest: null callbackRequest: <*> [NetworkRequest [ REQUEST id=<*>, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: <*> RequestorUid: <*> RequestorPkg: android UnderlyingNetworks: Null] ]] callback flags: <*> order: <*>"
+requested limit: <*>
+reset(): service is not bound. Do nothing.
+resolv_init: Initializing resolver
+restoreTasksForUserLocked: Unable to list files from <*>
+resumeTopActivities
+retrieveSettings
+"round trip: 56ms, clock offset: -366ms"
+sMaxFastTracks = <*>
+sanitizeData
+save <*> in icon cache
+save deep shortcuts in icon cache
+scheduleHibernationJob with frequency 1296000000ms and threshold 7776000000ms
+screen.full is deprecated! Use <*> instead.
+screen.on is deprecated! Use <*> instead.
+"sendDnsConfigurationForNetwork(<*>, [<*>], [], <*>, <*>, <*>, <*>, <*>, <*>, , [<*>])"
+sendFirstScreenActiveInstallsBroadcast
+sendUserStartBroadcast
+sendUserSwitchBroadcasts
+sensorservice died [<*>]
+service 'idmap' died
+setBinderProxies
+setCallback
+setCapabilitiesCb: 7u
+setCloseOnExec(dnsproxyd)
+setCloseOnExec(fwmarkd)
+setCloseOnExec(mdns)
+setDataSaverMode(): already false
+setFeatureEnabled(false) was featureEnabled:false
+"setLogLevelFromSettings(): level=<*>, debug=true, verbose=false"
+setMaxPartitionsFromSettings(): <*>
+setMaxVisibleDatasetsFromSettings(): <*>
+setPhoneState() invalid or same state <*>
+setPhoneState() setting same state <*>
+setRestrictBackgroundUL: already false
+setState: requested state SHADE!= upcomingState: KEYGUARD. This usually means the status bar state transition was interrupted before the upcoming state could be applied.
+setUp: currentUser=<*>
+setting temporal layering <*> + <*>
+showSystemReadyErrorDialogs
+ssm.CompletedEventUser<*>
+ssm.StartUser<*>
+ssm.UnlockedUser<*>
+ssm.UnlockingUser<*>
+ssm.onCompletedEventUser-0_{|Unlocked|}<*>
+ssm.onCompletedEventUser-0_{|Unlocked|}<*>$LifeCycle
+ssm.onCompletedEventUser-0_{|Unlocked|}<*>$Lifecycle
+start: failed to set Vsync thread name: Math result not representable
+start: failed to set Vsync thread priority: Invalid argument
+startApexServices
+startBlobStoreManagerService
+startBootstrapServices
+startCoreServices
+startHomeOnAllDisplays
+"startListenForPhoneState, no event to listen"
+startOtherServices
+startPersistentApps
+startTracingServiceProxy
+starting <*>$Lifecycle
+starting <*>$Lifecycle took to complete: 0ms
+starting <*>$Lifecycle took to complete: 3ms
+state=UNMOUNTED
+statscompanion service died
+step <*> complete
+stop
+"stopListenForPhoneState(), no listener indicates nothing is listening"
+subIdString = <*> subId = <*>
+"submix_audio_device_create_pipe_l(addr=<*>, idx=<*>)"
+submix_audio_device_destroy_pipe_l(): pipe destroyed
+submix_audio_device_release_pipe_l(idx=<*>) addr=<*>
+surfaceBehindAlphaAnimator#onAnimationEnd
+systemReady
+tearing down interfaces in wificond
+time for regular BatteryInfo: 32ms
+toggleAppIcon() : FLAG_SYSTEM = true
+type=<*> audit(<*>.<*>:<*>): <*>
+type=<*> audit(<*>.<*>:<*>): <*> family=<*> entries=<*> op=xt_replace subj=u:r:netd:s0
+"type=<*> audit(<*>.<*>:<*>): arch=<*> syscall=<*> per=<*> success=yes exit=<*> a0=<*> a1=<*> a2=<*> a3=<*> items=<*> ppid=<*> auid=<*> uid=<*> gid=<*> euid=<*> suid=<*> fsuid=<*> egid=<*> sgid=<*> fsgid=<*> tty=(none) ses=<*> exe=""<*>"" subj=u:r:mediaserver:s0 key=(null)"
+"type=<*> audit(<*>.<*>:<*>): arch=<*> syscall=<*> success=no exit=-<*> a0=<*> a1=<*> a2=<*> a3=1b6 items=<*> ppid=<*> auid=<*> uid=<*> gid=<*> euid=<*> suid=<*> fsuid=<*> egid=<*> sgid=<*> fsgid=<*> tty=(none) ses=<*> comm=<*> exe=""<*>.android.<*><*>"" subj=u:r:<*>:s0 key=(null)"
+"type=<*> audit(<*>.<*>:<*>): auid=<*> uid=<*> gid=<*> ses=<*> subj=u:r:system_server:s0 exe=""<*>"" sig=<*> res=<*>"
+"type=<*> audit(<*>.<*>:<*>): avc: denied { read } for name=""lib"" dev=""dm<*>"" ino=<*> scontext=u:r:mediaserver:s0 tcontext=u:object_r:vendor_file:s0 tclass=dir permissive=<*>"
+"type=<*> audit(<*>.<*>:<*>): avc: denied { write } for comm=<*> name=""perfetto-traces"" dev=""dm<*>"" ino=<*> scontext=u:r:<*>:s0 tcontext=u:object_r:perfetto_traces_data_file:s0 tclass=dir permissive=<*>"
+"type=<*> audit(<*>.<*>:<*>): item=<*> name=""<*>"" inode=<*> dev=<*>:1e mode=<*> ouid=<*> ogid=<*> rdev=<*>:<*> obj=u:object_r:vendor_file:s0 nametype=NORMAL cap_fp=<*> cap_fi=<*> cap_fe=<*> cap_fver=<*> cap_frootid=<*>"
+type=EMULATED diskId=null partGuid= mountFlags=<*> mountUserId=<*>
+type=EMULATED diskId=null partGuid= mountFlags=PRIMARY|VISIBLE_FOR_WRITE
+"type=PUBLIC diskId=disk:<*>,<*> partGuid= mountFlags=VISIBLE_FOR_WRITE"
+unable to bind ActivityRecognitionProxy
+unable to bind to GeofenceProxy
+unlinkToDeath: removed reference to death recipient but unlink failed.
+unlockUserKey: <*> isFileEncryptedNativeOrEmulated: true hasSecret: false
+update icon cache
+updateBoundDeviceServices: called
+"updateBoundServices - carrier package changed: -> on slot <*>, <*>"
+"updateCfi: subId= <*>, visible=N"
+updateDefaults
+"updateFeatureControllerSubscription: slotId=<*>, oldSubId= <*>, subId=<*>, existing feature=false"
+updateForceBackgroundCheck
+"updateInterfaceLinkState, iface: eth1, up: true"
+updateMwi(): subId <*> update to false
+"updateNetworkState, state=CLOSED, connected=true, network=<*>, capabilities=[ Transports: CELLULAR Capabilities: IA&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&VALIDATED&NOT_ROAMING&FOREGROUND&NOT_CONGESTED&NOT_SUSPENDED&NOT_VCN_MANAGED LinkUpBandwidth>=14Kbps LinkDnBandwidth>=14Kbps Specifier: <TelephonyNetworkSpecifier [mSubId = <*>]> SubscriptionIds: {<*>} UnderlyingNetworks: Null], availableNetworkCount: <*>"
+"updateOverviewTargets: mIsHomeDisabled=false, isDefaultHomeNull=false, mIsDefaultHome=true"
+updatePhoneStateListeners: update CF notifications.
+"updateStrength: Before(ID(<*>), oemStrength: <*>, updatedStrength: <*>, modality <*>, state: <*>, cookie: <*>) After(ID(<*>), oemStrength: <*>, updatedStrength: <*>, modality <*>, state: <*>, cookie: <*>)"
+updateStrengths: revert sensorId=<*> to oemStrength=<*>
+updateTopComponentForFactoryTest
+user <*> is a profileowner. Running hibernation job.
+user:<*> readBackupEnableState enabled:false
+usingClockIoctl=true
+uuid=[<*> <*>] Failed to make drm plugin: <*>
+uuid=[<*> <*>] No supported hal instance found
+validateDnsTlsServer returned <*> for <*>
+vendor : Android
+vendor : Google (NVIDIA Corporation)
+version : <*>.<*> Android META-EGL
+version : OpenGL ES <*>.<*> (OpenGL ES <*>.<*> NVIDIA <*>)
+watchDeviceProvisioning
+wificond is starting up...
+write settings
+write settings took to complete: 25ms
+write settings took to complete: 35ms
+write settings took to complete: 51ms
+write settings took to complete: 71ms

@@ -1,0 +1,717 @@
+EventTemplate
+host<*>: <*> <*> <*>
+host<*>: already offline
+authentication not required
+Brightness [<*>.<*>] reason changing to: <*> <*> <*> <*> <*> <*> <*>
+"BrightnessEvent: disp=<*>, physDisp=local:<*>, brt=<*>.<*>, initBrt=<*>.<*>, rcmdBrt=NaN, preBrt=NaN, lux=<*>.<*>, preLux=<*>.<*>, hbmMax=<*>.<*>, hbmMode=off, rbcStrength=<*>, powerFactor=<*>.<*>, thrmMax=<*>.<*>, wasShortTermModelActive=false, flags=, <*> autoBrightness=false"
+requesting nits when no mapping exists.
+app_time_stats: <*> <*> <*> count=<*>
+Only WindowManager is allowed to use eEarlyWakeup[Start|End] flags
+"validateDisplay: layer <*> CompositionType <*>, fallback to client"
+"Missed <*> <*> <*>, <*>, <*>"
+Triggering <*> <*>
+Compat change id reported: <*>; UID <*>; state: <*>
+START u0 {act=<*> <*> flg=<*> <*> <*> <*> from uid <*>
+Window{<*> u0 <*> <*> <*> <*> <*> <*> <*> <*>
+"Build <*>{<*> V.E...... ......ID <*>,<*><*>,<*>}"
+"Icon: view: <*>{<*> V.ED..... ......I. <*>,<*><*>,<*> #<*> android:id<*>} drawable: <*>$ImmobileIconDrawable@<*> size: <*>"
+"Branding: view: <*>{<*> G.ED..... ......I. <*>,<*><*>,<*> #<*> android:id<*>} drawable: null size w: <*> h: <*>"
+Forked child process <*>
+Not killing cached processes
+onLastStrongRef automatically unlinking death recipients: <uncached descriptor>
+Unable to match the desired swap behavior.
+Start proc <*> for <*> {<*><*>.<*>}
+Expecting binder but got null!
+jdwp connection from <*>
+"requestModemActivityInfo: Sending result to app: ModemActivityInfo{ mTimestamp=<*> mSleepTimeMs=<*> mIdleTimeMs=<*> mActivityStatsTechSpecificInfo=[{mRat=UNKNOWN,mFrequencyRange=UNKNOWN,mTxTimeMs[]=[<*>, <*>, <*>, <*>, <*>],mRxTimeMs=<*>}]}"
+classloader namespace configured for unbundled product apk. <*>
+ANGLE Developer option for '<*>' set to: 'default'
+ANGLE GameManagerService for <*>: false
+Neither updatable production driver nor prerelease driver is supported.
+No <*> <*> <*> <*> <*> <*> <*>
+[ <*> GUARD: <*> <*> <*> <*>
+[ <*> GUARD: <*> <*> <*> <*> <*> <*>
+START <*> Activity = <*>@<*>
+[ <*> GUARD: <*> - <*>
+Using LegacyLocationProvider
+Max native memory: <*> MB
+CaptureModule? true
+[ <*> GUARD: <*> <*> <*> <*> <*>
+Getting First <*> Camera
+Connecting to camera service
+"codecHandlesFormat: no format, so no extra checks"
+Tag RoundedThumbnailView is <*> chars longer than limit.
+allocate(<*>)
+"Available Codec2 services: ""software"""
+loading dll
+Created component [<*>]
+read media type: audio<*>
+extent() != <*> for single value type: <*>
+query <*> <*> <*> <*> <*> <*>
+c2 config diff is Dict {
+flushMediametrics
+[<*>] buffers are bound to CCodec for this session
+no c2 equivalents for <*>
+encoding statistics level = <*>
+"<*> set, forcing DMABUF Heaps"
+Using DMABUF Heaps
+[<*>#<*>] Created input block pool with allocatorID <*> => poolID <*> - OK (<*>)
+[<*>#<*>] Created output block pool with allocatorID <*> => poolID <*> - OK
+[<*>#<*>] Configured output block pool ids <*> => OK
+Using DMA-BUF heap named: system
+Using output block pool with poolID <*> => got <*> - <*>
+<*> GUARD: <*> - <*> <*>
+"Tried to access the <*> which needs to have proper configuration from a non-UI Context:<*>@<*> The <*> needs a proper configuration. Use UI contexts such as an activity or a context created via createWindowContext(Display, int, Bundle) or createConfigurationContext(Configuration) with a proper configuration."
+<*>: Tried to access the <*> which needs to have proper configuration from a non-UI Context:<*>@<*>
+at <*> <*>
+[<*>#<*>] MediaCodec discarded an unknown buffer
+onLastStrongRef automatically unlinking death recipients
+unloading dll
+<*> GUARD: CameraActivity.onCreateTasks - <*> <*> <*> <*>
+Closing camera
+Releasing camera without any camera opened.
+EnableCaptureModule = true
+listeners: [<*>@<*>]
+"listeners: [<*>@<*>, <*>@<*>]"
+"listeners: [<*>@<*>, <*>@<*>, <*>@<*>]"
+END <*> Activity = <*>@<*>
+onResume --> onResumeTasks()
+Window{<*> u0 <*> <*> <*> <*> <*> <*>
+createUnique: call
+createVirtioGpuAddressSpaceStream: create subdevice and get resp
+virtgpu_address_space_create_context_with_subdevice: resp bo: <*> resid <*> mapped <*>
+createVirtioGpuAddressSpaceStream: create subdevice and get resp (done)
+createVirtioGpuAddressSpaceStream: ping returned. context ring and buffer sizes <*> <*>
+createVirtioGpuAddressSpaceStream: hostmem size: <*>
+"HostConnection::get() New Host Connection established <*>, tid <*>"
+HostComposition ext ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 ANDROID_EMU_vulkan ANDROID_EMU_deferred_vulkan_commands ANDROID_EMU_vulkan_null_optional_strings ANDROID_EMU_vulkan_create_resources_with_requirements ANDROID_EMU_vulkan_ignored_handles ANDROID_EMU_virtio_gpu_next ANDROID_EMU_vulkan_free_memory_sync ANDROID_EMU_vulkan_shader_float16_int8 ANDROID_EMU_vulkan_async_queue_submit ANDROID_EMU_vulkan_queue_submit_with_commands ANDROID_EMU_vulkan_batched_descriptor_set_update ANDROID_EMU_virtio_gpu_native_sync ANDROID_EMU_sync_buffer_data ANDROID_EMU_vulkan_async_qsri GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr GL_EXT_texture_compression_rgtc ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_0
+"retrieved <*> metadata, number of items: <*>"
+sorting video<*> metadata
+sorted video<*> metadata
+getTransport: Cannot find entry <*> in either framework or device VINTF manifest.
+eglCreateContext: <*>: maj <*> min <*> rcv <*>
+open_verbose_path:<*>: Could not open '<*>': No such file or directory
+"timestamp=<*>, availMem=<*>, totalMem=<*>, totalPSS=<*>, lastTrimLevel=<*>, largeMemoryClass=<*>, nativePSS=<*>, dalvikPSS=<*>, otherPSS=<*>,threshold=<*>, lowMemory=false"
+eglMakeCurrent: <*>: ver <*> <*> (tinfo <*>) (first time)
+virtgpu backend not enabling <*>
+Found <*><*> in device VINTF manifest.
+onLayoutChange
+updateTransform
+setAspectRatio: <*>
+updatePreviewTransform: <*> x <*>
+Could not find layer <*> <*>
+aspect ratio changed from: <*>
+SurfaceTexture is <*>
+onSurfaceTextureAvailable
+Computing center via <*> <*>
+Displayed <*> <*>
+new photos query return num items: <*>
+"Missed <*> frame:UNKNOWN: <*>, <*>, <*>, <*>"
+"Missing HWUI jank callback for vsyncId: <*>, <*>"
+Input channel object '<*> <*> <*> <*> (client)' was disposed without first being removed with the input manager!
+Back button event: <*>
+mixer(<*>) throttle end: throttle time(<*>)
+onBackKeyPressed()
+Reset component for user <*>:
+destroySaveUiUiThread(): already destroyed
+Window{<*> u0 <*> Setting back callback null
+Input channel object '<*> <*> (client)' was disposed without first being removed with the input manager!
+Attempted to finish an input event but the input event receiver has already been disposed.
+"Unknown focus tokens, dropping reportFocusChanged"
+onPause <*> <*>
+Close system dialogs
+disconnect
+onSurfaceTextureDestroyed
+setOnBackInvokedCallback(): No window state for package:<*>
+mDialog.dismiss() reason: <*> from: <*>
+add <*> isTagEnabled=true flags=<*>
+Returning zygote-cached class loader: <*>.<*>
+"ClassLoaderContext shared library size mismatch. Expected=<*>, found=<*> (PCL[] | PCL[]{PCL[<*>.<*>*<*>]#PCL[<*>.<*>*<*>]})"
+Using Network Security Config from resource network_security_config debugBuild: false
+Loading <*> <*> <*> <*> <*>
+Loaded version=<*> minSdkVersion=<*> isBundle=false multiprocess=true packageId=<*>
+Requesting new seed from IVariationsSeedServer
+Successfully <*> <*> <*>
+Flushed <*> samples from <*> histograms.
+Entering forkRepeatedly native zygote loop
+Start proc <*>:<*>:sandboxed_process0:<*>:<*><*> for {<*><*>.<*>:<*>}
+Launched version=<*> minSdkVersion=<*> isBundle=false <*>
+Creating new ChildProcessService pid=<*>
+"avc: denied { find } for pid=<*> uid=<*> name=content_capture scontext=u:r:isolated_app:s0:<*>,<*> tcontext=u:object_r:content_capture_service:s0 tclass=service_manager permissive=<*>"
+"requestNetwork for uid<*>:<*><*> asUid: <*> activeRequest: null callbackRequest: <*> [NetworkRequest [ REQUEST id=<*>, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: <*> RequestorUid: <*> RequestorPkg: android UnderlyingNetworks: Null] ]] callback flags: <*> order: <*>"
+NetReassign [<*> : null → <*>]
+"got request NetworkRequest [ REQUEST id=<*>, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: <*> RequestorUid: <*> RequestorPkg: <*> UnderlyingNetworks: Null] ]"
+"requestNetwork for uid<*>:<*><*> activeRequest: null callbackRequest: <*> [NetworkRequest [ REQUEST id=<*>, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: <*> RequestorUid: <*> RequestorPkg: <*> UnderlyingNetworks: Null] ]] callback flags: <*> order: <*>"
+NetReassign [no changes]
+Requires BLUETOOTH permission
+Scheduling seed download job
+No <*> <*> for: <*>
+Downloading new seed
+checking <*> for uid=<*> => <*> (<*> us)
+"tagSocket(<*>) with statsTag=<*>, statsUid=-<*>"
+"Background concurrent copying GC freed <*> AllocSpace objects, <*> LOS objects, <*>% free, <*> paused <*> total <*>"
+IOException during downloadToFile.
+<*>: Cleartext HTTP traffic to <*> not permitted
+Fetched first run seed in <*> ms
+bufferpool2 <*> : <*>(<*> size) total buffers - <*>(<*> size) used buffers - <*><*> (recycle<*>) - <*><*> (fetch<*>)
+"evictor expired: <*>, evicted: <*>"
+ACTION_TOGGLE_RECENTS latency=<*>
+Cannot get requestId: Handwriting was not initialized.
+ACTION_START_RECENTS_ANIMATION latency=<*>
+Cleared Reference was only reachable from finalizer (only reported once)
+Killing <*> (adj <*>): <*> <*>
+Successfully <*> <*> <*> <*> <*> <*> <*> <*> <*>
+Scheduling restart of crashed service <*><*>.<*>:<*> in 1000ms for connection
+Process <*> exited due to signal <*> (Killed)
+"ConnectivityService NetworkRequestInfo binderDied(uid<*>:<*><*>, [NetworkRequest [ <*> id=<*>, [ Capabilities: <*> Uid: <*> RequestorUid: <*> RequestorPkg: <*> UnderlyingNetworks: Null] ]], <*>@<*>)"
+WIN DEATH: Window{<*> u0 <*><*>.<*>}
+"releasing NetworkRequest [ REQUEST id=<*>, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: <*> RequestorUid: <*> RequestorPkg: <*> UnderlyingNetworks: Null] ] (release request)"
+undelivered TRANSACTION_COMPLETE
+setHasOverlayUi called on unknown pid: <*>
+Unexpected activity event reported! (<*><*>.<*> event : <*> instanceId : <*>)
+"Destruction - bufferpool2 <*> cached: <*><*>, <*><*>% in use; allocs: <*>, <*>% recycled; transfers: <*>, <*>% unfetched"
+startState class <*>
+onSyncDone: Local albums #pending=<*>
+request sync: Local albums
+onSyncDone: picasa #pending=<*>
+request sync: picasa
+"onSurfaceChanged: 720x1136, gl10: <*>@<*>"
+layout content pane 720x1136 (compensation <*>)
+"switchState <*>@<*>, class <*>"
+cancelToast pkg=<*> token=<*>@<*>
+removeWindowToken: Attempted to remove non-existing token: <*>@<*>
+cannot read header
+"Unable to start animation, surface is null or no children."
+saveState
+saveState class <*>
+WIN DEATH: Window{<*> u0 Toast EXITING}
+"Slow operation: <*> so far, now at startProcess: <*> <*> <*>"
+"Slow operation: <*> so far, now at startProcess: done updating <*> <*>"
+"Slow operation: <*> so far, now at startProcess: starting to update pids map"
+moveTaskToBack: Task{<*> #<*> type=standard A=<*>:<*>}
+MainActivity.onCreate - enter
+OldMainActivityPeer.onActivityCreate - enter
+UiListener.create - creating new UiListener for Query last phone number
+UiListener.create - creating new UiListener for Missed call observer
+"PhoneAccountRegistrar: getSimCallManager: SimCallManager for subId <*> queried, returning: null: <*>"
+OldMainActivityPeer.canVoicemailTabBeShown - returning false
+OldMainActivityPeer.showVoicemail - showing Tab:false
+OldMainActivityPeer.onHandleIntent - Show last tab
+MainBottomNavBarBottomNavTabListener.onSpeedDialSelected - enter
+MainBottomNavBarBottomNavTabListener.showFragment - enter
+MainBottomNavBarBottomNavTabListener.showFragment - Not <*> yet: <*>
+ContactPhotoManagerImpl.ContactPhotoManagerImpl - cache adj: <*>.<*>
+MainBottomNavBarBottomNavTabListener.onActivityResume - enter
+MainCallLogFragmentListener.onActivityResume - enter
+MainCallLogFragmentListener.registerVoicemailStatusContentObserver - <*>
+CallLogQueryHandler.fetchVoicemailStatus - fetching voicemail status
+DialerExecutorModule.newThread - creating low priority thread
+DialerDatabaseHelper.updateSmartDialDatabase - enter
+DialerDatabaseHelper.updateSmartDialDatabase - <*> <*> <*> <*>
+OldMainActivityPeer.MainCallLogFragmentListener - onVoicemailStatusFetched
+"OldMainActivityPeer.onVoicemailStatusFetched - hasActiveVoicemailProvider:false, number of active voicemail sources:<*>"
+NonUiTaskBuilder.newThread - creating serial thread
+MainCallLogHost.enableFloatingButton - enabled: true
+"MissedCallNotifierImpl: sendNotificationThroughDefaultDialer; count=<*>, dialerPackage=<*>: TSI.cMCN(cad)@AI0"
+MissedCallNotificationReceiver.onReceive - update missed call notifications successful
+MissedCallNotificationReceiver.updateBadgeCount - update badge count: <*> success: false
+"NativeAlloc concurrent copying GC freed <*> AllocSpace objects, <*> LOS objects, <*>% free, <*> paused <*> total <*>"
+PermissionsUtil.unregisterPermissionReceiver
+"CallLogAdapter.onSaveInstanceState - saved: <*>, selectedItemsSize:<*>"
+START u0 <*> <*> <*> <*> <*> from uid <*>
+onCreateSliceProvider
+isFlagEnabled = true
+isSplitSupported = true
+Feature disabled by config. Skipping
+Could not find Context-only controller for pref: <*>
+parsing highlightable menu from xml
+Unknown restriction queried by uid <*> (<*> et al): null
+Screen title missing for fragment <*>
+NO dashboard tiles for <*>
+"All preferences <*>, reporting fully drawn"
+Menu key: top_level_network
+"onCreateAdapter, pref key: top_level_network"
+Request highlight position <*>
+Is highlight needed: false
+time for <*> <*>
+time for regular BatteryInfo: <*>
+"platform method missing - proto runtime falling back to safer methods: <*>: <*> [class <*>, long, class <*>, long, long]"
+Skip categories update
+Fully drawn <*> <*>
+setResumedActivity on non-leaf task fragment Task{<*> #<*> type=standard A=<*>:<*>}
+START u0 {act=<*> cmp=<*>/.SubSettings (has extras)} from uid <*>
+Tried to set launchTime (<*>) < mLastActivityLaunchTime (<*>)
+Starting onCreate
+Starting <*> <*> <*> <*>
+Done setting title
+Switching to fragment <*>
+Launching <*> <*>
+Detect an internet available network with transport type: <*>
+registerTetheringEventCallback:<*>
+onCreate: mMobilePlanDialogMessage=null
+Binding service...
+Executed frag manager pendingTransactions
+registerTetheringEventCallback caller:<*>
+Clear ephemeral installer activity
+"Enabled state changed for some tiles, reloading all categories {<*><*>.<*>$WifiSettingsActivity},{<*><*>.<*>$BluetoothSettingsActivity},{<*><*>.<*>$DataUsageSummaryActivity},{<*><*>.<*>$ConnectedDeviceDashboardActivity},{<*><*>.<*>$PowerUsageSummaryActivity},{<*><*>.<*>$UserSettingsActivity},{<*><*>.<*>$DevelopmentSettingsDashboardActivity},{<*><*>.<*>$WifiDisplaySettingsActivity},"
+network summary query
+EuiccManager is not enabled.
+"Grouping [SubscriptionAnnotation{subId=<*>,type=<*>,exist=true,active=true,displayAllow=true}]"
+network summary query ignored
+Proxy object <*>
+DefaultDialerCache: Refreshing default dialer for user <*>: now <*>: DDC.oR@AJE
+Granting default roles...
+"Reconfiguring input devices, <*> |"
+mPackageChangedBroadcastReceiver: action: <*>
+Name of package changed: <*>
+"ServiceConfig reloaded, count: <*>"
+Updating <*> <*> <*> <*> <*>
+onPackageModified: <*>
+"maybeAddedImsService, packageName: <*>"
+no available voice recognition services found for user <*>
+type=<*> audit(<*>.<*>:<*>): table=filter family=<*> entries=<*> op=xt_replace subj=u:r:netd:s0
+"type=<*> audit(<*>.<*>:<*>): arch=<*> syscall=<*> success=yes exit=<*> a0=<*> a1=<*> a2=<*> a3=<*> items=<*> ppid=<*> auid=<*> uid=<*> gid=<*> euid=<*> suid=<*> fsuid=<*> egid=<*> sgid=<*> fsgid=<*> tty=(none) ses=<*> exe=""<*>"" subj=u:r:netd:s0 key=(null)"
+type=<*> audit(<*>.<*>:<*>): proctitle=<*>
+type=<*> audit(<*>.<*>:<*>):
+audit_lost=<*> audit_rate_limit=<*> audit_backlog_limit=<*>
+rate limit exceeded
+"requestNetwork for uid<*>:<*><*> activeRequest: null callbackRequest: <*> [NetworkRequest [ TRACK_SYSTEM_DEFAULT id=<*>, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&NOT_VCN_MANAGED RequestorUid: <*> RequestorPkg: <*> UnderlyingNetworks: Null] ]] callback flags: <*> order: <*>"
+Empty or null ScanResult list
+Attempt to retrieve <*> with invalid scanResult List
+"No enabled state changed, skipping updateCategory call"
+endAllActiveAnimators on <*> (RippleDrawable) with handle <*>
+unregisterTetheringEventCallback caller:<*>
+Duplicate finish request for r=ActivityRecord{<*> u0 <*> t15 f}}
+Set default menu key
+Unbinding service...
+Remove task fragment: removeLastChild ActivityRecord{<*> u0 <*> t<*> f}}
+LocalBluetoothProfileManager construction complete
+Adding local <*> profile
+Create BluetoothMap proxy object
+Adding local <*> <*> profile
+Adding local CSIP set coordinator profile
+getBondedDevicesOrdered: Invalid address for device LocalStorage
+setting foreground activity to non-null context
+Unknown URI: content:/<*>.<*><*>
+Scan Mode:<*>
+getConnectedDevices()
+Bluetooth service connected
+getConnectedDevices: []
+enable(): BT already enabled!
+startDiscovery
+packages<*>.cc:<*> <*> <*> <*>
+packages<*>.cc:<*> LogMsg: Unknown prop type:<*>
+packages<*>.cc:<*> btif_update_remote_properties: cod from storage is also unclassified
+getActiveDevices(profile= <*>
+getActiveDevices: <*> device: null
+getActiveDevices
+getActiveDevices: Hearing Aid devices: Left[null] - Right[null]
+getActiveDevices: LeAudio devices: Lead[null] - member_1[null]
+getCustomMeta: device BE:AC:<*>:<*>:<*>:<*> is not in cache
+Setting background color -<*>
+DeviceFoundHandler created new CachedBluetoothDevice XX:XX:XX:<*>:<*>:<*>
+setting foreground activity to null
+cancelDiscovery
+Feature <*> not available
+"Selecting route: RouteInfo{ name=Phone, description=null, status=null, category=RouteCategory{ name=System types=ROUTE_TYPE_LIVE_AUDIO ROUTE_TYPE_LIVE_VIDEO groupable=false }, supportedTypes=ROUTE_TYPE_LIVE_AUDIO ROUTE_TYPE_LIVE_VIDEO , presentationDisplay=null }"
+"Skip setBluetoothA2dpOn(): types=<*>, isPlaybackActive()=false, BT route=null"
+"Invalid timestamp (usage time is more than <*> hours ago), skipping <*>"
+"Not a user visible or instant app, skipping <*>"
+"System package, skipping <*>"
+postValue: <*>
+onUpdate() -> {}
+keystore2::watchdog: Watchdog thread idle -> terminating. Have a great day.
+Cannot find preference with key notification_default_ringtone in Controller
+Enabling filter <*> <*>
+Auto selecting filter <*>@<*> Most recent
+Not rebuilding until all the app entries loaded. <*> !mExtraInfoBridgeNull=true !mHasReceivedBridgeCallback=true
+Selecting filter Most recent
+Resume! mResumed=false
+onRebuildComplete size=<*>
+Preference key is null in Controller <*>
+Menu items are not available
+Loading apps
+Loading external stats
+Obtaining result completed
+BatteryInfoLoader post query: <*>
+BatteryInfoLoader.loadInBackground: <*>
+"consuming errant click: (<*>.<*>,<*>.<*>)"
+Connection driver returns some Err: Closed
+Cannot find preference with key other_sounds_and_vibrations_category in Controller PreferenceCategoryController
+"NuPlayerDriver(<*>) created, clientPid(<*>)"
+FileSource remote
+Use of stream types is deprecated for operations other than volume control
+See the documentation of setStreamType() for what to use instead with <*> to qualify your playback use case
+reset(<*>) at state <*>
+notifyResetComplete(<*>)
+resetDrmState: mDrmInfo=null mDrmProvisioningThread=null mPrepareDrmInProgress=false mActiveDrmScheme=false
+cleanDrmObj: mDrmObj=null mDrmSessionId=null
+BluetoothAdapter is null or muting expected device not exist
+writeEvent <*> <*> <*>
+"onRestoreRoute() : route=RouteInfo{ name=Phone, description=null, status=null, category=RouteCategory{ name=System types=ROUTE_TYPE_LIVE_AUDIO ROUTE_TYPE_LIVE_VIDEO groupable=false }, supportedTypes=ROUTE_TYPE_LIVE_AUDIO ROUTE_TYPE_LIVE_VIDEO , presentationDisplay=null }"
+MediaCodec will operate in async mode
+keep callback message for reclaim
+Client defaulted notificationFrames to <*> for frameCount <*>
+OpPlayAudio: track:<*> usage:<*> not muted
+getTimestamp_l(<*>): device stall time corrected using current time <*>
+[<*>#<*>] buffers after EOS ignored (<*> us)
+stop(<*>): called with <*> frames delivered
+setVolume(-<*>)
+[<*>#<*>:1D-Output.Impl[N]] Client returned a buffer it does not own according to our record: <*>
+DEFAULT_REFRESH_RATE : <*>.<*> mPeakRefreshRate : <*>.<*>
+"Receiver with filter <*>@<*> already registered for pid <*>, callerPackage is <*>"
+Falling back to default dream ComponentInfo{<*><*>.<*>}
+"Config changes=<*> {<*>.<*> 311mcc740mnc [en_US] ldltr sw360dp w360dp <*> 320dpi nrml <*> <*> finger qwerty<*> -nav<*> winConfig={ mBounds=Rect(<*>, <*> - <*>, <*>) mAppBounds=Rect(<*>, <*> - <*>, <*>) mMaxBounds=Rect(<*>, <*> - <*>, <*>) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.<*> fontWeightAdjustment=<*>}"
+"Current config: {<*>.<*> 311mcc740mnc [en_US] ldltr sw360dp w360dp h568dp 320dpi nrml port finger qwerty<*> -nav<*> winConfig={ mBounds=Rect(<*>, <*> - <*>, <*>) mAppBounds=Rect(<*>, <*> - <*>, <*>) mMaxBounds=Rect(<*>, <*> - <*>, <*>) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.<*> fontWeightAdjustment=<*>} unchanged for IME proc <*>"
+"Override config changes=<*> {<*>.<*> 311mcc740mnc [en_US] ldltr sw360dp w360dp <*> 320dpi nrml <*> <*> finger qwerty<*> -nav<*> winConfig={ mBounds=Rect(<*>, <*> - <*>, <*>) mAppBounds=Rect(<*>, <*> - <*>, <*>) mMaxBounds=Rect(<*>, <*> - <*>, <*>) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.<*> fontWeightAdjustment=<*>} for displayId=<*>"
+"Sending to IME proc <*> new config {<*>.<*> 311mcc740mnc [en_US] ldltr sw360dp w360dp <*> 320dpi nrml <*> <*> finger qwerty<*> -nav<*> winConfig={ mBounds=Rect(<*>, <*> - <*>, <*>) mAppBounds=Rect(<*>, <*> - <*>, <*>) mMaxBounds=Rect(<*>, <*> - <*>, <*>) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.<*> fontWeightAdjustment=<*>}"
+"Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers"
+"NavbarController: newConfig={<*>.<*> 311mcc740mnc [en_US] ldltr sw360dp w360dp h568dp 320dpi nrml port night finger qwerty<*> -nav<*> winConfig={ mBounds=Rect(<*>, <*> - <*>, <*>) mAppBounds=Rect(<*>, <*> - <*>, <*>) mMaxBounds=Rect(<*>, <*> - <*>, <*>) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.<*> fontWeightAdjustment=<*>} mTaskbarDelegate initialized=false willApplyConfigToNavbars=true navBarCount=<*>"
+"Config changes=<*> {<*>.<*> 311mcc740mnc [en_US] ldltr sw360dp w360dp h616dp 320dpi nrml long port night finger qwerty<*> -nav<*> winConfig={ mBounds=Rect(<*>, <*> - <*>, <*>) mAppBounds=Rect(<*>, <*> - <*>, <*>) mMaxBounds=Rect(<*>, <*> - <*>, <*>) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.<*> fontWeightAdjustment=<*>}"
+"Current config: {<*>.<*> 311mcc740mnc [en_US] ldltr sw360dp w360dp <*> 320dpi nrml <*> <*> finger qwerty<*> -nav<*> winConfig={ mBounds=Rect(<*>, <*> - <*>, <*>) mAppBounds=Rect(<*>, <*> - <*>, <*>) mMaxBounds=Rect(<*>, <*> - <*>, <*>) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.<*> fontWeightAdjustment=<*>} unchanged for IME proc <*>"
+"Override config changes=<*> {<*>.<*> 311mcc740mnc [en_US] ldltr sw360dp w360dp h616dp 320dpi nrml long port night finger qwerty<*> -nav<*> winConfig={ mBounds=Rect(<*>, <*> - <*>, <*>) mAppBounds=Rect(<*>, <*> - <*>, <*>) mMaxBounds=Rect(<*>, <*> - <*>, <*>) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.<*> fontWeightAdjustment=<*>} for displayId=<*>"
+"Sending to IME proc <*> new config {<*>.<*> 311mcc740mnc [en_US] ldltr sw360dp w360dp h616dp 320dpi nrml long port night finger qwerty<*> -nav<*> winConfig={ mBounds=Rect(<*>, <*> - <*>, <*>) mAppBounds=Rect(<*>, <*> - <*>, <*>) mMaxBounds=Rect(<*>, <*> - <*>, <*>) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.<*> fontWeightAdjustment=<*>}"
+getCurrentInteractionMode: mode=<*> contextUser=<*>
+getCurrentUserContext: contextUser=<*> currentUser=<*>
+"Current config: {<*>.<*> 311mcc740mnc [en_US] ldltr sw360dp w360dp h616dp 320dpi nrml long port night finger qwerty<*> -nav<*> winConfig={ mBounds=Rect(<*>, <*> - <*>, <*>) mAppBounds=Rect(<*>, <*> - <*>, <*>) mMaxBounds=Rect(<*>, <*> - <*>, <*>) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.<*> fontWeightAdjustment=<*>} unchanged for IME proc <*>"
+OnBackInvokedCallback is not enabled for the application.
+"Set 'android:enableOnBackInvokedCallback=""true""' in the application manifest."
+Received new disable state: <*> (unchanged)
+Tonal Palette - index: <*>. Main color: <*>
+"Colors: <*>, <*>, <*>, <*>, <*>, <*>, <*>, <*>, <*>, <*>, <*>, <*>, <*>"
+Gradients:
+"Normal GradientColors(<*>, <*>)"
+"Dark GradientColors(<*>, <*>)"
+"Extra dark: GradientColors(<*>, <*>)"
+"Fill dialog is enabled:false, hints=[]"
+"updateOverviewTargets: <*> isDefaultHomeNull=false, mIsDefaultHome=true"
+finishDrawing of relaunch: Window{<*> u0 <*><*>.<*>} <*>
+Display changed: <*>
+TIS service connected
+UnfoldTransitionProgressProvider null in setActivity. Unfold animation for launcher will not work.
+Screen frozen for <*> due to Window{<*> u0 <*>
+"Couldn't use ImageDecoder for drawable, falling back to non-resized load."
+ACTION_ROTATE_SCREEN latency=<*>
+"Config changes=<*> {<*>.<*> 311mcc740mnc [en_US] ldltr sw360dp w360dp h568dp 320dpi nrml port finger qwerty<*> -nav<*> winConfig={ mBounds=Rect(<*>, <*> - <*>, <*>) mAppBounds=Rect(<*>, <*> - <*>, <*>) mMaxBounds=Rect(<*>, <*> - <*>, <*>) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.<*> fontWeightAdjustment=<*>}"
+"Override config changes=<*> {<*>.<*> 311mcc740mnc [en_US] ldltr sw360dp w360dp h568dp 320dpi nrml port finger qwerty<*> -nav<*> winConfig={ mBounds=Rect(<*>, <*> - <*>, <*>) mAppBounds=Rect(<*>, <*> - <*>, <*>) mMaxBounds=Rect(<*>, <*> - <*>, <*>) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.<*> fontWeightAdjustment=<*>} for displayId=<*>"
+"Sending to IME proc <*> new config {<*>.<*> 311mcc740mnc [en_US] ldltr sw360dp w360dp h568dp 320dpi nrml port finger qwerty<*> -nav<*> winConfig={ mBounds=Rect(<*>, <*> - <*>, <*>) mAppBounds=Rect(<*>, <*> - <*>, <*>) mMaxBounds=Rect(<*>, <*> - <*>, <*>) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.<*> fontWeightAdjustment=<*>}"
+"NavbarController: newConfig={<*>.<*> 311mcc740mnc [en_US] ldltr sw360dp w360dp h568dp 320dpi nrml port finger qwerty<*> -nav<*> winConfig={ mBounds=Rect(<*>, <*> - <*>, <*>) mAppBounds=Rect(<*>, <*> - <*>, <*>) mMaxBounds=Rect(<*>, <*> - <*>, <*>) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.<*> fontWeightAdjustment=<*>} mTaskbarDelegate initialized=false willApplyConfigToNavbars=true navBarCount=<*>"
+BinderProxy is being destroyed but the application did not call unlinkToDeath to unlink all of its death recipients beforehand. Releasing leaked death recipient: <*>$$ExternalSyntheticLambda0
+Turning <*> night display
+Recreating tiles
+Creating tile: night
+NightDisplayTintController Animation cancelled: <*> to matrix:
+<*>.<*> <*>.<*> <*>.<*> <*>.<*> <*>.<*> <*>.<*> <*>.<*> <*>.<*> <*>.<*> <*>.<*> <*>.<*> <*>.<*> <*>.<*> <*>.<*> <*>.<*> <*>.<*> <*> matrix coefficients:
+"Explicit concurrent copying GC freed <*> AllocSpace objects, <*> LOS objects, <*>% free, <*> paused <*> total <*>"
+unregisterTetheringEventCallback:<*>
+START u0 {cmp=<*>/.Settings$WallpaperSettingsActivity (has extras)} from uid <*>
+init controller
+View class <*> is an AppCompat widget that can only be used with a Theme.AppCompat theme (or descendant).
+Animation contains merge paths. Merge paths are only supported on KitKat+ and must be manually enabled by calling enableMergePathsForKitKatAndAbove().
+Animation contains merge paths but they are disabled.
+writeFully: <*>.<*> mb in <*> notifs. <*>.<*> mb<*>
+"Cancelling event (window is stopped):MotionEvent { action=ACTION_CANCEL, actionButton=<*>, id[<*>]=<*>, x[<*>]=<*>.<*>, y[<*>]=<*>.<*>, toolType[<*>]=TOOL_TYPE_FINGER, buttonState=<*>, classification=NONE, metaState=<*>, flags=<*>, edgeFlags=<*>, pointerCount=<*>, historySize=<*>, eventTime=<*>, downTime=<*>, deviceId=<*>, source=<*>, displayId=<*>, eventId=<*> }"
+Force remove immediately ActivityRecord{<*> u0 <*> t15 f}} state=DESTROYING
+getUserSwitchability<*>
+TM.isInCall
+TM.isInCall took to complete: <*>
+hasUserRestriction-DISALLOW_USER_SWITCH
+hasUserRestriction-DISALLOW_USER_SWITCH took to complete: 0ms
+getInt-ALLOW_USER_SWITCHING_WHEN_SYSTEM_USER_LOCKED
+getInt-ALLOW_USER_SWITCHING_WHEN_SYSTEM_USER_LOCKED took to complete: 0ms
+isUserUnlocked-USER_SYSTEM
+isUserUnlocked-USER_SYSTEM took to complete: 0ms
+getUserSwitchability<*> took to complete: <*>
+ACTION_EXPAND_PANEL latency=<*>
+"Subscribing callback, service count: <*>"
+Attempted to add notif for locked<*> user <*>
+Unsubscribing callback
+"START u0 {act=<*> flg=<*> pkg=<*> cmp=<*>/.SearchActivity bnds=[<*>,<*>][<*>,<*>] (has extras)} from uid <*>"
+"Ignoring showSoftInput() as view=<*>{<*> VFED..CL. .F....I. <*>,<*><*>,<*> #<*> app:id<*>} is not served."
+"chars:<*>,source:Source{name=<*>/.google.GoogleSearch}"
+"showSoftInput() view=<*>{<*> VFED..CL. <*> <*>,<*><*>,<*> #<*> app:id<*> aid=<*>} flags=<*> reason=SHOW_SOFT_INPUT"
+"Starting input. Cursor position = <*>,<*>"
+"show(ime(), fromIme=true)"
+Window{<*> u0 Select input method}: Setting back callback null
+Can't find emoji subtype
+"No input method subtype found; returning placeholder subtype: Multi-lingual subtype: <*>@<*>, zz"
+Last Emoji category id is <*>
+Requested offscreen page limit <*> too small; defaulting to <*>
+Sending non-protected broadcast AudioService.CHECK_MUSIC_ACTIVE from system uid <*> pkg android
+Icon: view: null drawable: null size: <*>
+[INFO:CONSOLE(<*>)] <*> <*> <*> <*> <*> <*> <*> <*> (<*>)
+Could not add the event to the queue. Resetting
+logdr: UID=<*> GID=<*> PID=<*> b tail=<*> logMask=<*> pid=<*> start=0ns deadline=0ns
+"dispatchVolumeKeyEvent, pkg=<*>, opPkg=<*>, pid=<*>, uid=<*>, asSystem=true, event=KeyEvent { <*> <*> scanCode=<*>, metaState=<*>, flags=<*>, repeatCount=<*>, eventTime=<*>, downTime=<*>, deviceId=<*>, source=<*>, displayId=-<*> }, stream=-<*>, musicOnly=false"
+"Adjusting suggestedStream=-<*> by <*> flags=<*>, preferSuggestedStream=false, session=null"
+writeEvent <*> <*>
+showH r=volume_changed
+rescheduleTimeout <*> <*>$$Nest$mshowH:<*>
+notifyPowerPressed
+onPowerPressed
+powerPress: eventTime=<*> interactive=true count=<*> <*> mShortPressOnPowerBehavior=<*>
+"Powering off display group due to power_button (groupId= <*>, uid= <*>, millisSinceLastUserActivity=<*>, <*>"
+"Going to sleep due to power_button (uid <*>, screenOffTimeout=<*>, <*> maxDimRatio=<*>.<*>, maxDimDur=<*>)..."
+onPowerPressed not supported for HIDL clients
+createTrack_l(): mismatch between requested flags (<*>) and output flags (<*>)
+Blocking screen off
+Unblocked screen <*> after <*> ms
+Top Process State changed to <*>
+Brightness [<*>.<*>] reason changing to: <*> previous reason: <*>
+"Display device changed state: ""Built-in Screen"", <*>"
+"Viewport [<*>] to add: local:<*>, isActive: <*>"
+Setting power mode <*> on display <*>
+Disabling Crosvm Virtio Multitouch Touchscreen <*> (device <*>) because the associated viewport is not active
+"Device reconfigured: id=<*>, name='Crosvm Virtio Multitouch Touchscreen <*>', size <*> orientation <*>, mode <*>, display id <*>"
+Finished setting power mode <*> on display <*>
+Invalid layer stack -<*>
+handleScreenOff()
+automatic system suspend enabled
+Sleeping (uid <*>)...
+setState: requested state <*> upcomingState: <*> This usually means the status bar state transition was interrupted before the upcoming state could be applied.
+updateQsExpansionEnabled - QS Expand enabled: true
+[FalsingCollector] ProxListener registered multiple times: <*>$$ExternalSyntheticLambda0@<*>
+[FalsingCollector] Primary sensor event: true. No secondary.
+[FalsingCollector] unregistering sensor listener
+Received new disable state: Old: <*> | New: <*> (changed: <*>
+"requestLayout() improperly called by <*>{<*> V.ED..... ......ID <*>,<*><*>,<*> #<*> app:id<*>} during layout: running second layout pass"
+requestAudioFocus() from uid<*> <*><*> AA=USAGE_NOTIFICATION<*> clientId=<*>@<*> callingPack=<*> req=<*> flags=<*> sdk=<*>
+unfadeOutUid() uid:<*>
+updateClockViews; useLargeClock=false; animate=true; mChildrenAreLaidOut=true
+abandonAudioFocus() from uid<*> <*><*> clientId=<*>@<*>
+"Waking up power group from <*> (groupId=<*>, uid=<*>, <*> <*>"
+"Waking up from <*> (uid=<*>, <*> <*>"
+Cancel pending or running compactions as system is awake
+Blocking screen on until initial contents have been drawn.
+onFlip(): <*> <*>
+handleScreenOn()
+VIRTUAL_DEVICE_DISPLAY_POWER_MODE_CHANGED display=<*> <*>
+"BrightnessEvent: disp=<*>, physDisp=local:<*>, brt=<*>.<*>, initBrt=<*>.<*>, rcmdBrt=NaN, preBrt=NaN, lux=<*>.<*>, preLux=<*>.<*>, hbmMax=<*>.<*>, hbmMode=off, rbcStrength=<*>, powerFactor=<*>.<*>, thrmMax=<*>.<*>, wasShortTermModelActive=false, flags=, reason=manual [ dim ], autoBrightness=false"
+onReceive: ACTION_SCREEN_ON or boot complete.
+invalidateScan: scan is disabled
+Cannot stop scan with this callback because it is never registered.
+ACTION_TURN_ON_SCREEN latency=<*>
+freezing <*> <*>
+powerLongPress: eventTime=<*> mLongPressOnPowerBehavior=<*>
+"<*> consecutive power button taps detected, <*> consecutive slow power button taps detected"
+"Power button double tap gesture detected, launching camera. Interval=154ms"
+Camera launch
+Ignoring screen off event triggered at uptime <*> for reason power_button
+onActiveSessionsChanged: number of controllers: <*>
+"Background young concurrent copying GC freed <*>(10MB) AllocSpace objects, <*>(1288KB) LOS objects, <*>% free, 14MB<*>, paused 610us,120us total <*>.763ms"
+Screen on took <*> ms
+mHideAnimationFinishedRunnable#run
+"#handleCancelKeyguardExitAnimation: keyguard exit animation cancelled. There's a pending lock, so we were cancelled because the device was locked again during the unlock sequence. We should end up locked."
+Warning: providing system service sensor took 31ms
+<*> GUARD: CameraActivity.onCreateTasks - <*> Init CurrentModule
+"onResume() --> postDelayed(mOnResumeTasks,<*>)"
+delayed Runnable --> onResumeTasks()
+onSurfaceTextureSizeChanged
+Not <*> <*> <*> <*> <*> <*> <*> <*> <*>
+host<*>: offline
+destroying transport host<*>
+BlockingConnectionAdapter(host<*>): <*>
+BlockingConnectionAdapter(host<*>): already stopped
+{belief=<*>.<*> confidence=<*>.<*>}
+"{context=ProximityClassifier reason={percentInProximity=<*>.<*>, threshold=<*>.<*>, distanceClassifier={context=DistanceClassifier reason={distanceVectors={dx=<*>.<*>, vx=-<*>.<*>, dy=-<*>.<*>, vy=-<*>.<*>}, isHorizontal=false, velocityToDistanceMultiplier=<*>.<*>, horizontalFlingThreshold=<*>.<*>, verticalFlingThreshold=<*>.<*>, horizontalSwipeThreshold=<*>.<*>, verticalSwipeThreshold=<*>.<*>}}}}"
+fadeOutSurfaceBehind
+handleStartKeyguardExitAnimation startTime=<*> fadeoutDuration=<*>
+fadeInSurfaceBehind
+skip finishSurfaceBehindRemoteAnimation surfaceBehindAlpha=<*>.<*>
+onKeyguardExitRemoteAnimationFinished
+onKeyguardExitRemoteAnimationFinished#hideKeyguardViewAfterRemoteAnimation
+"PendingStartActivityUids startActivity to updateOomAdj delay:1007ms, uid:<*>"
+Removing uids <*><*>
+OverlayManager.setEnabled() result: true
+sync unfroze <*> <*>
+"Created new state object: State{action=<*>, acceptMimes=[*/*], allowMultiple=true, localOnly=false, stack=DocumentStack{root=null, docStack=[], stackTouched=false}, dirConfigs={}, excludedAuthorities=[], openableOnly=false, restrictScopeStorage=true, sortModel=SortModel{dimensions={<*>=SortDimension{id=<*>, labelId=<*>, dataType=<*>, sortCapability=<*>, defaultSortDirection=<*>, sortDirection=<*>, visibility=<*>}, <*>=SortDimension{id=<*>, labelId=<*>, dataType=<*>, sortCapability=<*>, defaultSortDirection=<*>, sortDirection=<*>, visibility=<*>}, <*>=SortDimension{id=<*>, labelId=<*>, dataType=<*>, sortCapability=<*>, defaultSortDirection=<*>, sortDirection=<*>, visibility=<*>}, <*>=SortDimension{id=<*>, labelId=<*>, dataType=<*>, sortCapability=<*>, defaultSortDirection=<*>, sortDirection=<*>, visibility=<*>}, <*>=SortDimension{id=<*>, labelId=<*>, dataType=<*>, sortCapability=<*>, defaultSortDirection=<*>, sortDirection=<*>, visibility=<*>}}, defaultDimensionId=<*>, sortedDimension=null}}"
+Calculated drawer width:<*>.<*>
+Launching directly into Home directory.
+"Matched roots: [Root{userId=<*>, authority=null, rootId=null, title=Recent, isUsb=false, isSd=false, isMtp=false} @ content:<*>, Root{userId=<*>, authority=<*>, <*> <*> isUsb=false, isSd=false, isMtp=false} @ content:/<*>.<*><*>, Root{userId=<*>, authority=<*>, <*> <*> isUsb=false, isSd=false, isMtp=false} @ content:/<*>.<*><*>, Root{userId=<*>, authority=<*>, <*> <*> isUsb=false, isSd=false, isMtp=false} @ content:/<*>.<*><*>, Root{userId=<*>, authority=<*>, <*> <*> isUsb=false, isSd=false, isMtp=false} @ content:/<*>.<*><*>, Root{userId=<*>, authority=<*>, <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> isUsb=false, isSd=false, isMtp=false} @ content:/<*>.<*><*>]"
+"Loaded root: Root{userId=<*>, authority=<*>, rootId=downloads, title=Downloads, isUsb=false, isSd=false, isMtp=false} @ content:/<*>.<*><*>"
+Tried to finish a null action mode.
+"Root changed to: Root{userId=<*>, authority=<*>, rootId=downloads, title=Downloads, isUsb=false, isSd=false, isMtp=false} @ content:/<*>.<*><*>"
+"Adding doc to stack: DocumentInfo{docId=downloads, userId=<*>, name=Downloads, mimeType=<*><*>, isContainer=true, isDirectory=true, isArchive=false, isInArchive=false, isPartial=false, isVirtual=false, isDeleteSupported=false, isCreateSupported=true, isMoveSupported=false, isRenameSupported=false, isMetadataSupported=false, isBlockedFromTree=false} @ content:/<*>.<*><*>"
+Showing directory: content:/<*>.<*><*>
+Creating new <*> <*> <*> content:/<*>.<*><*>
+Setting gestureTooltypes is likely to result in unexpected behavior.
+Loader has finished for: content:/<*>.<*><*>
+Received model update. Loading=false
+Ignoring onDataSetChange. No active selection.
+Provider does not support refresh and did not refresh
+"Dropping event because there is no touched window on display <*> to receive it: MotionEvent(deviceId=<*>, eventTime=<*>, source=TOUCHSCREEN, displayId=<*>, action=UP, actionButton=<*>, flags=<*>, metaState=<*>, buttonState=<*>, classification=NONE, edgeFlags=<*>, xPrecision=<*>.<*>, yPrecision=<*>.<*>, xCursorPosition=nan, yCursorPosition=nan, pointers=[<*>: (<*>.<*>, <*>.<*>)]), policyFlags=<*>"
+"canonicalizeMccMnc: invalid mccmnc:null ,null"
+"Carrier configs loaded: Bundle[{httpSocketTimeout=<*>, aliasMinChars=<*>, smsToMmsTextThreshold=-<*>, enableSMSDeliveryReports=true, maxMessageTextSize=-<*>, supportMmsContentDisposition=true, enabledTransID=false, aliasEnabled=false, supportHttpCharsetHeader=false, allowAttachAudio=true, smsToMmsTextLengthThreshold=-<*>, recipientLimit=<*>, uaProfTagName=x-wap-profile, aliasMaxChars=<*>, maxImageHeight=<*>, enableMMSDeliveryReports=false, userAgent=, mmsCloseConnection=false, config_cellBroadcastAppLinks=true, maxSubjectLength=<*>, httpParams=, enableGroupMms=true, emailGatewayNumber=, maxMessageSize=<*>, naiSuffix=, enableMMSReadReports=false, maxImageWidth=<*>, uaProfUrl=, enabledMMS=true, enabledNotifyWapMMSC=false, sendMultipartSmsAsSeparateMessages=false, enableMultipartSMS=true}] from resources+system for subId=<*>"
+ProcessPendingMessagesAction: Start queueing for subId <*>
+ProcessPendingMessagesAction: No messages to send or download
+"SyncMessagesAction: Starting batch for messages from <*> to <*> (message update limit = <*>, message scan limit = <*>)"
+SyncMessagesAction: All messages now in sync
+START u0 {flg=<*> cmp=<*>/.<*>} from uid <*>
+"contact provider didn't provide contact label information, fall back to using display name!"
+app:theme is now deprecated. Please move to using android:theme instead.
+"Ignoring showSoftInput() as view=<*>{<*> VFED..CL. .F...... <*>,<*><*>,<*> #<*> app:id<*> aid=<*>} is not served."
+"<*>: Activity <*> has leaked window <*>{<*> V.E...... .......D <*>,<*><*>,<*>} that was originally <*> here"
+Add Task{<*> #<*> type=standard A=<*>:<*>} to hidden list because adding Task{<*> #<*> type=standard A=<*>:<*>}
+Waiting because no window has focus but ActivityRecord{<*> u0 <*>/.uioverrides.QuickstepLauncher} t6} may eventually add a window when it finishes starting up. Will wait for 5000ms
+"StrictMode policy violation: <*>: Finalizing a Cursor that has not been deactivated or closed. database = <*>.<*><*>.db, table = raw_contacts, query = SELECT contacts_view._id AS _id, contacts_view.display_name AS display_name, contacts_view.photo_thumb_uri AS photo_thumb_uri, data1 AS number, data2 AS type, data3 AS label, contacts_view.lookup AS lookup FROM raw_contacts JOIN view_contacts as contacts_view ON (contacts_view._id = raw_contacts.contact_id) JOIN (SELECT data_id,normalized_number FROM phone_lookup WHERE (phone_lookup.min_match = '<*>')) AS lookup ON lookup.data_id=data._id JOIN data ON data.raw_contact_id=raw_contacts._id WHERE (PHONE_NUMBERS_EQUAL(data.data1, '+<*>', <*>, <*>)) ORDER BY length(lookup.normalized_number) DESC"
+StrictMode policy violation: <*>: A resource was acquired at attached stack trace but never released. See <*> for information on avoiding resource leaks.
+Caused by: <*>: Explicit termination method 'AbstractCursor.close' not called
+DialerApplication.initializeAnnotatedCallLog - framework not enabled
+VoicemailModule.provideVoicemailClient - providing VoicemailClientImpl
+Build info: aosp_cf_x86_64_phone-userdebug <*> <*> <*> test-keys
+External storage state=mounted
+"Opening Camera: CameraId{Api2='<*>',Api1:<*>}"
+Tracking active camera: <*>
+starting <*> <*>
+<*>: uid <*> does not have <*> or <*>.
+Caused by: <*>: Remote stack trace:
+startReceivingLocationUpdates
+"CameraService::connect call (PID <*> ""<*>"", camera ID <*>) and Camera API version <*>"
+"Camera <*>: Opened. Client: <*> (PID <*>, UID <*>)"
+CameraDeviceClient <*>: Opened
+"makeClient: Camera2 API, override to portrait <*>"
+"onTorchStatusChangedLocked: Torch status changed for cameraId=<*>, newStatus=<*>"
+StreamConfigurationMap: <*> <*> maxResolution ? <*>
+"StreamConfigurationMap: ANDROID_SCALER_AVAILABLE_MIN_FRAME_DURATIONS missing!, max resolution ? true"
+InitializeControlDefaults: No available post RAW boost! Setting default!
+Camera device device@<*>.<*><*> torch status is now <*>
+Initialize: measure buffer allocation time: <*>
+Create: Created a device session for camera <*> with <*> physical cameras
+"A callback has been <*> <*> ThermalHAL, isFilter: <*> Type: UNKNOWN"
+Recent tasks don't include camera client package name: <*>
+Camera <*> <*> <*>
+"Picture Size Configuration: PictureSizeCalculator.Configuration{native size=1856x1392, crop=Rect(<*>, <*> - <*>, <*>)}"
+onCameraOpened: <*>@<*>
+Could not open camera.
+Camera <*>: start to <*>
+validate_camera_metadata_structure: metadata is null!
+disconnectImpl: <*>
+disconnect: Disconnected client for camera <*> for PID <*>
+"Closing: ImageReader{width=<*>, height=<*>, format=YUV_420_888}"
+stopping location updates
+stopReceivingLocationUpdates
+ignoring storage callback after activity pause
+"configurePreviewDimensions(RectF(NaN, NaN, NaN, NaN))"
+Logged buttons presented and clicked permissionGroupName=<*> uid=<*> selectedLocations=<*> package=<*> presentedButtons=<*> clickedButton=<*> sessionId=<*> targetSdk=<*>
+Permission grant result requestId=<*> callingUid=<*> callingPackage=<*> permission=<*> isImplicit=false result=<*>
+Non-fixed orientation activity. Crop-rotate-scale is disabled.
+"Tried to access visual service WindowManager from a non-visual Context:<*>@<*> WindowManager should be accessed from Activity or other visual Context. Use an Activity or a Context created with Context#createWindowContext(int, Bundle), which are adjusted to the configuration and visual bounds of an area on screen."
+<*>: Tried to access visual service WindowManager from a non-visual Context:<*>@<*>
+Trying to sync a pano indicator that is not initialized.
+createSurfaceFromGbp: Camera <*> with consumer usage flag: <*>: Forcing asynchronous mode forstream
+createSurfaceFromGbp: Camera <*>: Overriding format <*> to IMPLEMENTATION_DEFINED
+======== App stream configuration ========
+"== stream num: <*>, operation_mode:<*>"
+"==== [<*>]stream_id <*>, type <*>, format <*>, res <*> usage <*>, is_phy <*>, phy_cam_id <*>, group_id -<*>"
+IsStreamConfigurationSupported: Software denoised not enabled
+IsStreamConfigurationSupported: RgbirdCaptureSession doesn't support <*> physical cameras
+IsStreamConfigurationSupported: Only support two IR cameras but there are <*> cameras.
+IsStreamConfigurationSupported: BasicCaptureSession supports the stream config
+Set real time priority for request queue thread (tid <*>)
+Unknown higher hardware level mapped to FULL: <*>
+"listeners: [<*>@<*>, <*>@<*>, <*>@<*>, <*>$Listener@<*>]"
+"listeners: [<*>@<*>, <*>@<*>, <*>@<*>, <*>$Listener@<*>, <*>$Listener@<*>]"
+Executing <*> <*> <*>
+Ready for capture.
+onPreviewStarted
+Display <*> policy changed
+"Previous: {{defaultModeId=<*>, allowGroupSwitching=false, primaryRange=[<*>.<*> Hz, <*>.<*> Hz], appRequestRange=[<*>.<*> Hz, <*> Hz]}}"
+"Current: {{defaultModeId=<*>, allowGroupSwitching=false, primaryRange=[<*>.<*> Hz, <*>.<*> Hz], appRequestRange=[<*>.<*> Hz, <*> Hz]}}"
+<*> mode changes were performed under the previous policy
+ProcessCaptureResult: First frame done
+AF status is <*>
+Running showPassiveFocusAtCenter()
+onSurfaceTextureUpdated --> updatePreviewTransform
+hiding cover via onSurfaceTextureUpdated
+First preview frame received
+"configurePreviewDimensions(RectF(<*>.<*>, <*>.<*>, <*>.<*>, <*>.<*>))"
+Flash not required
+No location received yet.
+running flash-auto command: <*>@<*>
+ZSL image available
+Task <*>. Queue size now: <*>
+Received an opened image: <*><*>
+Setting an image reference count of <*> Total refs = <*>
+"TIMER_END Rendering preview YUV buffer available, w=<*> h=<*> of subsample <*>"
+TIMER_BEGIN Starting Native Java YUV420-to-RGB Circular Conversion
+Y-Plane Size=232x174
+U-Plane Size=<*> Pixel Stride=<*>
+V-Plane Size=<*> Pixel Stride=<*>
+onSessionQueued: camera_session:/<*>.com<*>
+suggesting item bounds: 720x1184
+"getRecycledView, recycled=false"
+reload() - Ensure all items are loaded at max size.
+[ViewItem:<*>] <*>
+onFilmstripItemInserted()
+TIMER_END Starting Native Java YUV420-to-RGB Circular Conversion
+Ref release. Total refs = <*>
+"Compressing jpeg with size = (<*>, <*>); y-channel pixel stride = <*>; y-channel row stride = <*>; cb-channel pixel stride = <*>; cb-channel row stride = <*>; cr-channel pixel stride = <*>; cr-channel row stride = <*>; crop = [(<*>, <*>) - (<*>, <*>)]; rotation = <*> * <*> deg."
+session bitmap cache size: <*>
+onSessionUpdated: camera_session:/<*>.com<*>
+updateViewItem() - updating data with the same item
+updateViewItem(bufferIndex: <*>)
+updateViewItem() - mIsUserScrolling: false
+Ref release close.
+Release of image occurred. Good fun. Total Images Open<*> = <*><*>
+isAppCloneUserPair for user <*>: false
+Inserted id:<*> less than next row id backup:<*>.
+Open with FUSE. FilePath: <*> Uid: <*>. Media Capabilities Uid: <*>. ShouldRedact: false. ShouldTranscode: false
+Moving <*> to <*>.jpg
+Image with uri: content:/<*> was published to the MediaStore
+onSessionDone:camera_session:/<*>.com<*>
+Expect <*> scores and rectangles to be non-null
+"Note: egl wanted <*>, still using RGBA"
+updateViewItem() - recycling old data item and setting new
+onFilmstripItemRemoved()
+showing undo bar
+recycleView
+Hiding undo deletion bar
+Deleted <*> <*> <*> <*> <*> <*> <*> items on external due to <*>
+"Closed Camera <*>. Client was: <*> (PID <*>, UID <*>)"
+injectionDisconnectImpl: Injection camera disconnect
+"release <*>:<*> transaction <*> out, still active"
+ProcessCaptureRequest latency histogram (<*>) samples:
+<*> <*> <*> <*> <*> <*> <*> <*> <*> inf (max ms)
+Stream <*> dequeueBuffer latency histogram (<*>) samples:
+logClose: SessionStatsMap should contain camera <*> before it's closed
+"Fetching SyncRequestParams. Authority: <*>. LatestMediaCollectionInfo: Bundle[{last_media_sync_generation=<*>, media_collection_id=<*>:<*><*>-<*>-<*>-<*>:<*><*>:external_primary}]. CachedMediaCollectionInfo: Bundle[{last_media_sync_generation=-<*>, media_collection_id=null}]"
+SyncRequestParams. Authority: <*>. Result: SYNC_TYPE_FULL
+SyncReset. Authority: <*> Result count: <*>
+Paged sync successful. QueryArgs: Bundle[{}]. Result count: <*>. Cursor count: <*>
+Fetching SyncRequestParams. Null cloud authority. Result: SYNC_TYPE_RESET
+Ignoring cache media info for null authority with bundle: null
+Executing SyncAlbumReset. authority: <*> albumId: null
+<*> took to complete: <*>
+USB HAL AIDL version: USB_HAL_V2_0
+"After updating volumes, found <*> active roots"
+at <*>
+isLowRamDevice:false totalMemory:<*> mClientSharedHeapSize:<*>
+Compat change id reported: <*>; UID <*> state: <*>
+Waiting for service <*> on '<*>' successful after waiting <*>
+MemtrackProxyService
+"isEmergencyPreferredAccount: subId=<*>, activeData=<*>"
+Adding: <*>@<*>
+<*> Successfully processed VINTF information
+Could not <*> <*> <*> <*>
+at <*>(Native Method)
+Received new disable state: Old: enaiHbcRso.qingr | New: enaihbcrso.qingr (changed: hr.)
+<*> <*> = <*>
+"[incfs] Loaded incremental-fs mount info: <*> instances, <*> mount points"
+Service <*> must be in VINTF manifest in order to register<*>.
+isFsAvailable: true
+"Skipping unlink call, service died."
+PlatformCompat took to complete: 148ms
+<*> <*> to <*> <*>
+USB GADGET HAL not present in the device
+Permission failure: <*> from uid=<*> pid=<*>
+Finished executing Update app-ops uidState in case package <*> changed
+"found effect ""Multichannel Downmix To Stereo"" from The Android Open Source Project"
+<*> <*> <*> for <*> <*> <*> <*>
+Completing Test Harness Mode setup.
+StartCrossProfileAppsService
+No <*> <*> <*> <*> <*>
+Package <*> does not have legacy storage
+Waiting for <*> <*> <*> <*>
+"Asked about unknown display, returning empty display mode specs!(id=<*>)"
+<*>$Lifecycle
+Found <*> <*> <*> <*> <*>
