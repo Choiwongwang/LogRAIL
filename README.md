@@ -1,4 +1,4 @@
-LogRAIL: A Retrieval-Augmented LLM Inference Layer for Log Anomaly Detection
+**LogRAIL: A Retrieval-Augmented LLM Inference Layer for Log Anomaly Detection
 ```
 ┌───────────────────────────────┐
 │ [1] Preprocess (preprocess.py) │
