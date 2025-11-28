@@ -88,3 +88,22 @@ python eval_final.py \
 ## Notes
 - When regenerating GT, ensure `gt_all.csv` matches the prediction window_id set (2,309 windows).
 - If your data is not public, exclude `dataset/` from commits and share only the run instructions.
+
+##LLM
+## Llama-3 Instruct (from Hugging Face)
+
+We use `meta-llama/Meta-Llama-3-8B-Instruct` as the default LLM. To run locally:
+
+### 1) Download / cache the model
+```bash
+# Option A: use transformers to auto-download on first run
+python - <<'PY'
+from transformers import AutoTokenizer, AutoModelForCausalLM
+mname = "meta-llama/Meta-Llama-3-8B-Instruct"
+tok = AutoTokenizer.from_pretrained(mname, trust_remote_code=True)
+_ = AutoModelForCausalLM.from_pretrained(mname, device_map="auto", torch_dtype="auto", trust_remote_code=True)
+PY
+
+# Option B: pre-download (e.g., with huggingface-cli)
+# huggingface-cli download meta-llama/Meta-Llama-3-8B-Instruct --local-dir ./models/llama3-8b
+
