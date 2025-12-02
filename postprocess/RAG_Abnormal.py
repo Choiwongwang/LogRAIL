@@ -66,7 +66,7 @@ DEFAULTS = {
     "llm_model":   "meta-llama/Meta-Llama-3-8B-Instruct",
     "embed_model": "BAAI/bge-small-en-v1.5",
     "normalize_embeddings": True,
-    "top_k": 10,
+    "top_k": 3,
     "device": "cuda",
 
     # pred==0 (missed anomaly) gates/thresholds (relaxed)
