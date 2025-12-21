@@ -126,14 +126,19 @@ class Model(nn.Module):
         #    d_model=768, max_len=window_size)
         self.fc1 = nn.Linear(dim * window_size, 2)
 
-    def forward(self, x):
+    def forward(self, x, src_key_padding_mask=None):
         B, _, _ = x.size()
         # x = x*math.sqrt(self.dim)
 
         x = self.pos_encoder1(x)
         # x = self.pos_encoder2(x)
 
-        x = self.trans_encder(x)  # mask默认None
+        x = self.trans_encder(x, src_key_padding_mask=src_key_padding_mask)  # mask默认None
+
+        if src_key_padding_mask is not None:
+            if src_key_padding_mask.dtype != torch.bool:
+                src_key_padding_mask = src_key_padding_mask.bool()
+            x = x.masked_fill(src_key_padding_mask.unsqueeze(-1), 0.0)
 
         x = x.contiguous().view(B, -1)
 
