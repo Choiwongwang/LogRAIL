@@ -1,168 +1,203 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Rebuild window_id → representative EventTemplate mapping using the same
-non-overlapping window split/shuffle rules as the NPZ preprocessing.
+rebuild_window_repr_from_split.py
+──────────────────────────────────────────────────────────────
+Reproduces the NPZ preprocessing rules (non-overlapping windows + padding +
+random shuffled train/test split) to build window-level representative
+EventTemplates that match the **window_id order in the prediction CSV** 1:1.
 
-Why:
-- The prediction CSV window_id is not the original line index; it is the
-  concatenation of shuffled train.npz + test.npz order.
-- Therefore `loc[window_id]` on the raw CSV is wrong; this script rebuilds
-  the mapping to align window_id = [train_shuffle..., test_shuffle...].
+Why is this needed?
+- In the prediction CSV, `window_id` is NOT the original line index.
+  It is the index after shuffling and then concatenating train.npz followed by test.npz.
+- If the preprocessing keeps the tail window via padding (using ceil),
+  this script must also use ceil to include the final padded window,
+  otherwise the number of window_ids will not match.
+- Therefore, extracting templates via `loc[window_id]` from the original CSV is incorrect.
+- This script reproduces the preprocessing split rule (window_size/train_ratio/seed)
+  and generates a `[window_id, EventTemplate]` CSV aligned with:
+    window_id = [0..n_train-1, n_train..n_train+n_test-1]
 
 Inputs
-- --src_csv : Raw structured log CSV (must include EventTemplate and label/Level)
-- --label_col : Label column name (default: label)
-- --window_size : Window size used in preprocessing (e.g., 20)
-- --train_ratio : Train split ratio used in preprocessing (e.g., 0.7)
-- --seed : Seed used for shuffling (e.g., 42)
-- --pred_csv : (optional) prediction CSV for sanity check
-- --out : Output CSV path
+- --src_csv     : source line-level CSV (must include EventTemplate and label/Level)
+- --label_col   : label column name (default: 'label')
+- --window_size : window size used in preprocessing (e.g., 20)
+- --train_ratio : train split ratio used in preprocessing (e.g., 0.7)
+- --seed        : seed used in preprocessing (e.g., 42)
+- --pred_csv    : (optional) prediction CSV path for sanity-checking counts
+- --out         : output CSV path (single-mode)
 
-Output
-- CSV `[window_id, EventTemplate]` in the same order as the prediction CSV
+Outputs
+- CSV with columns `[window_id, EventTemplate]` aligned to the prediction CSV window_id order
 """
 
-import argparse, os
+import argparse
+import math
+import random
 import numpy as np
 import pandas as pd
 from collections import Counter
-
-THIS_DIR = os.path.dirname(__file__)
-DEFAULTS = {
-    "src_csv": os.path.join(THIS_DIR, "dataset", "Android.csv"),
-    "label_col": "label",
-    "window_size": 20,
-    "train_ratio": 0.7,
-    "seed": 42,
-    "pred_csv": os.path.join(THIS_DIR, "output", "anomaly_logs_detected_by_logformer.csv"),
-    "out": os.path.join(THIS_DIR, "output", "window_repr_by_pred_info.csv"),
-}
 
 
 def _info_score(tpl: str) -> float:
     """Heuristic information score for a template.
 
-    High when the template has many meaningful tokens and few wildcards.
+    Higher when the template contains more meaningful tokens and fewer wildcards.
     """
     if not tpl:
         return 0.0
     tokens = str(tpl).split()
     if not tokens:
         return 0.0
-    wildcard_tokens = sum(1 for tok in tokens if '<*>' in tok or tok in {'*', '<num>'})
+    wildcard_tokens = sum(1 for tok in tokens if "<*>" in tok or tok in {"*", "<num>"})
     alpha_tokens = sum(1 for tok in tokens if any(ch.isalpha() for ch in tok))
-    num_tokens = len(tokens)
-    # Encourage longer/alphabetic templates, penalise wildcard-heavy ones.
-    return num_tokens + 0.5 * alpha_tokens - 2.0 * wildcard_tokens
+    other_tokens = len(tokens) - alpha_tokens - wildcard_tokens
+    # Reweighted: alphabetic tokens full weight, numeric/other half, heavy penalty for wildcards
+    return alpha_tokens + 0.5 * other_tokens - 2.0 * wildcard_tokens
 
-TRUE_TOKENS = {"1","true","y","yes","anomaly","abnormal","pos","positive","e","f"}
-FALSE_TOKENS = {"0","false","n","no","normal","neg","negative","i","w","d"}
+
+TRUE_TOKENS = {"1", "true", "y", "yes", "anomaly", "abnormal", "pos", "positive", "e", "f"}
+FALSE_TOKENS = {"0", "false", "n", "no", "normal", "neg", "negative", "i", "w", "d"}
+
 
 def to_bool_anom(v):
     v = str(v).strip().lower()
-    if v in TRUE_TOKENS: return True
-    if v in FALSE_TOKENS: return False
-    return any(k in v for k in ["anomaly","error","fail","panic","fatal"])  # heuristic
+    if v in TRUE_TOKENS:
+        return True
+    if v in FALSE_TOKENS:
+        return False
+    return any(k in v for k in ["anomaly", "error", "fail", "panic", "fatal"])  # heuristic fallback
 
 
-def build_repr_templates(df: pd.DataFrame, label_col: str, window_size: int):
+def build_repr_templates(df: pd.DataFrame, label_col: str, window_size: int, prefer_anomaly: bool):
     N = len(df)
-    num_win = N // window_size
-    reps = []  # index -> repr template
-    et = df['EventTemplate'].astype(str).tolist()
-    lab = (df[label_col] if label_col in df.columns else df.get('Level','normal')).tolist()
+    num_win = math.ceil(N / window_size)
+    if num_win == 0:
+        return []
+
+    reps = []  # window_index -> representative template
+    et = df["EventTemplate"].astype(str).tolist()
+    lab = (df[label_col] if label_col in df.columns else df.get("Level", "normal")).tolist()
 
     for i in range(num_win):
         s, e = i * window_size, (i + 1) * window_size
-        slice_templates = et[s:e]
-        slice_labels = lab[s:e]
+        slice_templates = et[s:min(e, N)]
+        slice_labels = lab[s:min(e, N)]
+        if not slice_templates:
+            reps.append("")
+            continue
+
         slice_scores = [_info_score(tpl) for tpl in slice_templates]
 
-        # If all scores are tiny, allow a loose threshold fallback
+        # If scores are generally low, fall back to simpler selection logic
         score_threshold = max(0.5, max(slice_scores) * 0.3)
 
-        # Candidates sorted by information score
+        # Candidate indices ordered by descending information score (tie-breaker: earlier index)
         candidates = sorted(
-            range(window_size),
+            range(len(slice_templates)),
             key=lambda idx: (slice_scores[idx], -idx),
             reverse=True,
         )
 
-        rep = None
+        # Filter by information score threshold
+        filtered_idxs = [idx for idx in candidates if slice_scores[idx] >= score_threshold]
 
-        # 1) Prefer an informative anomaly template
-        for offset in candidates:
-            if slice_scores[offset] >= score_threshold and to_bool_anom(slice_labels[offset]):
-                rep = slice_templates[offset]
+        # 1) Prefer the requested label (anomaly/normal) among informative candidates
+        rep = None
+        for idx in filtered_idxs:
+            is_anom = to_bool_anom(slice_labels[idx])
+            if (prefer_anomaly and is_anom) or ((not prefer_anomaly) and (not is_anom)):
+                rep = slice_templates[idx]
                 break
 
-        # 2) Otherwise, pick the most frequent informative template
-        if rep is None:
-            filtered = [slice_templates[idx] for idx in candidates if slice_scores[idx] >= score_threshold]
-            if filtered:
-                c = Counter(filtered)
-                rep = c.most_common(1)[0][0]
+        # 2) If none match the preferred label, pick the most frequent among informative candidates
+        if rep is None and filtered_idxs:
+            filtered = [slice_templates[idx] for idx in filtered_idxs]
+            c = Counter(filtered)
+            rep = c.most_common(1)[0][0]
 
-        # 3) Fallback: first anomaly, else mode
+        # 3) Final fallback: first occurrence of preferred label, else global most frequent
         if rep is None:
-            for j in range(s, e):
-                if to_bool_anom(lab[j]):
-                    rep = et[j]
+            for j in range(len(slice_templates)):
+                is_anom = to_bool_anom(slice_labels[j])
+                if (prefer_anomaly and is_anom) or ((not prefer_anomaly) and (not is_anom)):
+                    rep = slice_templates[j]
                     break
         if rep is None:
             c = Counter(slice_templates)
             rep = c.most_common(1)[0][0]
 
         reps.append(rep)
-    return reps  # len = num_win
+
+    return reps  # length = num_win
 
 
 def main():
-    ap = argparse.ArgumentParser("Rebuild window_id→EventTemplate mapping matching shuffled train/test split")
-    ap.add_argument('--src_csv', default=DEFAULTS["src_csv"])
-    ap.add_argument('--label_col', default=DEFAULTS["label_col"])
-    ap.add_argument('--window_size', type=int, default=DEFAULTS["window_size"])
-    ap.add_argument('--train_ratio', type=float, default=DEFAULTS["train_ratio"])
-    ap.add_argument('--seed', type=int, default=DEFAULTS["seed"])
-    ap.add_argument('--pred_csv', default=DEFAULTS["pred_csv"])
-    ap.add_argument('--out', default=DEFAULTS["out"])
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--src_csv", required=True)
+    ap.add_argument("--label_col", default="label")
+    ap.add_argument("--window_size", type=int, required=True)
+    ap.add_argument("--train_ratio", type=float, required=True)
+    ap.add_argument("--seed", type=int, required=True)
+    ap.add_argument("--pred_csv", default=None)
+    ap.add_argument(
+        "--mode",
+        choices=["anomaly", "normal", "both"],
+        default="anomaly",
+        help="Representative template preference: anomaly / normal / both (generate two outputs)",
+    )
+    ap.add_argument("--out", required=False, help="Output path for single-mode (anomaly/normal)")
+    ap.add_argument("--out_anomaly", required=False, help="Output path when mode=both (prefer anomaly)")
+    ap.add_argument("--out_normal", required=False, help="Output path when mode=both (prefer normal)")
     args = ap.parse_args()
 
     df = pd.read_csv(args.src_csv)
-    if 'EventTemplate' not in df.columns:
-        raise ValueError('src_csv must contain EventTemplate column')
+    if "EventTemplate" not in df.columns:
+        raise ValueError("src_csv must contain an EventTemplate column")
 
-    reps = build_repr_templates(df, args.label_col, args.window_size)
+    mode = args.mode
+    if mode in ("anomaly", "normal") and not args.out:
+        raise ValueError("--out is required when mode is anomaly/normal")
+    if mode == "both" and (not args.out_anomaly or not args.out_normal):
+        raise ValueError("mode=both requires --out_anomaly and --out_normal")
 
-    # Reproduce train/test split (same as preprocessing)
-    num_win = len(reps)
-    idx = list(range(num_win))
-    rng = np.random.RandomState(args.seed)
-    rng.shuffle(idx)
-    n_train = int(len(idx) * args.train_ratio)
-    idx_train, idx_test = idx[:n_train], idx[n_train:]
+    def build_and_save(prefer_anomaly: bool, out_path: str):
+        reps = build_repr_templates(df, args.label_col, args.window_size, prefer_anomaly)
 
-    # pred window_id order = shuffled train followed by shuffled test
-    rows = []
-    for wid, orig in enumerate(idx_train):
-        rows.append((wid, reps[orig]))
-    for j, orig in enumerate(idx_test):
-        rows.append((n_train + j, reps[orig]))
+        # Reproduce the same shuffled split as preprocessing (Python random)
+        num_win = len(reps)
+        idx = list(range(num_win))
+        random.seed(args.seed)
+        random.shuffle(idx)
 
-    out = pd.DataFrame(rows, columns=['window_id','EventTemplate'])
+        n_train = int(len(idx) * args.train_ratio)
+        idx_train, idx_test = idx[:n_train], idx[n_train:]
 
-    # Optional sanity check against pred_csv
-    if args.pred_csv:
-        pred = pd.read_csv(args.pred_csv)
-        uniq = pred['window_id'].nunique()
-        if uniq != len(out):
-            print(f"[!] sanity: pred unique window_id={uniq} vs built={len(out)} (mismatch)")
-        else:
-            print(f"[i] sanity: pred unique window_id={uniq} (OK)")
+        rows = []
+        for wid, orig in enumerate(idx_train):
+            rows.append((wid, reps[orig]))
+        for j, orig in enumerate(idx_test):
+            rows.append((n_train + j, reps[orig]))
 
-    out.to_csv(args.out, index=False)
-    print(f"[✓] wrote {args.out} rows={len(out):,}  (train={n_train:,} test={len(idx_test):,})")
+        out = pd.DataFrame(rows, columns=["window_id", "EventTemplate"])
 
-if __name__ == '__main__':
+        if args.pred_csv:
+            pred = pd.read_csv(args.pred_csv)
+            uniq = pred["window_id"].nunique()
+            if uniq != len(out):
+                print(f"[!] sanity: pred unique window_id={uniq} vs built={len(out)} (mismatch)")
+            else:
+                print(f"[i] sanity: pred unique window_id={uniq} (OK)")
+
+        out.to_csv(out_path, index=False)
+        print(f"[✓] wrote {out_path} rows={len(out):,}  (train={n_train:,} test={len(idx_test):,})")
+
+    if mode in ("anomaly", "normal"):
+        build_and_save(prefer_anomaly=(mode == "anomaly"), out_path=args.out)
+    else:  # both
+        build_and_save(prefer_anomaly=True, out_path=args.out_anomaly)
+        build_and_save(prefer_anomaly=False, out_path=args.out_normal)
+
+
+if __name__ == "__main__":
     main()
