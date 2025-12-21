@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-RAG_v3_recall_anomonly_recallboost.py — recall-boost post-processing (anomaly VDB only)
-- pred==1 (anomaly) is kept (no FP logic)
-- pred==0 (normal): retrieve anomaly VDB + (fast path OR LLM voting) to flip 0→1
-- Relaxations:
-  * Looser prob/sim thresholds, no top2 requirement, no keyword requirement
-  * Fast path: identical/very high sim → escalate without LLM
-  * Dual prompt voting (optional) + evidence-based bonus vote (prior)
+RAG_v3_recall_anomonly_recallboost.py — recall-focused post-process (anomaly VDB only)
+- Keep pred==1 (anomaly) as-is (no FP correction)
+- For pred==0 (normal) only: query anomaly VDB + LLM to promote 0→1
+- Enhancements:
+  * relaxed gates: looser prob/sim thresholds, no top2/keyword requirement
   * top-k=10
-- Outputs: final CSV (4 cols), raw JSON, flips CSV
-- Eval (optional): slide-style block with confusion matrix; no JSON report
+- Outputs: final CSV (4 columns), raw JSON, flips CSV
+- Evaluation (optional): slide-style block with confusion matrix, no JSON report
 """
 
 from __future__ import annotations
@@ -54,62 +52,52 @@ try:
 except Exception as e:
     raise ImportError(f"Failed to import PROMPT_FINAL_REASON: {e}")
 
-# ───────── Defaults (recall-boost) ─────────
+# ───────── Defaults (recall boost) ─────────
 DEFAULTS = {
-    # inputs/DB
+    # Inputs/DB
     "pred_csv":   "output/anomaly_logs_detected_by_logformer.csv",
-    "window_csv": "output/window_repr_by_pred_info.csv",
+    "window_csv": "output/window_repr_by_pred_info_anom.csv",
     "anomaly_csv":"dataset/anomaly_templates_clean.csv",
     "chroma_dir": "rag_db/aosp_bge_v3_recall_anomonly_recallboost",
 
-    # model/embedding
+    # Models/embeddings
     "llm_model":   "meta-llama/Meta-Llama-3-8B-Instruct",
     "embed_model": "BAAI/bge-small-en-v1.5",
     "normalize_embeddings": True,
     "top_k": 3,
     "device": "cuda",
 
-    # pred==0 (missed anomaly) gates/thresholds (relaxed)
-    "prob0_min": 0.30,
-    "prob0_max": 0.80,       # wider than base_threshold=0.70
-    "anom_sim_th": 0.93,     # default sim threshold, no keywords needed
-    "anom_high_th": 0.980,   # high-confidence sim
+    # pred==0 recovery policy/thresholds (relaxed)
+    "prob0_min": 0.40,
+    "prob0_max": 0.69,
+    "anom_sim_th": 0.0,      # disable min similarity guard
+    "anom_high_th": 0.0,     # disable high-confidence guard
     "top2_th": 0.88,
     "require_top2": False,   # no top-2 requirement
-    "use_keywords": False,   # no keyword requirement (increase coverage)
+    "use_keywords": False,   # no keyword requirement (maximize FN coverage)
 
-    # voting (relaxed)
-    "vote_prompts": 5,
-    "min_votes": 3,          # 3/5 agreement flips
-    "dual_prompt_voting": True,       # mix strict + moderate
-    "strict_ratio": 0.6,              # 60% strict, 40% moderate
-
-    # evidence-based bonus vote
-    "prior_bonus_sim": 0.990, # add +1 vote if top-1 sim >= 0.990
-
-    # fast-path: very high sim → escalate without LLM
+    # Promotion guards
     "enable_fast_path": True,
-    "fast_path_sim": 0.992,   # escalate immediately if above
-    "identical_sim": 0.995,   # treat as identical
+    "fast_path_sim": 0.998,   # promote without LLM if >= this
+    "identical_sim": 0.998,   # treat as identical if >= this
+    "llm_flip_sim_th": 0.98,  # require sim >= this when LLM says anomaly
 
-    # Base threshold override
-    "base_threshold": 0.70,
-
-    # Prompt mode (strict/moderate, mixed when dual_prompt_voting=True)
+    # Prompt mode (default strict)
     "prompt_mode": "strict",  # strict | moderate
 
-    # output
+    # Outputs
     "out_csv":   "output/rag_result_v3_recall_anomonly_recallboost.csv",
     "raw_json":  "output/rag_raw_v3_recall_anomonly_recallboost.json",
     "flips_csv": "output/rag_flips_v3_recall_anomonly_recallboost.csv",
 
     # ===== Evaluation =====
-    "eval_gt_csv": "output/gt_all.csv",
+    # Default to test-only GT evaluation (avoid train+test mixing)
+    "eval_gt_csv": "output/gt_test.csv",
     "eval_label_col": "label",
     "skip_eval": False,
 }
 
-# ============ Utils ============
+# ============ Utilities ============
 
 RE_CODEJSON = re.compile(r"```json\s*({[\s\S]*?})\s*```", re.I)
 RE_ANYJSON  = re.compile(r"({[\s\S]*})")
@@ -127,7 +115,7 @@ def _extract_json(txt: str):
         return None
 
 def _read_anomaly(js: dict) -> int:
-    """Read anomaly value from LLM JSON; prefers anomaly, supports is_anomaly."""
+    """Read anomaly from LLM JSON. Prefer anomaly, fallback to is_anomaly."""
     if not isinstance(js, dict):
         return 0
     if "anomaly" in js:
@@ -158,7 +146,7 @@ def _norm_tpl(s: str) -> str:
     return s
 
 def _same_template(a: str, b: str, sim: float, sim_th: float) -> bool:
-    """Treat as identical if case/space-insensitive match or very high sim."""
+    """Treat as identical if whitespace/case-normalized match or very high similarity."""
     if _norm_tpl(a) == _norm_tpl(b):
         return True
     return sim >= sim_th
@@ -184,12 +172,12 @@ def _match_benign(regexes: List[re.Pattern], text: str) -> bool:
         if rx.search(t): return True
     return False
 
-# ============ Force prompts_FN (constants only, no fallback) ============
+# ============ prompts_FN only (no fallback, constants only) ============
 
 def _resolve_prompt_builder(prompt_mode: str):
     """
-    Use only string constants from external prompts_FN module (no fallback).
-    required constants:
+    Use **string constants** from prompts_FN only (no fallback).
+    Required constants:
       - PROMPT_RECALL_STRICT
       - PROMPT_RECALL_MODERATE
     """
@@ -211,7 +199,7 @@ def _resolve_prompt_builder(prompt_mode: str):
     if mod is None:
         detail = "\n".join(tried)
         raise ImportError(
-            "[prompts_FN] Cannot find prompts_FN module for missed anomaly.\n"
+            "[prompts_FN] recall prompt module not found.\n"
             f"tried:\n{detail}"
         ) from last_err
 
@@ -224,15 +212,15 @@ def _resolve_prompt_builder(prompt_mode: str):
         keys = dir(mod)
         sample = ", ".join(k for k in keys if k.isupper())[:300]
         raise AttributeError(
-            "[prompts_FN] required prompt constants not found.\n"
-            f"  - Required const: {const_name}\n"
-            f"  - Loaded module: {getattr(mod, '__file__', 'NA')}\n"
-            f"  - example uppercase symbols: {sample}"
+            "[prompts_FN] required prompt constant not found.\n"
+            f"  - required: {const_name}\n"
+            f"  - module: {getattr(mod, '__file__', 'NA')}\n"
+            f"  - uppercase symbols (sample): {sample}"
         )
 
     tmpl: str = getattr(mod, const_name)
     if not isinstance(tmpl, str):
-        raise TypeError(f"[prompts_FN] {const_name} must be a string. (got {type(tmpl)})")
+        raise TypeError(f"[prompts_FN] {const_name} must be a string (got {type(tmpl)})")
 
     def _build(tok, top_k: int, tpl: str, ctx_lines: List[str]) -> str:
         context = "\n".join(ctx_lines) if ctx_lines else "(no similar anomalies)"
@@ -262,19 +250,10 @@ class RAGPostProcessorV3RecallBoost:
         top2_th: float = 0.88,
         require_top2: bool = False,
         use_keywords: bool = False,
-        # multi-vote
-        vote_prompts: int = 5,
-        min_votes: int = 3,
-        dual_prompt_voting: bool = True,
-        strict_ratio: float = 0.6,
-        # bonus vote(prior)
-        prior_bonus_sim: float = 0.990,
-        # fast-path escalation
         enable_fast_path: bool = True,
-        fast_path_sim: float = 0.992,
-        identical_sim: float = 0.995,
-        # baseline recomputation
-        base_threshold: Optional[float] = 0.70,
+        fast_path_sim: float = 0.998,
+        identical_sim: float = 0.998,
+        llm_flip_sim_th: float = 0.98,
         # prompts
         prompt_mode: str = "strict",
     ):
@@ -283,7 +262,6 @@ class RAGPostProcessorV3RecallBoost:
         self.chroma_dir = chroma_dir
         self.top_k = int(top_k)
         self.device = device
-        self.base_threshold = base_threshold
 
         self.prob0_min    = float(prob0_min)
         self.prob0_max    = float(prob0_max)
@@ -293,16 +271,10 @@ class RAGPostProcessorV3RecallBoost:
         self.require_top2 = bool(require_top2)
         self.use_keywords = bool(use_keywords)
 
-        self.vote_prompts = int(vote_prompts)
-        self.min_votes    = int(min_votes)
-        self.dual_prompt_voting = bool(dual_prompt_voting)
-        self.strict_ratio = float(strict_ratio)
-
-        self.prior_bonus_sim = float(prior_bonus_sim)
-
         self.enable_fast_path = bool(enable_fast_path)
         self.fast_path_sim    = float(fast_path_sim)
         self.identical_sim    = float(identical_sim)
+        self.llm_flip_sim_th  = float(llm_flip_sim_th)
 
         # Embeddings
         self.embed = HuggingFaceEmbeddings(
@@ -332,17 +304,14 @@ class RAGPostProcessorV3RecallBoost:
             eos_token_id=eos_ids, pad_token_id=self.tok.eos_token_id
         )
 
-        # connect prompts_FN
+        # prompts_FN hook (single mode)
         self.prompt_mode = str(prompt_mode).strip().lower()
         if self.prompt_mode not in {"strict","moderate"}:
             self.prompt_mode = "strict"
         self._build_prompt_single = _resolve_prompt_builder(self.prompt_mode)
-        # helper for mixed voting
-        self._build_prompt_strict  = _resolve_prompt_builder("strict")
-        self._build_prompt_mod     = _resolve_prompt_builder("moderate")
 
         self.vdb_anom: Optional[Chroma] = None
-        self.gate_stats = {"eligible":0, "vote_fail":0, "blocked_out_of_boundary":0, "blocked_weak":0, "fast_path":0}
+        self.gate_stats = {"fast_path":0, "eligible":0, "vote_fail":0, "blocked_out_of_boundary":0, "blocked_weak":0}
 
     # VDB
     def _build_vdb_anom(self, texts: List[str]) -> Chroma:
@@ -372,13 +341,13 @@ class RAGPostProcessorV3RecallBoost:
         except Exception:
             return out
 
-    # pred0 call/escalation gates (relaxed)
+    # pred0 call/promotion gate (relaxed)
     def _eligible(self, prob: float, tpl: str, sims: List[float], texts: List[str]) -> Tuple[bool, dict]:
         """
-        Return: (eligible, flags)
-          - call candidate if within boundary (prob0_min~prob0_max)
-          - fast-path: identical or very high sim → escalate immediately (skip LLM)
-          - general candidate: if anom_high_th or anom_sim_th met, try voting to escalate
+        Returns: (eligible, flags)
+          - boundary: candidate if within prob0_min~prob0_max
+          - fast-path: promote immediately if identical or high sim (skip LLM)
+          - otherwise: LLM vote if anom_high_th or anom_sim_th satisfied
         """
         if not (self.prob0_min <= prob <= self.prob0_max):
             self.gate_stats["blocked_out_of_boundary"] += 1
@@ -387,69 +356,31 @@ class RAGPostProcessorV3RecallBoost:
         top1 = sims[0] if sims else 0.0
         top2 = sims[1] if len(sims) > 1 else 0.0
 
-        # identical / near-identical check
         identical = False
         if texts:
             if _same_template(tpl, texts[0], top1, self.identical_sim):
                 identical = True
 
-        # fast-path escalation
+        # fast-path immediate promotion
         if self.enable_fast_path and (identical or top1 >= self.fast_path_sim):
             self.gate_stats["fast_path"] += 1
             return True, {"fast_path": True, "identical": identical, "top1": top1, "top2": top2}
 
-        # general candidate (vote to escalate)
-        strong = (top1 >= self.anom_high_th) or (top1 >= self.anom_sim_th)
-        if strong:
-            self.gate_stats["eligible"] += 1
-            return True, {"fast_path": False, "identical": identical, "top1": top1, "top2": top2}
+        self.gate_stats["eligible"] += 1
+        return True, {"fast_path": False, "identical": identical, "top1": top1, "top2": top2}
 
-        self.gate_stats["blocked_weak"] += 1
-        return False, {"top1": top1, "top2": top2}
-
-    def _vote_llm(
+    def _run_llm_single(
         self, tpl: str, pairs_anom: List[Tuple[str, float]]
-    ) -> Tuple[int, str, int, int, List[dict]]:
-        """
-        LLM multi-vote (dual_prompt_voting applicable)
-        Return: (final_vote_1, last_reason, raw_vote_1, bonus, llm_logs)
-        """
-        ctx_a = [f"{s:.3f} :: {t}" for (t, s) in pairs_anom]
-        sims  = [float(s) for (_, s) in pairs_anom]
-        top1  = sims[0] if sims else 0.0
-
-        votes = []
-        llm_logs: List[dict] = []
-        # build dual prompts
-        if self.dual_prompt_voting:
-            n_strict = int(round(self.vote_prompts * self.strict_ratio))
-            n_mod    = max(0, self.vote_prompts - n_strict)
-            builders = ([self._build_prompt_strict]*n_strict) + ([self._build_prompt_mod]*n_mod)
-        else:
-            builders = [self._build_prompt_single]*self.vote_prompts
-
-        last_js, last_reason = None, ""
-        for idx, build in enumerate(builders):
-            prompt_text = build(self.tok, self.top_k, tpl, ctx_a)
-            out = self.gen(prompt_text)[0]["generated_text"]
-            js  = _extract_json(out)
-            last_js = js
-            ia = _read_anomaly(js)
-            try: votes.append(int(ia))
-            except Exception: votes.append(0)
-            if isinstance(js, dict):
-                last_reason = _minify_reason(js.get("reason", ""), 12)
-                llm_logs.append({"prompt_id": idx, "json": js})
-            else:
-                llm_logs.append({"prompt_id": idx, "raw": out})
-
-        raw_ones = sum(votes)
-
-        # evidence bonus vote: +1 if top1 similarity is very high
-        bonus = 1 if top1 >= self.prior_bonus_sim else 0
-        final_ones = raw_ones + bonus
-
-        return final_ones, last_reason, raw_ones, bonus, llm_logs
+    ) -> Tuple[int, str, List[dict]]:
+        """Single LLM decision."""
+        ctx_lines = [f"{s:.3f} :: {t}" for (t, s) in pairs_anom]
+        prompt_text = self._build_prompt_single(self.tok, self.top_k, tpl, ctx_lines)
+        out = self.gen(prompt_text)[0]["generated_text"]
+        js  = _extract_json(out)
+        vote = _read_anomaly(js)
+        reason = _minify_reason(js.get("reason", "") if isinstance(js, dict) else "", 12)
+        llm_logs = [{"prompt_id": 0, "json": js if isinstance(js, dict) else {"raw": out}}]
+        return vote, reason, llm_logs
 
     def _build_final_reason_prompt(
         self,
@@ -541,7 +472,7 @@ class RAGPostProcessorV3RecallBoost:
             return f"Log '{tpl_snip}' treated as normal ({guard_note})"
         return f"Log '{tpl_snip}' treated as normal"
 
-    # run
+    # Run
     def run(
         self,
         pred_csv: str,
@@ -552,7 +483,7 @@ class RAGPostProcessorV3RecallBoost:
         flips_csv: Optional[str],
         max_rows: Optional[int] = None,
     ):
-        # index anomaly templates
+        # Index anomaly templates
         if not anomaly_csv or not os.path.exists(anomaly_csv):
             raise SystemExit(f"anomaly_csv not found: {anomaly_csv}")
         anomalies = (
@@ -562,7 +493,7 @@ class RAGPostProcessorV3RecallBoost:
         )
         self.vdb_anom = self._build_vdb_anom(anomalies)
 
-        # load input
+        # Load inputs
         pred_df = pd.read_csv(pred_csv)
         if "anomaly_pred" not in pred_df.columns and "is_anomaly_pred" in pred_df.columns:
             pred_df = pred_df.rename(columns={"is_anomaly_pred": "anomaly_pred"})
@@ -584,10 +515,7 @@ class RAGPostProcessorV3RecallBoost:
             base_pred_orig = int(getattr(r, "anomaly_pred", 0))
             tpl = str(getattr(r, "EventTemplate", ""))
 
-            # recompute baseline (prob threshold)
             base_pred = base_pred_orig
-            if self.base_threshold is not None:
-                base_pred = 1 if prob >= float(self.base_threshold) else 0
 
             final_pred = base_pred
             llm_reason_raw = ""
@@ -597,7 +525,7 @@ class RAGPostProcessorV3RecallBoost:
             llm_called = False
             top1_tpl_text = ""
 
-            # recover missed anomaly only when pred==0
+            # Recover only when pred==0
             if tpl and base_pred == 0:
                 pairs_anom = self._retrieve_anom(tpl, self.top_k)
                 sims  = [float(s) for (_, s) in pairs_anom]
@@ -608,7 +536,6 @@ class RAGPostProcessorV3RecallBoost:
                 ok, flags = self._eligible(prob, tpl, sims, texts)
                 if ok:
                     if flags.get("fast_path", False):
-                        # escalate immediately without LLM
                         fpred = 1
                         flips += 1
                         flip_rows.append({
@@ -622,47 +549,48 @@ class RAGPostProcessorV3RecallBoost:
                         guard_note = "fast_path"
                         llm_reason_raw = "fast-path promote"
                     else:
-                        # LLM voting
-                        vote_ones, last_reason, raw_ones, bonus, llm_logs = self._vote_llm(tpl, pairs_anom)
+                        # Single LLM decision
+                        vote, last_reason, llm_logs = self._run_llm_single(tpl, pairs_anom)
                         called += 1
                         llm_called = True
                         if llm_logs:
                             last_entry = llm_logs[-1]
                             last_js = last_entry.get("json", last_entry.get("raw"))
-                        if vote_ones >= self.min_votes:
+                        if vote == 1 and sim_top1 >= self.llm_flip_sim_th:
                             fpred = 1
                             flips += 1
                             flip_rows.append({
                                 "window_id": wid, "before": base_pred, "after": fpred,
                                 "prob": prob, "sim_anom_top1": sim_top1, "tpl": tpl,
                                 "ctx_hit_anom": (pairs_anom[0][0] if pairs_anom else ""),
-                                "llm_reason": "",
-                                "guard_note": f"escalated (votes={raw_ones}+{bonus}prior >= {self.min_votes})",
+                                "llm_reason": last_reason,
+                                "guard_note": "escalated (LLM)",
                             })
                             final_pred = fpred
-                            guard_note = f"escalated (votes={raw_ones}+{bonus}prior >= {self.min_votes})"
+                            guard_note = "escalated (LLM)"
                             llm_reason_raw = last_reason
                         else:
                             self.gate_stats["vote_fail"] += 1
-                            guard_note = "vote_fail"
+                            guard_note = "vote_fail (sim guard)" if vote == 1 else "vote_fail"
                             llm_reason_raw = last_reason
+                    # Record raw only for eligible candidates
+                    raw.append({
+                        "window_id": wid,
+                        "llm_called": llm_called,
+                        "result": (
+                            json.dumps(last_js) if isinstance(last_js, dict)
+                            else (str(last_js) if last_js is not None else "")
+                        ),
+                        "llm_outputs": llm_logs,
+                        "sim_anom": sim_top1 if pairs_anom else 0.0,
+                        "ctx_anom": (pairs_anom[0][0] if pairs_anom else ""),
+                    })
                 else:
+                    # Do not record raw for out-of-bound candidates
                     guard_note = "not_eligible"
                     llm_reason_raw = ""
 
-                raw.append({
-                    "window_id": wid,
-                    "llm_called": llm_called,
-                    "result": (
-                        json.dumps(last_js) if isinstance(last_js, dict)
-                        else (str(last_js) if last_js is not None else "")
-                    ),
-                    "llm_outputs": llm_logs,
-                    "sim_anom": sim_top1 if pairs_anom else 0.0,
-                    "ctx_anom": (pairs_anom[0][0] if pairs_anom else ""),
-                })
-
-            # ── final output: window_id, EventTemplate, llm_reason, anomaly ──
+            # ── Final output: window_id, EventTemplate, llm_reason, anomaly ──
             final_reason = self._compose_final_reason(
                 tpl,
                 top1_tpl_text,
@@ -685,7 +613,7 @@ class RAGPostProcessorV3RecallBoost:
                 "anomaly": int(final_pred),
             })
 
-        # save (only requested 4 columns)
+        # Save (4 columns only)
         os.makedirs(os.path.dirname(out_csv) or ".", exist_ok=True)
         pd.DataFrame(rows, columns=["window_id","EventTemplate","llm_reason","anomaly"]).to_csv(out_csv, index=False)
 
@@ -708,9 +636,7 @@ class RAGPostProcessorV3RecallBoost:
               f"boundary=[{self.prob0_min},{self.prob0_max}]  "
               f"anom_th={self.anom_sim_th}  anom_high={self.anom_high_th}  "
               f"top2={'on' if self.require_top2 else 'off'} (th={self.top2_th})  "
-              f"vote={self.vote_prompts}/{self.min_votes}  "
-              f"dual_prompt={self.dual_prompt_voting} (strict_ratio={self.strict_ratio})  "
-              f"prior@{self.prior_bonus_sim}  fast_path={'on' if self.enable_fast_path else 'off'}@{self.fast_path_sim}")
+              f"fast_path={'on' if self.enable_fast_path else 'off'}@{self.fast_path_sim}")
 
         print("\n── Gate breakdown ──")
         for k in ["fast_path","eligible","vote_fail","blocked_out_of_boundary","blocked_weak"]:
@@ -750,7 +676,7 @@ def evaluate_simple_only_final(pred_csv: str, out_csv: str, gt_csv: str, label_c
     df = df[df["label"].notna()].copy()
     df["label"] = df["label"].astype(int)
 
-    # Compute Stage-1 (prob threshold) and Final, but display Final only
+    # Compute Stage-1 (prob threshold) and Final, but print Final only
     stage1 = (df["prob"] >= float(base_threshold)).astype(int)
     final  = df["anomaly"].astype(int)
 
@@ -761,12 +687,12 @@ def evaluate_simple_only_final(pred_csv: str, out_csv: str, gt_csv: str, label_c
 
 def build_parser():
     p = argparse.ArgumentParser("RAG v3 (recall-only, anomaly-VDB only, recall-boost) + slide-style eval (no JSON report)")
-    # inputs/DB
+    # Inputs/DB
     p.add_argument("--pred_csv",   default=DEFAULTS["pred_csv"])
     p.add_argument("--window_csv", default=DEFAULTS["window_csv"])
     p.add_argument("--anomaly_csv",default=DEFAULTS["anomaly_csv"])
     p.add_argument("--chroma_dir", default=DEFAULTS["chroma_dir"])
-    # model/embedding
+    # Models/embeddings
     p.add_argument("--llm_model",  default=DEFAULTS["llm_model"])
     p.add_argument("--embed_model",default=DEFAULTS["embed_model"])
     p.add_argument("--normalize_embeddings", action="store_true", default=DEFAULTS["normalize_embeddings"])
@@ -780,27 +706,24 @@ def build_parser():
     p.add_argument("--top2_th",    type=float, default=DEFAULTS["top2_th"])
     p.add_argument("--require_top2", action="store_true", default=DEFAULTS["require_top2"])
     p.add_argument("--use_keywords", action="store_true", default=DEFAULTS["use_keywords"])
-    # voting
-    p.add_argument("--vote_prompts", type=int, default=DEFAULTS["vote_prompts"])
-    p.add_argument("--min_votes",    type=int, default=DEFAULTS["min_votes"])
-    p.add_argument("--dual_prompt_voting", action="store_true", default=DEFAULTS["dual_prompt_voting"])
-    p.add_argument("--strict_ratio", type=float, default=DEFAULTS["strict_ratio"])
-    # bonus vote / fast-path
-    p.add_argument("--prior_bonus_sim", type=float, default=DEFAULTS["prior_bonus_sim"])
-    p.add_argument("--enable_fast_path", action="store_true", default=DEFAULTS["enable_fast_path"])
+    # Promotion guards
+    # fast_path on/off toggles (--enable_fast_path / --no_enable_fast_path)
+    p.add_argument("--enable_fast_path", dest="enable_fast_path", action="store_true",
+                   default=DEFAULTS["enable_fast_path"])
+    p.add_argument("--no_enable_fast_path", dest="enable_fast_path", action="store_false")
     p.add_argument("--fast_path_sim", type=float, default=DEFAULTS["fast_path_sim"])
     p.add_argument("--identical_sim", type=float, default=DEFAULTS["identical_sim"])
-    # first-stage threshold
-    p.add_argument("--base_threshold", type=float, default=DEFAULTS["base_threshold"])
-    # prompt mode (mix when dual_prompt_voting)
+    p.add_argument("--llm_flip_sim_th", type=float, default=DEFAULTS["llm_flip_sim_th"])
+    # Prompt mode (single mode)
     p.add_argument("--prompt_mode", choices=["strict","moderate"], default=DEFAULTS["prompt_mode"])
-    # output
+    # Outputs
     p.add_argument("--out_csv",    default=DEFAULTS["out_csv"])
     p.add_argument("--raw_json",   default=DEFAULTS["raw_json"])
     p.add_argument("--flips_csv",  default=DEFAULTS["flips_csv"])
     p.add_argument("--max_rows", type=int, default=None, help="Optional limit on number of windows to process")
-    # evaluation
-    p.add_argument("--eval_gt_csv",     default=DEFAULTS["eval_gt_csv"])
+    # Evaluation
+    p.add_argument("--eval_gt_csv",     default=DEFAULTS["eval_gt_csv"],
+                   help="GT CSV for evaluation (default: output/gt_test.csv)")
     p.add_argument("--eval_label_col",  default=DEFAULTS["eval_label_col"])
     p.add_argument("--skip_eval",       action="store_true", default=DEFAULTS["skip_eval"])
     return p
@@ -829,15 +752,10 @@ def main():
         top2_th = args.top2_th,
         require_top2 = args.require_top2,
         use_keywords = args.use_keywords,
-        vote_prompts = args.vote_prompts,
-        min_votes = args.min_votes,
-        dual_prompt_voting = args.dual_prompt_voting,
-        strict_ratio = args.strict_ratio,
-        prior_bonus_sim = args.prior_bonus_sim,
         enable_fast_path = args.enable_fast_path,
         fast_path_sim = args.fast_path_sim,
         identical_sim = args.identical_sim,
-        base_threshold = args.base_threshold,
+        llm_flip_sim_th = args.llm_flip_sim_th,
         prompt_mode = args.prompt_mode,
     )
 
@@ -853,14 +771,13 @@ def main():
 
     if not args.skip_eval:
         if not args.eval_gt_csv or not os.path.exists(args.eval_gt_csv):
-            print(f"[w] GT file not found; skipping evaluation: {args.eval_gt_csv}")
+            print(f"[w] GT file not found, skipping evaluation: {args.eval_gt_csv}")
         else:
             evaluate_simple_only_final(
                 pred_csv = args.pred_csv,
                 out_csv  = ret["out_csv"],
                 gt_csv   = args.eval_gt_csv,
                 label_col= args.eval_label_col,
-                base_threshold = args.base_threshold,
             )
 
 if __name__ == "__main__":
