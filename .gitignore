@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual env
+.venv/
+
+# Generated data / artifacts
+output/
+rag_db/
+LogFormer/npz/
+LogFormer/checkpoints/
+
+# SQLite/autoconf build artifacts
+sqlite-autoconf-*/
+*.tar.gz

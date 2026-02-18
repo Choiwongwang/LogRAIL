@@ -1,0 +1,149 @@
+import os, argparse, json, random, math
+import pandas as pd, numpy as np
+from tqdm import tqdm
+import torch
+from sentence_transformers import SentenceTransformer
+
+# Default paths (for running without CLI arguments)
+_HERE = os.path.dirname(os.path.abspath(__file__))
+DEFAULT_CSV = os.path.abspath(os.path.join(_HERE, "..", "..", "dataset", "all_logs_labeled.csv"))
+DEFAULT_OUT = os.path.abspath(os.path.join(_HERE, "..", "npz"))
+
+# ------------------------- configuration constants -------------------------
+WINDOW_SIZE   = 20        # 20 log lines = 1 window
+TRAIN_RATIO   = 0.7       # Train 70%
+VAL_RATIO     = 0.15      # Validation 15%
+TEST_RATIO    = 0.15      # Test 15%
+SEED          = 42
+EMBED_MODEL   = "distilbert-base-nli-mean-tokens"   # 768-D embeddings
+# --------------------------------------------------------------------------
+
+def normalize_tpl(s: str) -> str:
+    t = str(s).strip()
+    return " ".join(t.split())
+
+def make_window_label(labels):
+    # Window-level label (one-hot): anomaly if ANY line in the window is anomalous
+    return np.array([0, 1], np.int64) if (labels == 1).any() else np.array([1, 0], np.int64)
+
+def encode_windows(df, tpl2vec):
+    # Original behavior: drop the tail segment when len(df) is not divisible by WINDOW_SIZE
+    # Updated behavior: use ceil to keep all logs, and pad the last window with:
+    #   - zero vectors for embeddings
+    #   - normal label (0) for missing line labels
+    num_win = math.ceil(len(df) / WINDOW_SIZE)
+    if not num_win:
+        return np.array([], object), np.array([], object)
+
+    # Padding vector with the same shape/dtype as the embedding vectors
+    pad_vec = np.zeros_like(next(iter(tpl2vec.values())))
+
+    X_list, Y_list = [], []
+    for i in tqdm(range(num_win), desc="Building windows", ncols=80):
+        start = i * WINDOW_SIZE
+        end = start + WINDOW_SIZE
+        block = df.iloc[start:end]
+
+        # (L, 768) embedding sequence for the window
+        vecs = [tpl2vec[t] for t in block["EventTemplate_norm"]]
+        if len(vecs) < WINDOW_SIZE:
+            vecs.extend([pad_vec] * (WINDOW_SIZE - len(vecs)))
+        vecs = np.stack(vecs, axis=0)
+
+        # Line-level labels for the window; pad missing labels with 0 (normal)
+        labels = block["label"].values
+        if len(labels) < WINDOW_SIZE:
+            labels = np.concatenate([labels, np.zeros(WINDOW_SIZE - len(labels), dtype=labels.dtype)])
+
+        X_list.append(vecs)
+        Y_list.append(make_window_label(labels))
+
+    return np.array(X_list, object), np.array(Y_list, object)
+
+def save_npz(path, x, y):
+    np.savez(path, x=np.array(x, dtype=object), y=np.array(y, dtype=object))
+    print(f"[✓] {os.path.basename(path):<25}  x:{len(x):>5}  y:{len(y):>5}")
+
+def stratified_split_indices(y, train_ratio, val_ratio, test_ratio, seed):
+    # y: list/array of window labels (0/1)
+    idx0 = [i for i, v in enumerate(y) if v == 0]
+    idx1 = [i for i, v in enumerate(y) if v == 1]
+    rng = random.Random(seed)
+    rng.shuffle(idx0)
+    rng.shuffle(idx1)
+
+    def split_indices(idx):
+        n = len(idx)
+        n_train = int(n * train_ratio)
+        n_val = int(n * val_ratio)
+        n_test = n - n_train - n_val
+        return idx[:n_train], idx[n_train:n_train + n_val], idx[n_train + n_val:]
+
+    t0, v0, te0 = split_indices(idx0)
+    t1, v1, te1 = split_indices(idx1)
+
+    train_idx = t0 + t1
+    val_idx = v0 + v1
+    test_idx = te0 + te1
+
+    rng.shuffle(train_idx)
+    rng.shuffle(val_idx)
+    rng.shuffle(test_idx)
+    return train_idx, val_idx, test_idx
+
+def main(args):
+    os.makedirs(args.out, exist_ok=True)
+
+    # 1. Load CSV
+    df = pd.read_csv(args.csv)
+    df["EventTemplate_norm"] = df["EventTemplate"].apply(normalize_tpl)
+    df["label"] = df["label"].astype(int)
+    print(f"[INFO] Loaded {len(df):,} rows  (normal={sum(df.label==0):,}, anomaly={sum(df.label==1):,})")
+
+    # 2. Sentence-Transformer embeddings (unique templates only)
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    model  = SentenceTransformer(EMBED_MODEL, device=device)
+    uniq_tpls = df["EventTemplate_norm"].unique().tolist()
+    print(f"[STEP] Encoding {len(uniq_tpls):,} unique templates → {EMBED_MODEL} ({device})")
+    tpl_vecs  = model.encode(uniq_tpls, batch_size=256, show_progress_bar=True)
+    tpl2vec   = {t: v for t, v in zip(uniq_tpls, tpl_vecs)}
+
+    # 3. Encode per-window
+    X, Y = encode_windows(df, tpl2vec)
+    print(f"[INFO] Total windows built: {len(X):,}")
+
+    # 4. Train/Val/Test split (stratified by window label)
+    # Window label: 0=normal, 1=anomaly
+    y_labels = [int(np.argmax(y)) for y in Y]
+    idx_train, idx_val, idx_test = stratified_split_indices(
+        y_labels, TRAIN_RATIO, VAL_RATIO, TEST_RATIO, SEED
+    )
+
+    X_train, Y_train = X[idx_train], Y[idx_train]
+    X_val,   Y_val   = X[idx_val],   Y[idx_val]
+    X_test,  Y_test  = X[idx_test],  Y[idx_test]
+
+    # 5. Save
+    save_npz(os.path.join(args.out, "train.npz"), X_train, Y_train)
+    save_npz(os.path.join(args.out, "val.npz"),   X_val,   Y_val)
+    save_npz(os.path.join(args.out, "test.npz"),  X_test,  Y_test)
+
+    # 6. Save meta info
+    meta = {
+        "window_size": WINDOW_SIZE,
+        "embedding_model": EMBED_MODEL,
+        "train_windows": len(X_train),
+        "val_windows":   len(X_val),
+        "test_windows":  len(X_test),
+        "seed": SEED
+    }
+    with open(os.path.join(args.out, "meta.json"), "w") as f:
+        json.dump(meta, f, indent=2)
+    print("[✓] saved meta.json")
+
+if __name__ == "__main__":
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--csv", default=DEFAULT_CSV, help=f"Path to all_logs_labeled.csv (default: {DEFAULT_CSV})")
+    ap.add_argument("--out", default=DEFAULT_OUT, help=f"Output directory for npz files (default: {DEFAULT_OUT})")
+    args = ap.parse_args()
+    main(args)
