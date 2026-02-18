@@ -124,3 +124,32 @@ Both scripts perform evaluation by default using `output/gt_test.csv`.
 - Stage-2 scripts already print final metrics. A separate evaluator is optional.
 - Ensure `window_repr_by_pred_info_*.csv` and `logformer_preds_*.csv` use the same window_id order.
 - If you want validation-only ablations, see `run_stage2_ablation.py` and `summarize_stage2_ablation.py`.
+
+## LLM (Llama 3 Instruct)
+We use `meta-llama/Meta-Llama-3-8B-Instruct` for Stage-2 LLM verification.
+
+### 1) Prerequisite
+You need access to Llama 3 weights on Hugging Face. Make sure your account is approved.
+
+### 2) Download / Cache (first run)
+```bash
+python - <<'PY'
+from transformers import AutoTokenizer, AutoModelForCausalLM
+model_name = "meta-llama/Meta-Llama-3-8B-Instruct"
+tok = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
+_ = AutoModelForCausalLM.from_pretrained(
+    model_name, device_map="auto", torch_dtype="auto", trust_remote_code=True
+)
+print("Downloaded/cached:", model_name)
+PY
+```
+
+### 3) Usage in this repo
+The Stage-2 scripts already load the model:
+- `postprocess/RAG_Normal.py` (precision path)
+- `postprocess/RAG_Abnormal.py` (recall path)
+
+If you want to override the model:
+```bash
+python postprocess/RAG_Normal.py --llm_model meta-llama/Meta-Llama-3-8B-Instruct
+```
