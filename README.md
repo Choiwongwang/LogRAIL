@@ -1,4 +1,45 @@
-# LogRAIL: Retrieval-Augmented LLM Inference Layer for Log Anomaly Detection
+<div align="center">
+
+# 🛡️ LogRAIL
+
+### A Retrieval-Augmented LLM Reverification Layer for Log Anomaly Detection
+
+<p>
+  <a href="https://doi.org/10.1109/ACCESS.2026.3688834"><img src="https://img.shields.io/badge/IEEE_Access-2026-00629B?style=for-the-badge&logo=ieee&logoColor=white" alt="IEEE Access"/></a>
+  <a href="https://doi.org/10.1109/ACCESS.2026.3688834"><img src="https://img.shields.io/badge/DOI-10.1109%2FACCESS.2026.3688834-1f6feb?style=for-the-badge" alt="DOI"/></a>
+  <a href="https://doi.org/10.5281/zenodo.19118648"><img src="https://img.shields.io/badge/Dataset-Zenodo-1682D4?style=for-the-badge&logo=zenodo&logoColor=white" alt="Dataset"/></a>
+  <img src="https://img.shields.io/badge/License-CC_BY_4.0-green?style=for-the-badge" alt="License"/>
+</p>
+
+<p>
+  <img src="https://img.shields.io/badge/SCIE-JCR_Indexed-b31b1b?style=flat-square"/>
+  <img src="https://img.shields.io/badge/Open_Access-%E2%9C%93-orange?style=flat-square"/>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"/>
+  <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white"/>
+  <img src="https://img.shields.io/badge/LLM-Llama_3_8B-FF6F61?style=flat-square"/>
+  <img src="https://img.shields.io/badge/RAG-Vector_DB-4B8BBE?style=flat-square"/>
+</p>
+
+<p><i>Published in <b>IEEE Access</b>, vol. 14, pp. 65899–65911, 2026 &nbsp;·&nbsp; <a href="https://ieeexplore.ieee.org/document/11499390">📄 Read on IEEE Xplore</a></i></p>
+
+</div>
+
+---
+
+## 📊 Key Results (real AOSP Android logs)
+
+| Method | Precision | Recall | **F1** |
+|---|:---:|:---:|:---:|
+| DeepLog | 0.8420 | 0.8870 | 0.8639 |
+| LogBERT | 0.8680 | 0.9040 | 0.8856 |
+| Stage 1 (LogFormer) | 0.8932 | 0.9246 | 0.9086 |
+| LogRAG | 0.9360 | 0.7880 | 0.8550 |
+| **LogRAIL (precision)** | **0.9273** | 0.9273 | **0.9273** |
+| **LogRAIL (recall)** | 0.9102 | **0.9398** | **0.9248** |
+
+📈 F1 improves **0.9086 → 0.9273** over the single-stage baseline, outperforming DeepLog, LogBERT, and LogRAG.
+
+---
 
 This repository provides a two-stage log anomaly detection pipeline:
 1) Stage-1 (LogFormer) scores all windows.
@@ -152,4 +193,20 @@ The Stage-2 scripts already load the model:
 If you want to override the model:
 ```bash
 python postprocess/RAG_Normal.py --llm_model meta-llama/Meta-Llama-3-8B-Instruct
+```
+
+## 📌 Citation
+
+If you use LogRAIL in your research, please cite:
+
+```bibtex
+@article{choi2026lograil,
+  title   = {LogRAIL: A Retrieval-Augmented LLM Reverification Layer for Log Anomaly Detection},
+  author  = {Choi, Wongwang and Park, Donghee and Kim, Myeonggwan and Cho, Subin and Lee, Seonghun and Park, Jaehwa and Park, Ho-Hyun},
+  journal = {IEEE Access},
+  volume  = {14},
+  pages   = {65899--65911},
+  year    = {2026},
+  doi     = {10.1109/ACCESS.2026.3688834}
+}
 ```
