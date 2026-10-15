@@ -1,0 +1,32 @@
+# Server deps for LogRAIL on n1 (A100 / CUDA 11.8).
+# Install torch separately first, e.g.:
+#   pip install torch==2.1.2+cu118 torchvision==0.16.2+cu118 \
+#     --index-url https://download.pytorch.org/whl/cu118
+#
+# Then:
+#   pip install -r requirements_server.txt \
+#     -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+click==8.1.7
+langchain==0.2.14
+langchain_community==0.2.12
+langchain_openai==0.1.22
+matplotlib==3.7.4
+numpy==1.24.4
+openai==1.42.0
+pandas==2.0.3
+PyYAML==6.0.2
+chromadb==0.5.3
+scikit_learn==1.3.2
+sentence-transformers==2.7.0
+tqdm==4.66.1
+transformers==4.46.3
+accelerate==0.33.0
+huggingface_hub==0.26.2
+safetensors==0.4.5
+einops==0.8.0
+packaging==24.1
+pysqlite3-binary==0.5.3.post1
+modelscope==1.18.1
+sentencepiece==0.2.0
+protobuf==4.25.5

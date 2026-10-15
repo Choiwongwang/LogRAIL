@@ -59,6 +59,14 @@ PROMPT_FINAL_REASON = getattr(_pf_mod, "PROMPT_FINAL_REASON")
 
 # eval/metrics helper (keep consistent with RAG_Normal)
 import eval_final as evalmod
+from postprocess.llm_registry import resolve_embed_model, resolve_llm_model
+from postprocess.rag_runtime import (
+    TimedLLM,
+    apply_budget,
+    cost_log_path,
+    dump_effective_config,
+    load_done_ids,
+)
 
 # ───────── Defaults (recall boost) ─────────
 DEFAULTS = {
@@ -66,13 +74,15 @@ DEFAULTS = {
     "pred_csv":   "output/logformer_preds_test.csv",
     "window_csv": "output/window_repr_by_pred_info_anom.csv",
     "anomaly_csv":"dataset/anomaly_templates_clean.csv",
-    "chroma_dir": "rag_db/aosp_bge_v3_recall_anomonly_recallboost",
+    "chroma_dir": "rag_db/time_qwen_recall_k5",
 
     # Models/embeddings
-    "llm_model":   "meta-llama/Meta-Llama-3-8B-Instruct",
-    "embed_model": "BAAI/bge-small-en-v1.5",
+    "llm_model":   "qwen",
+    "embed_model": "bge-small-en-v1.5",
     "normalize_embeddings": True,
-    "top_k": 5,
+    "top_k": 1,  # only first neighbor is used
+    "budget": None,
+    "resume": False,
     "evidence_k": 5,
     "pad_token": "<PAD>",
     "device": "cuda",
@@ -269,6 +279,7 @@ class RAGPostProcessorV3RecallBoost:
         prompt_mode: str = "strict",
         # call policy
         call_policy: str = "boundary",
+        cost_path: Optional[str] = None,
     ):
         self.llm_model = llm_model
         self.embed_model = embed_model
@@ -277,6 +288,8 @@ class RAGPostProcessorV3RecallBoost:
         self.evidence_k = int(evidence_k)
         self.pad_token = str(pad_token)
         self.device = device
+        self.cost_path = cost_path
+        self._cur_wid: Optional[int] = None
 
         self.prob0_min    = float(prob0_min)
         self.prob0_max    = float(prob0_max)
@@ -382,8 +395,17 @@ class RAGPostProcessorV3RecallBoost:
         """LLM decision using evidence pairs."""
         pairs_block = self._build_pairs_block(pairs)
         prompt_text = self._build_prompt_pairs(self.tok, len(pairs), pairs_block)
-        out = self.gen(prompt_text)[0]["generated_text"]
-        js  = _extract_json(out)
+
+        def _call():
+            out = self.gen(prompt_text)[0]["generated_text"]
+            return out, _extract_json(out)
+
+        if self.cost_path:
+            out, js = TimedLLM(self.llm_model, self.cost_path, call_kind="decision").run(
+                _call, window_id=self._cur_wid
+            )
+        else:
+            out, js = _call()
         vote = _read_anomaly(js)
         reason = _minify_reason(js.get("reason", "") if isinstance(js, dict) else "", 12)
         llm_logs = [{"prompt_id": 0, "json": js if isinstance(js, dict) else {"raw": out}}]
@@ -461,8 +483,16 @@ class RAGPostProcessorV3RecallBoost:
         return self.tok.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
 
     def _run_final_reason(self, prompt_text: str) -> Optional[str]:
+        def _call():
+            return self.gen(prompt_text)[0]["generated_text"]
+
         try:
-            js = self.gen(prompt_text)[0]["generated_text"]
+            if self.cost_path:
+                js = TimedLLM(self.llm_model, self.cost_path, call_kind="explanation").run(
+                    _call, window_id=self._cur_wid
+                )
+            else:
+                js = _call()
         except Exception:
             return None
         js_obj = _extract_json(js)
@@ -527,6 +557,8 @@ class RAGPostProcessorV3RecallBoost:
         raw_json: Optional[str],
         flips_csv: Optional[str],
         max_rows: Optional[int] = None,
+        budget: Optional[float] = None,
+        resume: bool = False,
     ):
         # Index anomaly templates
         if not anomaly_csv or not os.path.exists(anomaly_csv):
@@ -545,15 +577,53 @@ class RAGPostProcessorV3RecallBoost:
         window_map = _load_window_templates_map(window_csv)
 
         if max_rows is not None:
-            pred_df = pred_df.head(int(max_rows))
+            pred_df = pred_df.head(int(max_rows)).reset_index(drop=True)
 
-        rows, raw, flip_rows = [], [], []
+        done_ids = load_done_ids(out_csv) if resume else set()
+        prev_rows, prev_raw, prev_flips = [], [], []
+        if resume and done_ids and os.path.exists(out_csv):
+            prev_rows = pd.read_csv(out_csv).to_dict("records")
+            if raw_json and os.path.exists(raw_json):
+                try:
+                    with open(raw_json, "r", encoding="utf-8") as f:
+                        prev_raw = json.load(f)
+                except Exception:
+                    prev_raw = []
+            if flips_csv and os.path.exists(flips_csv):
+                try:
+                    prev_flips = pd.read_csv(flips_csv).to_dict("records")
+                except Exception:
+                    prev_flips = []
+            print(f"[i] resume: skip {len(done_ids)} done window_ids")
+
+        call_policy = getattr(self, "call_policy", "boundary")
+        eligible = []
+        for r in pred_df.itertuples(index=False):
+            prob = float(r.prob)
+            base_pred = int(getattr(r, "anomaly_pred", 0))
+            if call_policy == "boundary":
+                ok = (base_pred == 0) and (self.prob0_min <= prob < self.prob0_max)
+            elif call_policy == "pred0":
+                ok = base_pred == 0
+            elif call_policy == "all":
+                ok = True
+            else:
+                ok = (base_pred == 0) and (self.prob0_min <= prob < self.prob0_max)
+            eligible.append(bool(ok))
+        eligible = apply_budget(
+            pred_df, eligible, budget=budget, theta=float(self.prob0_max)
+        )
+
+        rows, raw, flip_rows = list(prev_rows), list(prev_raw), list(prev_flips)
         called = 0
         flips = 0
 
         it = tqdm(pred_df.itertuples(index=False), total=len(pred_df), desc="RAG_v3_recallboost")
-        for r in it:
+        for row_i, r in enumerate(it):
             wid = int(r.window_id)
+            self._cur_wid = wid
+            if wid in done_ids:
+                continue
             prob = float(r.prob)
             base_pred_orig = int(getattr(r, "anomaly_pred", 0))
             tpls = window_map.get(wid, [])
@@ -574,16 +644,7 @@ class RAGPostProcessorV3RecallBoost:
             llm_called = False
             top1_tpl_text = ""
 
-            # Recall-first: decide whether to call based on call_policy
-            call_policy = getattr(self, "call_policy", "boundary")
-            if call_policy == "boundary":
-                should_call = (base_pred == 0) and (self.prob0_min <= prob < self.prob0_max)
-            elif call_policy == "pred0":
-                should_call = (base_pred == 0)
-            elif call_policy == "all":
-                should_call = True
-            else:
-                should_call = (base_pred == 0) and (self.prob0_min <= prob < self.prob0_max)
+            should_call = bool(eligible[row_i]) if row_i < len(eligible) else False
 
             if should_call:
                 sim_top1 = 0.0
@@ -744,6 +805,8 @@ def build_parser():
     p.add_argument("--raw_json",   default=DEFAULTS["raw_json"])
     p.add_argument("--flips_csv",  default=DEFAULTS["flips_csv"])
     p.add_argument("--max_rows", type=int, default=None, help="Optional limit on number of windows to process")
+    p.add_argument("--budget", type=float, default=DEFAULTS.get("budget"))
+    p.add_argument("--resume", action="store_true", default=False)
     # Evaluation
     p.add_argument("--eval_gt_csv",     default=DEFAULTS["eval_gt_csv"],
                    help="GT CSV for evaluation (default: output/gt_test.csv)")
@@ -756,12 +819,20 @@ def main():
     p = build_parser()
     args = p.parse_args()
 
+    args.llm_model = resolve_llm_model(args.llm_model)
+    args.embed_model = resolve_embed_model(args.embed_model)
+    cfg = {k: getattr(args, k, None) for k in sorted(set(DEFAULTS) | {"budget", "resume", "max_rows"})}
+    cfg["llm_model_resolved"] = args.llm_model
+    cfg["embed_model_resolved"] = args.embed_model
+    dump_effective_config(cfg, args.out_csv)
+
     gc.collect()
     try:
         torch.cuda.empty_cache()
     except Exception:
         pass
 
+    cost_path = cost_log_path(args.out_csv)
     rag = RAGPostProcessorV3RecallBoost(
         llm_model = args.llm_model,
         embed_model = args.embed_model,
@@ -777,6 +848,7 @@ def main():
         anom_sim_th = args.anom_sim_th,
         anom_high_th = args.anom_high_th,
         prompt_mode = args.prompt_mode,
+        cost_path = cost_path,
     )
 
     ret = rag.run(
@@ -787,6 +859,8 @@ def main():
         raw_json   = args.raw_json,
         flips_csv  = args.flips_csv,
         max_rows   = args.max_rows,
+        budget     = args.budget,
+        resume     = bool(args.resume),
     )
 
     if not args.skip_eval:

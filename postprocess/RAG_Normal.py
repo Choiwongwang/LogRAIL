@@ -13,6 +13,14 @@ if _PROJ_ROOT not in sys.path:
 
 # eval/metrics helper
 import eval_final as evalmod
+from postprocess.llm_registry import default_embed_model, default_llm_model, resolve_embed_model, resolve_llm_model
+from postprocess.rag_runtime import (
+    TimedLLM,
+    apply_budget,
+    cost_log_path,
+    dump_effective_config,
+    load_done_ids,
+)
 
 # robust import of prompts with fallback
 import importlib
@@ -40,11 +48,13 @@ DEFAULTS = {
     "pred_csv":   "output/logformer_preds_test.csv",
     "window_csv": "output/window_repr_by_pred_info_norm.csv",
     "normal_csv": "dataset/normal_templates_clean.csv",
-    "chroma_dir": "rag_db/aosp_bge_run1",
+    "chroma_dir": "rag_db/time_qwen_prec_k5",
 
-    "llm_model":   "meta-llama/Meta-Llama-3-8B-Instruct",
-    "embed_model": "BAAI/bge-small-en-v1.5",
+    "llm_model":   "qwen",  # resolved via llm_registry (local Qwen; use llama later)
+    "embed_model": "bge-small-en-v1.5",
     "normalize_embeddings": True,
+    "budget": None,
+    "resume": False,
 
     "evidence_k": 5,
     "pad_token": "<PAD>",
@@ -196,12 +206,16 @@ class RAGPostProcessorV2:
         base_threshold: Optional[float] = None,
         # Embedding override/normalization options
         embed_model: str = "sentence-transformers/all-MiniLM-L6-v2",
-        normalize_embeddings: bool = False,):
+        normalize_embeddings: bool = False,
+        cost_path: Optional[str] = None,
+    ):
         self.llm_name   = llm_name
         self.evidence_k = int(evidence_k)
         self.pad_token  = str(pad_token)
         self.chroma_dir = chroma_dir
         self.device     = device
+        self.cost_path  = cost_path
+        self._cur_wid: Optional[int] = None
 
         # Stage-1 threshold override
         self.base_threshold = base_threshold
@@ -384,7 +398,7 @@ class RAGPostProcessorV2:
 
     def _run_final_reason(self, prompt_text: str) -> Optional[str]:
         try:
-            js = self._run_llm(prompt_text)
+            js = self._run_llm(prompt_text, kind="explanation")
         except Exception:
             return None
         if isinstance(js, dict):
@@ -395,10 +409,16 @@ class RAGPostProcessorV2:
                     return expl
         return None
 
-    def _run_llm(self, prompt_text: str) -> dict | None:
-        out = self.gen(prompt_text)[0]["generated_text"]
-        js = _extract_json(out)
-        return js
+    def _run_llm(self, prompt_text: str, kind: str = "decision") -> dict | None:
+        def _call():
+            out = self.gen(prompt_text)[0]["generated_text"]
+            return _extract_json(out)
+
+        if self.cost_path:
+            return TimedLLM(self.llm_name, self.cost_path, call_kind=kind).run(
+                _call, window_id=self._cur_wid
+            )
+        return _call()
 
     def _compose_final_reason(
         self,
@@ -472,6 +492,8 @@ class RAGPostProcessorV2:
         prob_hi: float = 0.65,
         flips_csv: Optional[str] = None,
         max_rows: Optional[int] = None,
+        budget: Optional[float] = None,
+        resume: bool = False,
     ):
         # 1) Index normal templates
         normals = (
@@ -488,22 +510,61 @@ class RAGPostProcessorV2:
         window_map = _load_window_templates_map(window_csv)
 
         if max_rows is not None:
-            pred_df = pred_df.head(int(max_rows))
+            pred_df = pred_df.head(int(max_rows)).reset_index(drop=True)
 
-        # 3) LLM call policy
+        done_ids = load_done_ids(out_csv) if resume else set()
+        prev_rows = []
+        prev_raw = []
+        prev_flips = []
+        if resume and done_ids and os.path.exists(out_csv):
+            prev_rows = pd.read_csv(out_csv).to_dict("records")
+            if raw_json and os.path.exists(raw_json):
+                try:
+                    with open(raw_json, "r", encoding="utf-8") as f:
+                        prev_raw = json.load(f)
+                except Exception:
+                    prev_raw = []
+            if flips_csv and os.path.exists(flips_csv):
+                try:
+                    prev_flips = pd.read_csv(flips_csv).to_dict("records")
+                except Exception:
+                    prev_flips = []
+            print(f"[i] resume: skip {len(done_ids)} done window_ids")
+
+        # 3) LLM call policy + budget
         call_policy = call_policy.lower().strip()
         lo, hi = float(prob_lo), float(prob_hi)
+        theta = float(self.base_threshold) if self.base_threshold is not None else float(lo)
+
+        eligible = []
+        for r in pred_df.itertuples(index=False):
+            prob = float(r.prob)
+            base_pred = int(r.anomaly_pred)
+            if self.base_threshold is not None:
+                base_pred = 1 if prob >= float(self.base_threshold) else 0
+            ok = (
+                (call_policy == "all") or
+                (call_policy == "pred1" and base_pred == 1) or
+                (call_policy == "boundary" and (lo <= prob <= hi)) or
+                (call_policy == "hybrid" and (base_pred == 1 or (lo <= prob <= hi))) or
+                (call_policy == "pred1_boundary" and (base_pred == 1 and (lo <= prob <= hi)))
+            )
+            eligible.append(bool(ok))
+        eligible = apply_budget(pred_df, eligible, budget=budget, theta=theta)
 
         # 4) Main loop
-        rows = []
-        raw = []
-        flip_rows = []
+        rows = list(prev_rows)
+        raw = list(prev_raw)
+        flip_rows = list(prev_flips)
         called = 0
         flips = 0
         it = tqdm(pred_df.itertuples(index=False), total=len(pred_df), desc="RAG_v2")
 
-        for r in it:
+        for row_i, r in enumerate(it):
             wid = int(r.window_id)
+            self._cur_wid = wid
+            if wid in done_ids:
+                continue
             base_pred = int(r.anomaly_pred)
             prob      = float(r.prob)
             tpls = window_map.get(wid, [])
@@ -518,14 +579,8 @@ class RAGPostProcessorV2:
             if self.base_threshold is not None:
                 base_pred = 1 if prob >= float(self.base_threshold) else 0
 
-            # Call decision
-            do_call = (
-                (call_policy == "all") or
-                (call_policy == "pred1"           and base_pred == 1) or
-                (call_policy == "boundary"        and (lo <= prob <= hi)) or
-                (call_policy == "hybrid"          and (base_pred == 1 or (lo <= prob <= hi))) or
-                (call_policy == "pred1_boundary"  and (base_pred == 1 and (lo <= prob <= hi)))
-            )
+            # Call decision (after budget filter)
+            do_call = bool(eligible[row_i]) if row_i < len(eligible) else False
 
             sim_top1, ctx_top1 = 0.0, ""
             final_pred = base_pred
@@ -689,6 +744,18 @@ def build_parser_with_defaults() -> argparse.ArgumentParser:
     p.add_argument("--flips_csv", default=DEFAULTS["flips_csv"])
     p.add_argument("--max_rows", type=int, default=None,
                   help="Optional limit on number of windows to process (for testing)")
+    p.add_argument(
+        "--budget",
+        type=float,
+        default=DEFAULTS.get("budget"),
+        help="Fraction of M to cap LLM candidates (None=unlimited)",
+    )
+    p.add_argument(
+        "--resume",
+        action="store_true",
+        default=False,
+        help="Skip window_ids already present in out_csv and append",
+    )
     return p
 
 def sanity_check_files(args):
@@ -709,11 +776,12 @@ def main():
     p = build_parser_with_defaults()
     args = p.parse_args()
 
-    print("[i] Effective config:")
-    for k in sorted(DEFAULTS.keys()):
-        v = getattr(args, k, None)
-        print(f"    {k}: {v}")
-    print()
+    args.llm_model = resolve_llm_model(args.llm_model)
+    args.embed_model = resolve_embed_model(args.embed_model)
+    cfg = {k: getattr(args, k, None) for k in sorted(set(DEFAULTS) | {"budget", "resume", "max_rows"})}
+    cfg["llm_model_resolved"] = args.llm_model
+    cfg["embed_model_resolved"] = args.embed_model
+    dump_effective_config(cfg, args.out_csv)
 
     sanity_check_files(args)
 
@@ -723,6 +791,7 @@ def main():
     except Exception:
         pass
 
+    cost_path = cost_log_path(args.out_csv)
     rag = RAGPostProcessorV2(
         llm_name   = args.llm_model,
         evidence_k = args.evidence_k,
@@ -732,6 +801,7 @@ def main():
         base_threshold = args.base_threshold,
         embed_model = args.embed_model,
         normalize_embeddings = args.normalize_embeddings,
+        cost_path = cost_path,
     )
 
     rag.run(
@@ -745,6 +815,8 @@ def main():
         prob_hi    = args.prob_hi_b,
         flips_csv  = args.flips_csv,
         max_rows   = args.max_rows,
+        budget     = args.budget,
+        resume     = bool(args.resume),
     )
 
     # ---- Evaluation (optional) ----
